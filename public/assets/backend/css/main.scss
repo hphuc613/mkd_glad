@@ -1,0 +1,65 @@
+
+.title {
+    font-weight: 500;
+}
+
+
+.form-control{
+    padding: 2px;
+
+    &.form-control-line{
+        border-bottom: 1px solid #d7d7d88c !important;
+    }
+}
+
+.form-group{
+    align-items: center;
+
+
+    .is-valid{
+        border-bottom: 1px solid #34ce57 !important;;
+    }
+
+    .invalid-feedback{
+        color: red;
+        font-size: 90%;
+    }
+}
+
+/*** Pagination ***/
+.pagination {
+    li {
+
+        a {
+            border: 1px solid #e5e5e5;
+            box-sizing: border-box;
+            display: inline-block;
+            min-width: 1.5em;
+            padding: .5em 1em;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 153, 136, 0.64);
+                border: 1px solid rgba(255, 153, 136, 0.42);
+                color: white;
+            }
+
+            &.active {
+                border: 1px solid rgba(255, 153, 136, 0.64);
+                color: white;
+                background-color: #fb9678;
+            }
+
+            &.disabled {
+                cursor: default;
+                color: #838383;
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
