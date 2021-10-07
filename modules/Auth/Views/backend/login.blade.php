@@ -7,14 +7,19 @@
                 <form action="" class="form-horizontal form-material" method="post">
                     @csrf
                     <h3 class="box-title m-b-20">{{ trans('Sign In') }}</h3>
+                    @if (session('danger'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('danger') }}
+                        </div>
+                    @endif
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" placeholder="{{ trans('Username') }}" name="username">
+                            <input class="form-control" type="text" required placeholder="{{ trans('Username') }}" name="username">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" placeholder="{{ trans('Password') }}" name="password">
+                            <input class="form-control" type="password" required placeholder="{{ trans('Password') }}" name="password">
                         </div>
                     </div>
                     <div class="form-group row">

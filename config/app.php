@@ -174,8 +174,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        //Module Service Provide
+        //Module Service Provider
         App\Providers\ModuleServiceProvider::class,
+        //Mail Service Provider
+        App\Providers\MailServiceProvider::class,
 
     ],
 
