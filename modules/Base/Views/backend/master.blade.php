@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+@php($locale = App::getLocale())
+<html lang="{{ !empty($locale) ? $locale : 'en' }}">
 
 <head>
     <meta charset="utf-8">
@@ -43,7 +44,8 @@
 <script src="{{ asset("assets/backend/node_modules/bootstrap/dist/js/bootstrap.min.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/perfect-scrollbar.jquery.min.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/waves.js") }}"></script>
-<script src="{{ asset("assets/backend/node_modules/select2/dist/js/select2.full.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset("assets/backend/node_modules/select2/dist/js/select2.full.min.js") }}"
+        type="text/javascript"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset("assets/backend/dist/js/sidebarmenu.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/custom.min.js") }}"></script>

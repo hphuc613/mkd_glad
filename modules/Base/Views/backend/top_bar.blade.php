@@ -78,6 +78,34 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <div class="btn-group h-100 align-items-center">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle waves-effect waves-dark"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            LANG
+                        </a>
+                        <div class="dropdown-menu animated flipInY">
+                            <a class="dropdown-item @if(session()->get('locale') === 'tw') active @endif"
+                               href="{{ route('change_locale','tw') }}">
+                                @if(session()->get('locale') === 'tw') <i
+                                    class="icon-lang mdi mdi-check text-success"></i> @endif
+                                {{ trans('Chinese') }}(Traditional)
+                            </a>
+                            <a class="dropdown-item @if(session()->get('locale') === 'cn') active @endif"
+                               href="{{ route('change_locale','cn') }}">
+                                @if(session()->get('locale') === 'cn') <i
+                                    class="icon-lang mdi mdi-check text-success"></i> @endif
+                                {{ trans('Chinese') }}(Simplify)
+                            </a>
+                            <a class="dropdown-item @if(session()->get('locale') === 'en') active @endif"
+                               href="{{ route('change_locale','en') }}">
+                                @if(session()->get('locale') === 'en') <i
+                                    class="icon-lang mdi mdi-check text-success"></i> @endif
+                                {{ trans('English') }}(US)
+                            </a>
+                        </div>
+                    </div>
+                </li>
                 <li class="nav-item dropdown u-pro">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png" alt="user" class="">

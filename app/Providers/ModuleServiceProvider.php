@@ -25,8 +25,8 @@ class ModuleServiceProvider extends ServiceProvider {
 
             /** Route */
             Route::group(['module' => $module, 'namespace' => $namespace . '\Controllers'], function () use ($module_path) {
-                if (File::exists($module_path . "Routes/routes.php")) {
-                    $this->loadRoutesFrom($module_path . "Routes/routes.php");
+                if (File::exists($module_path . "Routes/route.php")) {
+                    $this->loadRoutesFrom($module_path . "Routes/route.php");
                 }
                 if (File::exists($module_path . "Routes/admin.php")) {
                     $this->loadRoutesFrom($module_path . "Routes/admin.php");

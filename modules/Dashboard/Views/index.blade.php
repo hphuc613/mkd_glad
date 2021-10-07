@@ -15,6 +15,7 @@
                 </div>
             </div>
         </div>
+        {{ trans('Hello') }}
         <div class="card-group">
             <div class="card">
                 <div class="card-body">
