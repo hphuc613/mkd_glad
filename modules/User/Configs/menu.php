@@ -2,7 +2,7 @@
 return [
     'name' => trans('User'),
     'route' => route('get.user.list'),
-    'sort' => 1,
+    'sort' => 9,
     'active'=> TRUE,
     'id'=> 'user',
     'icon' => '<i class="fa fa-users"></i>',

@@ -30,32 +30,29 @@ class AuthController extends Controller {
      * @param Request $request
      * @return Factory|View|RedirectResponse
      */
-    public function getLogin(Request $request) {
+    public function login(Request $request) {
         if ($this->auth->check()) {
             return redirect()->route('admin.dashboard');
         }
-        return view("Auth::backend.login");
-    }
 
-    /**
-     * @param Request $request
-     * @return Factory|View|RedirectResponse
-     */
-    public function postLogin(Request $request) {
-        $credentials = $request->only('username', 'password');
+        if ($request->post()){
+            $credentials = $request->only('email', 'password');
 
-        if ($this->auth->attempt($credentials, $request->has('remember_me'))) {
-            if ($this->auth->user()->status != Status::STATUS_ACTIVE && (Auth::user()->role->status ?? NULL) != Status::STATUS_ACTIVE){
-                $request->session()->flash('danger',
-                    trans('Your account is inactive. Please contact with admin page to get more information.'));
-                return $this->logout();
+            if ($this->auth->attempt($credentials, $request->has('remember_me'))) {
+                if ($this->auth->user()->status != Status::STATUS_ACTIVE && (Auth::user()->role->status ?? NULL) != Status::STATUS_ACTIVE){
+                    $request->session()->flash('danger',
+                        trans('Your account is inactive. Please contact with admin page to get more information.'));
+                    return $this->logout();
+                }
+
+                return redirect()->route('admin.dashboard');
             }
+            $request->session()->flash('danger', trans('Incorrect username or password'));
 
-            return redirect()->route('admin.dashboard');
+            return $this->logout();
         }
-        $request->session()->flash('danger', trans('Incorrect username or password'));
 
-        return $this->logout();
+        return view("Auth::backend.login");
     }
 
     /**

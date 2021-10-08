@@ -13,10 +13,10 @@
     <title>Admin Page</title>
     <link href="{{ asset('assets/backend/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/node_modules/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/backend/node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet"
+    <link href="{{ asset('assets/backend/node_modules/select2/css/select2.min.css') }}" rel="stylesheet"
           type="text/css"/>
-    <link href="{{ asset('assets/backend/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/dist/css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/backend/css/main.css') }}" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
@@ -44,9 +44,8 @@
 <script src="{{ asset("assets/backend/node_modules/bootstrap/dist/js/bootstrap.min.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/perfect-scrollbar.jquery.min.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/waves.js") }}"></script>
-<script src="{{ asset("assets/backend/node_modules/select2/dist/js/select2.full.min.js") }}"
+<script src="{{ asset("assets/backend/node_modules/select2/js/select2.full.min.js") }}"
         type="text/javascript"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset("assets/backend/dist/js/sidebarmenu.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/custom.min.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/raphael/raphael-min.js") }}"></script>
@@ -56,6 +55,7 @@
 <script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 <script src="{{ asset("assets/jquery/main.js") }}"></script>
 <script src="{{ asset("assets/jquery/modal.js") }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script !src="">
     $(document).ready(function () {

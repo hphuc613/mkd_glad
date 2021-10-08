@@ -32,22 +32,23 @@
                 <div class="card-body collapse show" id="form-search-box">
                     <form action="" method="get">
                         <div class="row">
-                                <div class="col-md-3">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="text-input">{{ trans("Name") }}</label>
-                                    <input type="text" class="form-control" id="text-input" name="name" value="{{ $filter['name'] ?? null}}">
+                                    <input type="text" class="form-control" id="text-input" name="name"
+                                           value="{{ $filter['name'] ?? null}}">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="text-input">{{ trans('Role') }}</label>
-                                    {!! Form::select('role_id', $prompt + $roles, $filter['role_id'] ?? NULL, ['class' => 'select2 form-control w-100']) !!}
+                                    {!! Form::select('role_id', $prompt + $roles, $filter['role_id'] ?? NULL, ['class' => 'select2 form-control', 'style' => 'width:"100px"']) !!}
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="text-input">{{ trans('Status') }}</label>
-                                    {!! Form::select('status', $prompt + $statuses, $filter['status'] ?? NULL, ['class' => 'select2 form-control w-100']) !!}
+                                    {!! Form::select('status', $prompt + $statuses, $filter['status'] ?? NULL, ['class' => 'select2 form-control']) !!}
                                 </div>
                             </div>
                         </div>

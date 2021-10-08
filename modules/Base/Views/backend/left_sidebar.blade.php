@@ -1,5 +1,6 @@
 <?php
 $menu = config_menu_merge();
+$segment = segmentUrl(1);
 ?>
 
 <aside class="left-sidebar">
@@ -12,24 +13,30 @@ $menu = config_menu_merge();
                             @if($item['active'])
                                 @if(empty($item['group']))
                                     <li>
-                                        <a class="waves-effect waves-dark" href="{{ $item['route'] }}" aria-expanded="false">
+                                        <a class="waves-effect waves-dark @if($segment === $item['id']) active @endif"
+                                           href="{{ $item['route'] }}" aria-expanded="false">
                                             {!! $item['icon'] !!}
                                             <span class="hide-menu">{{ $item['name'] }}</span>
                                         </a>
                                     </li>
                                 @else
                                     <li>
-                                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                                            <i class="icon-speedometer"></i>
-                                            <span class="hide-menu">Dashboard
-                            <span class="badge badge-pill badge-cyan ml-auto">4</span>
-                        </span>
+                                        <a class="has-arrow waves-effect waves-dark @if($segment === $item['id']) active @endif"
+                                           href="javascript:void(0)" aria-expanded="false">
+                                            {!! $item['icon'] !!}
+                                            <span class="hide-menu">
+                                                {{ $item['name'] }}
+                                                <span class="badge badge-pill badge-cyan ml-auto">
+                                                    {{ count($item['group']) }}
+                                                </span>
+                                            </span>
                                         </a>
                                         <ul aria-expanded="false" class="collapse">
-                                            <li><a href="index.html">Minimal </a></li>
-                                            <li><a href="index2.html">Analytical</a></li>
-                                            <li><a href="index3.html">Demographical</a></li>
-                                            <li><a href="index4.html">Modern</a></li>
+                                            @foreach($item['group'] as $child)
+                                                @can($child['middleware'])
+                                                    <li><a href="{{ $child['route'] }}">{{ $child['name'] }} </a></li>
+                                                @endcan
+                                            @endforeach
                                         </ul>
                                     </li>
                                 @endif

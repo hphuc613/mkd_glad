@@ -14,7 +14,7 @@
                     @endif
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required placeholder="{{ trans('Username') }}" name="username">
+                            <input class="form-control" type="text" required placeholder="{{ trans('Email') }}" name="email">
                         </div>
                     </div>
                     <div class="form-group">

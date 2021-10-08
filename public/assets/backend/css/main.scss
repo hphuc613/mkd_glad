@@ -1,8 +1,14 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}
 
 label, .title {
     font-weight: 500;
 }
-
 
 .form-control{
     padding: 2px;
@@ -23,6 +29,10 @@ label, .title {
     .invalid-feedback{
         color: red;
         font-size: 90%;
+    }
+
+    .select2 {
+        width: 100% !important;
     }
 }
 
