@@ -4,15 +4,13 @@ namespace Modules\Role\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RoleRequest extends FormRequest
-{
+class RoleRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return true;
     }
 
@@ -21,29 +19,36 @@ class RoleRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         $method = segmentUrl(2);
-        switch($method) {
+        switch ($method) {
             default:
-                return ['name'   => 'required|validate_unique:roles',
-                    'status' => 'required',];
+                return [
+                    'name'   => 'required|validate_unique:roles',
+                    'status' => 'required',
+                ];
                 break;
             case 'update':
-                return ['name'   => 'required|validate_unique:roles,' . $this->id,
-                    'status' => 'required',];
+                return [
+                    'name'   => 'required|validate_unique:roles,' . $this->id,
+                    'status' => 'required',
+                ];
                 break;
         }
     }
 
     public function messages() {
-        return ['required'        => ':attribute' . trans(' can not be empty.'),
-            'validate_unique' => ':attribute' . trans(' was exist.')];
+        return [
+            'required'        => ':attribute' . trans(' can not be empty.'),
+            'validate_unique' => ':attribute' . trans(' was exist.')
+        ];
     }
 
     public function attributes() {
-        return ['name'        => trans('Role name'),
+        return [
+            'name'        => trans('Role name'),
             'status'      => trans('Status'),
-            'description' => trans('Description'),];
+            'description' => trans('Description'),
+        ];
     }
 }

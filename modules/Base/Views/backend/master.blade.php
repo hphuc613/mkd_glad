@@ -9,12 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+{{--    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">--}}
     <title>Admin Page</title>
     <link href="{{ asset('assets/backend/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/node_modules/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/backend/node_modules/select2/css/select2.min.css') }}" rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('assets/backend/node_modules/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/dropify/dist/css/dropify.min.css') }}">
     <link href="{{ asset('assets/backend/dist/css/style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/css/main.css') }}" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -39,22 +39,24 @@
         </div>
     </div>
 </div>
+
 <script src="{{ asset("assets/backend/node_modules/jquery/jquery-3.2.1.min.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/popper/popper.min.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/bootstrap/dist/js/bootstrap.min.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/perfect-scrollbar.jquery.min.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/waves.js") }}"></script>
-<script src="{{ asset("assets/backend/node_modules/select2/js/select2.full.min.js") }}"
-        type="text/javascript"></script>
+<script src="{{ asset("assets/backend/node_modules/select2/js/select2.full.min.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/sidebarmenu.js") }}"></script>
 <script src="{{ asset("assets/backend/dist/js/custom.min.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/raphael/raphael-min.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/morrisjs/morris.min.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/jquery-sparkline/jquery.sparkline.min.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/toast-master/js/jquery.toast.js") }}"></script>
-<script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-<script src="{{ asset("assets/jquery/main.js") }}"></script>
-<script src="{{ asset("assets/jquery/modal.js") }}"></script>
+<script src="{{ asset("assets/backend/node_modules/dropify/dist/js/dropify.min.js") }}"></script>
+<script src="{{ asset("assets/backend/jquery/main.js") }}"></script>
+<script src="{{ asset("assets/backend/jquery/modal.js") }}"></script>
+<script src="{{ asset('assets/plugins/jsvalidation/js/jsvalidation.js')}}"></script>
+<script src="{{ asset('assets/plugins/ckeditor/ckeditor.js') }} "></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script !src="">
@@ -62,8 +64,14 @@
         $(".select2").select2();
 
         notificationAlert();
-    })
+    });
 
+    if($('#ckeditor').length > 0){
+        CKEDITOR.replace( 'ckeditor' , {
+            language: "{{ App::getLocale() }}".toLowerCase(),
+            height: 600
+        });
+    }
 </script>
 @stack('js')
 </body>

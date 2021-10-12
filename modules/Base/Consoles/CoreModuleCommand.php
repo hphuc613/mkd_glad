@@ -50,7 +50,7 @@ class CoreModuleCommand extends Command
             $this->views($module);
         }
 
-//        Artisan::call('permissions:update');
+        Artisan::call('module:migration create_'.strtolower($module).'s_table --create='.strtolower($module).'s '. ucfirst($module));
 
         $this->info("Module {$module} has been created");
     }
@@ -275,7 +275,7 @@ use Illuminate\Support\Facades\Route;
                 </div>
             </div>
         </div>
-        <div id="head-page" class="d-flex justify-content-between">
+        <div class="mb-3 d-flex justify-content-end group-btn">
             <a href="#" class="btn btn-primary"
                data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Create' . $module . '") }}">
                 <i class="fa fa-plus"></i>&nbsp; {{ trans("Add New") }}
@@ -334,20 +334,18 @@ use Illuminate\Support\Facades\Route;
                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->format(\'d/m/Y H:i:s\')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->updated_at)->format(\'d/m/Y H:i:s\')}}</td>
                                 <td class="link-action">
-                                    @if(!in_array($item->name, ["Administrator"]))
-                                        <a href="#" class="btn btn-primary mr-2"
-                                           data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Update '.$module.'") }}">
-                                            <i class="fa fa-pencil"></i></a>
-                                        <a href="#"
-                                           class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
-                                    @endif
+                                    <a href="#" class="btn btn-primary mr-2"
+                                       data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Update '.$module.'") }}">
+                                        <i class="fa fa-pencil"></i></a>
+                                    <a href="#"
+                                       class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                     <div class="mt-5 pagination-style">
-                        {{ $data->render() }}
+                        {{ $data->render("vendor/pagination/default") }}
                     </div>
                 </div>
             </div>

@@ -92,7 +92,7 @@
                                     <td>{{ trans($item->email) }}</td>
                                     <td>{{ $roles[$item->role_id] ?? 'N/A' }}</td>
                                     <td>{{ $statuses[$item->status] ?? null }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s')}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                     <td class="link-action">
                                         @if(($item->name == \Modules\Role\Models\Role::ADMINISTRATOR && auth('admin')->user()->name == \Modules\Role\Models\Role::ADMINISTRATOR)
                                             || $item->name != \Modules\Role\Models\Role::ADMINISTRATOR)

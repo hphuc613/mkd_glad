@@ -26,6 +26,14 @@ class Role extends BaseModel {
 
     const ADMINISTRATOR = 'Administrator';
 
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function ($role) {
+            $role->users->each->delete();
+        });
+    }
+
     /**
      * @return Builder|Model|object|null
      */

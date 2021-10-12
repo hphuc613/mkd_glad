@@ -71,8 +71,8 @@
                                     <td>{{$key++}}</td>
                                     <td>{{ trans($item->name) }}</td>
                                     <td>{{ \Modules\Base\Models\Status::getStatus($item->status) ?? null }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s')}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d/m/Y H:i:s')}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d-m-Y H:i:s')}}</td>
                                     <td class="link-action">
                                         @if(!in_array($item->name, ["Administrator"]))
                                             <a href="{{ route('get.role.update',$item->id) }}"

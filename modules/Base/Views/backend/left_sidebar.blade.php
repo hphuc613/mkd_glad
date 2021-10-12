@@ -26,12 +26,9 @@ $segment = segmentUrl(1);
                                             {!! $item['icon'] !!}
                                             <span class="hide-menu">
                                                 {{ $item['name'] }}
-                                                <span class="badge badge-pill badge-cyan ml-auto">
-                                                    {{ count($item['group']) }}
-                                                </span>
                                             </span>
                                         </a>
-                                        <ul aria-expanded="false" class="collapse">
+                                        <ul aria-expanded="false" class="collapse menu-child">
                                             @foreach($item['group'] as $child)
                                                 @can($child['middleware'])
                                                     <li><a href="{{ $child['route'] }}">{{ $child['name'] }} </a></li>

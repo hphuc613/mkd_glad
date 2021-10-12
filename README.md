@@ -31,6 +31,11 @@ VI. Generate Data Fake:
 Run this command:
 
         php artisan db:seed
+        
 V. Make migration in module:
-    
+
         php artisan module:migration {migration_name} {--create=} {--table=} {module}
+        
+VI. Storage link:
+
+        php artisan storage:link
