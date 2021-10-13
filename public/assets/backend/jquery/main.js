@@ -85,3 +85,54 @@ $(document).on('click', '.select-all', function () {
         $('input.checkbox-item').not(this).prop('checked', this.checked);
     }
 });
+
+/*********** Datetime Picker *************/
+var lang = $('html').attr('lang');
+$('input.datetime').datetimepicker({
+    format: 'dd-mm-yyyy hh:ii',
+    fontAwesome: true,
+    autoclose: true,
+    todayHighlight: true,
+    todayBtn: true,
+    language: lang,
+    //VN Calendar
+    /*format: 'dd-mm-yyyy HH:ii P',
+    language: 'vn',
+    showMeridian: true,*/
+});
+$('input.date').datetimepicker({
+    format: 'dd-mm-yyyy',
+    fontAwesome: true,
+    autoclose: true,
+    todayHighlight: true,
+    startView: 2, // 0: hour current, 1: time in date current, 2: date
+                  // in month current, 3: month in year current, 4 year
+                  // in decade current
+    minView: 2,
+    todayBtn: true,
+    language: lang,
+});
+$('input.time').datetimepicker({
+    format: 'hh:ii',
+    fontAwesome: true,
+    autoclose: true,
+    startView: 1,
+    language: lang,
+});
+$('input.month').datetimepicker({
+    format: 'mm-yyyy',
+    fontAwesome: true,
+    autoclose: true,
+    startView: 3,
+    minView: 3,
+    language: lang,
+});
+$('input.year').datetimepicker({
+    format: 'yyyy',
+    fontAwesome: true,
+    autoclose: true,
+    startView: 4,
+    minView: 4,
+    language: lang,
+});
+/***********************************************************************/

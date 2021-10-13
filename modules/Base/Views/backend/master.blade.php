@@ -11,12 +11,13 @@
     <!-- Favicon icon -->
 {{--    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">--}}
     <title>Admin Page</title>
-    <link href="{{ asset('assets/backend/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/backend/node_modules/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/backend/node_modules/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/morrisjs/morris.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/toast-master/css/jquery.toast.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/dropify/dist/css/dropify.min.css') }}">
-    <link href="{{ asset('assets/backend/dist/css/style.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/backend/css/main.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/backend/dist/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datetimepicker/css/datetimepicker-custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/main.css') }}">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
@@ -53,6 +54,9 @@
 <script src="{{ asset("assets/backend/node_modules/jquery-sparkline/jquery.sparkline.min.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/toast-master/js/jquery.toast.js") }}"></script>
 <script src="{{ asset("assets/backend/node_modules/dropify/dist/js/dropify.min.js") }}"></script>
+<script src="{{ asset('assets/plugins/datetimepicker/js/datetimepicker.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-TW.js') }}"></script>
+<script src="{{ asset('assets/plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js') }}"></script>
 <script src="{{ asset("assets/backend/jquery/main.js") }}"></script>
 <script src="{{ asset("assets/backend/jquery/modal.js") }}"></script>
 <script src="{{ asset('assets/plugins/jsvalidation/js/jsvalidation.js')}}"></script>
