@@ -334,7 +334,7 @@ use Illuminate\Support\Facades\Route;
                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->format(\'d/m/Y H:i:s\')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->updated_at)->format(\'d/m/Y H:i:s\')}}</td>
                                 <td class="link-action">
-                                    <a href="#" class="btn btn-primary mr-2"
+                                    <a href="#" class="btn btn-primary"
                                        data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Update '.$module.'") }}">
                                         <i class="fa fa-pencil"></i></a>
                                     <a href="#"

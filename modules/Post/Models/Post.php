@@ -2,6 +2,7 @@
 
 namespace Modules\Post\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -37,16 +38,20 @@ class Post extends Model {
         });
     }
 
-    public static function filter($filter){
-        $data = self::query();
-        if (isset($filter['title'])){
-            $data = $data->where('title', 'LIKE', '%'.$filter['title'].'%');
+    /**
+     * @param $filter
+     * @return Builder
+     */
+    public static function filter($filter) {
+        $data = self::query()->with('category')->with('author')->with('updatedBy');
+        if (isset($filter['title'])) {
+            $data = $data->where('title', 'LIKE', '%' . $filter['title'] . '%');
         }
-        if (isset($filter['status'])){
+        if (isset($filter['status'])) {
             $data = $data->where('status', $filter['status']);
         }
-        if (isset($filter['created_by'])){
-            $data = $data->where('created_by',  $filter['created_by']);
+        if (isset($filter['created_by'])) {
+            $data = $data->where('created_by', $filter['created_by']);
         }
 
         return $data;
@@ -69,14 +74,14 @@ class Post extends Model {
     /**
      * @return BelongsTo
      */
-    public function author(){
+    public function author() {
         return $this->belongsTo(User::class, 'created_by');
     }
 
     /**
      * @return BelongsTo
      */
-    public function updatedBy(){
+    public function updatedBy() {
         return $this->belongsTo(User::class, 'updated_by');
     }
 }

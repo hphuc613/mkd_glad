@@ -76,7 +76,7 @@
                                     <td class="link-action">
                                         @if(!in_array($item->name, ["Administrator"]))
                                             <a href="{{ route('get.role.update',$item->id) }}"
-                                               class="btn btn-primary mr-2"
+                                               class="btn btn-primary"
                                                data-toggle="modal" data-target="#form-modal"
                                                data-title="{{ trans('Update Role') }}">
                                                 <i class="fa fa-pencil"></i></a>

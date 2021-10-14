@@ -72,6 +72,7 @@
                             <th>#</th>
                             <th>{{ trans('Title') }}</th>
                             <th>{{ trans('Image') }}</th>
+                            <th>{{ trans('Category') }}</th>
                             <th>{{ trans('Status') }}</th>
                             <th>{{ trans('Author') }}</th>
                             <th>{{ trans('Updated By') }}</th>
@@ -87,6 +88,7 @@
                                 <td>{{$key++}}</td>
                                 <td>{{ $item->title }}</td>
                                 <td><img src="{{ asset($item->image) }}" width="120" alt="{{ $item->title }}"></td>
+                                <td>{{ $item->category->name }}</td>
                                 <?php
                                     $status = $statuses[$item->status] ?? null;
                                     $color = 'text-danger';
@@ -104,7 +106,7 @@
                                 </td>
 
                                 <td>
-                                    @if(isset($item->author))
+                                    @if(isset($item->updatedBy))
                                         <a href="{{ route('get.user.update', $item->updated_by) }}">{{ $item->updatedBy->name }}</a>
                                     @else
                                         N/A
@@ -113,7 +115,7 @@
                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d-m-Y H:i:s')}}</td>
                                 <td class="link-action">
-                                    <a href="{{ route('get.post.update', $item->id) }}" class="btn btn-primary mr-2">
+                                    <a href="{{ route('get.post.update', $item->id) }}" class="btn btn-primary">
                                         <i class="fa fa-pencil"></i></a>
                                     <a href="{{ route('get.post.delete', $item->id) }}" class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>

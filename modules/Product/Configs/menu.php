@@ -2,7 +2,7 @@
 return [
     'name' => trans('Product Management'),
     'route' => "#",
-    'sort' => 1,
+    'sort' => 4,
     'active'=> TRUE,
     'id'=> 'product',
     'icon' => '<i class="fa fa-shopping-cart"></i>',
@@ -16,7 +16,7 @@ return [
         ],
         [
             'name' => trans('Product'),
-            'route' => "route('get.product.list')",
+            'route' => route('get.product.list'),
             'id' => 'product',
             'middleware' => ['product']
         ],

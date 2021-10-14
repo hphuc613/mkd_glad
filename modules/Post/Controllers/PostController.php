@@ -94,6 +94,9 @@ class PostController extends Controller {
         $post    = Post::query()->find($id);
         if ($request->hasFile('image')) {
             $image         = $request->image;
+            if (file_exists($post->image)){
+                unlink($post->image);
+            }
             $data['image'] = Helper::storageFile($image, $image->getClientOriginalName(), 'Post');
         }
         $post->update($data);
