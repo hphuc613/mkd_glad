@@ -61,6 +61,7 @@
 <script src="{{ asset("assets/backend/jquery/modal.js") }}"></script>
 <script src="{{ asset('assets/plugins/jsvalidation/js/jsvalidation.js')}}"></script>
 <script src="{{ asset('assets/plugins/ckeditor/ckeditor.js') }} "></script>
+<script src="{{ asset('assets/plugins/ckfinder/ckfinder.js') }} "></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script !src="">
@@ -71,7 +72,7 @@
     });
 
     if($('#ckeditor').length > 0){
-        CKEDITOR.replace( 'ckeditor' , {
+        var editor = CKEDITOR.replace( 'ckeditor' , {
             language: "{{ App::getLocale() }}".toLowerCase(),
             height: 600
         });

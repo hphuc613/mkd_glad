@@ -88,6 +88,7 @@ $(document).on('click', '.select-all', function () {
 
 /*********** Datetime Picker *************/
 var lang = $('html').attr('lang');
+$('input.datetime, input.date, input.time, input.month, input.year').attr("autocomplete", "off");
 $('input.datetime').datetimepicker({
     format: 'dd-mm-yyyy hh:ii',
     fontAwesome: true,
@@ -95,11 +96,8 @@ $('input.datetime').datetimepicker({
     todayHighlight: true,
     todayBtn: true,
     language: lang,
-    //VN Calendar
-    /*format: 'dd-mm-yyyy HH:ii P',
-    language: 'vn',
-    showMeridian: true,*/
 });
+
 $('input.date').datetimepicker({
     format: 'dd-mm-yyyy',
     fontAwesome: true,
