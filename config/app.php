@@ -179,6 +179,7 @@ return [
         //Mail Service Provider
         App\Providers\MailServiceProvider::class,
 
+        Barryvdh\Elfinder\ElfinderServiceProvider::class
     ],
 
     /*

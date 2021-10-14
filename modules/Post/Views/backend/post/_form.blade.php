@@ -70,6 +70,10 @@
             $('.tag-select2').select2({
                 tags: true
             })
+
+            $(document).on('dblclick', '.cke_dialog_image_url', function () {
+                openElfinder($(this), '{{ route("elfinder.connector") }}', '{{ asset("packages/barryvdh/elfinder/sounds") }}', '{{ csrf_token() }}');
+            })
         })
     </script>
 @endpush

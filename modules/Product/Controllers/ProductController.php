@@ -59,14 +59,17 @@ class ProductController extends Controller {
     public function postCreate(ProductRequest $request) {
         $data = $request->all();
         unset($data['tags']);
+        unset($data['image']);
         $tag_ids           = Tag::createTags($request->tags);
         $product           = new Product($data);
         $product->capacity = json_encode($request->capacity);
+        $product->save();
         if ($request->hasFile('image')) {
             $image          = $request->image;
-            $product->image = Helper::storageFile($image, Str::random() . '_' . time(), 'Product');
+            $image_name    = time() . '_' . $image->getClientOriginalName();
+            $upload_address = 'Product/'.$product->id.'-'.$product->name;
+            $product->image = Helper::storageFile($image, $image_name, $upload_address);
         }
-
         $product->save();
         $product->tags()->sync($tag_ids);
         $request->session()->flash('success', trans('Created successfully.'));
@@ -103,7 +106,8 @@ class ProductController extends Controller {
                 unlink($product->image);
             }
             $image_name    = time() . '_' . $image->getClientOriginalName();
-            $data['image'] = Helper::storageFile($image, $image_name, 'Product');
+            $upload_address = 'Product/'.$product->id.'-'.$product->name;
+            $data['image'] = Helper::storageFile($image, $image_name, $upload_address);
         }
         $product->update($data);
         $product->tags()->sync($tag_ids);

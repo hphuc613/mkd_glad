@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/dropify/dist/css/dropify.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/dist/css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datetimepicker/css/datetimepicker-custom.css') }}">
+    {{-- Elfinder  --}}
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="{{ asset('assets/plugins/elfinder/css/elfinder.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/elfinder/css/theme.css') }}">
+    {{-- End Elfinder  --}}
     <link rel="stylesheet" href="{{ asset('assets/backend/css/main.css') }}">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -61,7 +66,12 @@
 <script src="{{ asset("assets/backend/jquery/modal.js") }}"></script>
 <script src="{{ asset('assets/plugins/jsvalidation/js/jsvalidation.js')}}"></script>
 <script src="{{ asset('assets/plugins/ckeditor/ckeditor.js') }} "></script>
-<script src="{{ asset('assets/plugins/ckfinder/ckfinder.js') }} "></script>
+{{-- Elfinder  --}}
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="{{ asset('assets/plugins/elfinder/js/elfinder.full.js') }}"></script>
+<script src="{{ asset('assets/plugins/elfinder/js/i18n/elfinder.zh_TW.js') }}"></script>
+<script src="{{ asset('assets/plugins/elfinder/js/i18n/elfinder.zh_CN.js') }}"></script>
+{{-- End Elfinder  --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script !src="">
@@ -77,6 +87,10 @@
             height: 600
         });
     }
+    /** Show file manager */
+    $(".btn-elfinder").click(function () {
+        openElfinder($(this), '{{ route("elfinder.connector") }}', '{{ asset("packages/barryvdh/elfinder/sounds") }}', '{{ csrf_token() }}');
+    })
 </script>
 @stack('js')
 </body>

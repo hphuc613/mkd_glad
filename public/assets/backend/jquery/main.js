@@ -134,3 +134,57 @@ $('input.year').datetimepicker({
     language: lang,
 });
 /***********************************************************************/
+/*********** Elfinder Popup *************/
+function openElfinder(btn, url, soundPath, csrf) {
+    var modal = '\n' +
+        '    <div class="modal fade" style="z-index: 12000" id="elfinder-show">\n' +
+        '        <div class="modal-dialog modal-lg" style="max-width: 90%">\n' +
+        '            <div class="modal-content bg-transparent border-0">\n' +
+        '                <div class="modal-body">\n' +
+        '                    <div id="elfinder"></div>\n' +
+        '                </div>\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '    </div>';
+
+    if ($('body').find('#elfinder-show').length === 0) {
+        $('body').append(modal);
+    }
+    var lang = $('html').attr('lang');
+    $('#elfinder-show').modal();
+    $('#elfinder').elfinder({
+        debug: false,
+        lang: lang,
+        width: '100%',
+        height: '100%',
+        customData: {
+            _token: csrf
+        },
+        commandsOptions: {
+            getfile: {
+                onlyPath: true,
+                folders: false,
+                multiple: false,
+                oncomplete: 'destroy'
+            },
+            ui: 'uploadbutton'
+        },
+        mimeDetect: 'internal',
+        onlyMimes: [
+            'image/jpeg',
+            'image/jpg',
+            'image/png',
+            'image/gif'
+        ],
+        soundPath: soundPath,
+        url: url,
+        getFileCallback: function (file) {
+            $(btn).parents('.input-group').find('input').val(file.url);
+            if ($(btn).find('.cke_dialog_ui_input_text').length > 0) {
+                $(btn).find('.cke_dialog_ui_input_text').val(file.url)
+            }
+            $('#elfinder-show').modal('hide');
+        },
+        resizable: false
+    }).elfinder('instance');
+}

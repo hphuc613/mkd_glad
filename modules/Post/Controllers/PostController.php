@@ -31,10 +31,10 @@ class PostController extends Controller {
      * @return Factory|View
      */
     public function index(Request $request) {
-        $filter = $request->all();
+        $filter   = $request->all();
         $statuses = Status::getStatuses();
-        $authors = User::query()->orderBy("name")->pluck('name', 'id')->toArray();
-        $data = Post::filter($filter)->orderBy("created_at", "DESC")->paginate(20);
+        $authors  = User::query()->orderBy("name")->pluck('name', 'id')->toArray();
+        $data     = Post::filter($filter)->orderBy("created_at", "DESC")->paginate(20);
 
         return view("Post::backend.post.index", compact("data", "filter", "statuses", "authors"));
     }
@@ -58,12 +58,14 @@ class PostController extends Controller {
     public function postCreate(PostRequest $request) {
         $data = $request->all();
         unset($data['tags']);
+        unset($data['image']);
         $tag_ids = Tag::createTags($request->tags);
+        $post    = Post::query()->create($data);
         if ($request->hasFile('image')) {
-            $image         = $request->image;
-            $data['image'] = Helper::storageFile($image, $image->getClientOriginalName(), 'Post');
+            $image       = $request->image;
+            $post->image = Helper::storageFile($image, time() . '_' . $image->getClientOriginalName(), 'Post/' . $post->id);
         }
-        $post = Post::query()->create($data);
+        $post->save();
         $post->tags()->sync($tag_ids);
         $request->session()->flash('success', trans('Created successfully.'));
 
@@ -93,11 +95,11 @@ class PostController extends Controller {
         $tag_ids = Tag::createTags($request->tags);
         $post    = Post::query()->find($id);
         if ($request->hasFile('image')) {
-            $image         = $request->image;
-            if (file_exists($post->image)){
+            $image = $request->image;
+            if (file_exists($post->image)) {
                 unlink($post->image);
             }
-            $data['image'] = Helper::storageFile($image, $image->getClientOriginalName(), 'Post');
+            $data['image'] = Helper::storageFile($image, time() . '_' . $image->getClientOriginalName(), 'Post/' . $post->id);
         }
         $post->update($data);
         $post->tags()->sync($tag_ids);
