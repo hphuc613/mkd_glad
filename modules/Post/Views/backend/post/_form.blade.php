@@ -54,6 +54,24 @@
                     'multiple' => 'multiple',
                     'class' => 'tag-select2 form-control']) !!}
             </div>
+            @if(isset($data))
+                <div class="form-group">
+                    <label for="tags" class="title">{{ trans('Updated By') }}</label>
+                    <div>{{ $data->updatedBy->name ?? "N/A" }}</div>
+                </div>
+                <div class="form-group">
+                    <label for="tags" class="title">{{ trans('Updated At') }}</label>
+                    <div>{{ formatDate(strtotime($data->updated_at), 'd-m-Y H:i:s') }}</div>
+                </div>
+                <div class="form-group">
+                    <label for="tags" class="title">{{ trans('Created By') }}</label>
+                    <div>{{ $data->author->name ?? "N/A" }}</div>
+                </div>
+                <div class="form-group">
+                    <label for="tags" class="title">{{ trans('Created At') }}</label>
+                    <div>{{ formatDate(strtotime($data->created_at), 'd-m-Y H:i:s') }}</div>
+                </div>
+            @endif
         </div>
     </div>
     <div class="input-group mt-5">
@@ -69,10 +87,6 @@
             $('.dropify').dropify();
             $('.tag-select2').select2({
                 tags: true
-            })
-
-            $(document).on('dblclick', '.cke_dialog_image_url', function () {
-                openElfinder($(this), '{{ route("elfinder.connector") }}', '{{ asset("packages/barryvdh/elfinder/sounds") }}', '{{ csrf_token() }}');
             })
         })
     </script>

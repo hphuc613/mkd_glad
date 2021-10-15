@@ -88,6 +88,7 @@ class ProductCategoryController extends Controller {
      */
     public function delete(Request $request, $id) {
         ProductCategory::query()->find($id)->delete();
+        $request->session()->flash('success', trans('Deleted successfully.'));
 
         return back();
     }

@@ -88,9 +88,12 @@
         });
     }
     /** Show file manager */
-    $(".btn-elfinder").click(function () {
+    $(document).on('dblclick', '.cke_dialog_image_url', function () {
         openElfinder($(this), '{{ route("elfinder.connector") }}', '{{ asset("packages/barryvdh/elfinder/sounds") }}', '{{ csrf_token() }}');
-    })
+    });
+    $(document).on('click', '.btn-elfinder', function () {
+        openElfinder($(this), '{{ route("elfinder.connector") }}', '{{ asset("packages/barryvdh/elfinder/sounds") }}', '{{ csrf_token() }}');
+    });
 </script>
 @stack('js')
 </body>

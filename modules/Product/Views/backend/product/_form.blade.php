@@ -38,9 +38,12 @@
                 <input type="file" id="image" class="dropify" name="image"
                        data-default-file="{{ asset($data->image ?? null) }}"/>
             </div>
-            <div class="form-group">
-                <a href="#" class="btn btn-outline-purple"><i class="fa fa-plus"></i> {{ trans('Add more image') }}</a>
-            </div>
+            @if(isset($data))
+                <div class="form-group">
+                    <a href="#" data-toggle="modal" data-target=".image-gallery" class="btn btn-outline-purple"><i class="fa fa-plus"></i> {{ trans('Add more image') }}
+                    </a>
+                </div>
+            @endif
         </div>
         <div class="col-md-9">
             <div class="form-group">
@@ -94,6 +97,7 @@
         <button type="reset" class="btn btn-default" data-dismiss="modal">{{ trans('Cancel') }}</button>
     </div>
 </form>
+@include("Product::backend.product._multiple_image")
 @push('js')
     {!! JsValidator::formRequest('Modules\Product\Requests\ProductRequest','#product-form') !!}
 

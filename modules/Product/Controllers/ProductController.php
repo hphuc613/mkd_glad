@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Modules\Base\Models\Status;
 use Modules\Product\Models\Product;
 use Modules\Product\Models\ProductCategory;
+use Modules\Product\Models\ProductImage;
 use Modules\Product\Requests\ProductRequest;
 use Modules\Tag\Models\Tag;
 
@@ -111,9 +112,9 @@ class ProductController extends Controller {
         }
         $product->update($data);
         $product->tags()->sync($tag_ids);
-        $request->session()->flash('success', trans('Created successfully.'));
+        $request->session()->flash('success', trans('Updated successfully.'));
 
-        return redirect()->route('get.product.list');
+        return redirect()->route('get.product.update', $product->id);
     }
 
     /**
@@ -126,6 +127,23 @@ class ProductController extends Controller {
         $data->tags()->sync([]);
         $data->delete();
         $request->session()->flash('success', trans('Deleted successfully.'));
+
+        return back();
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function addImage(Request $request, $id){
+        $data = Product::query()->find($id);
+        $data->images()->delete();
+        foreach ($request->images as $image){
+            ProductImage::query()->firstOrCreate(['image' => $image, 'product_id' => $id]);
+        }
+
+        $request->session()->flash('success', trans('Updated successfully.'));
 
         return back();
     }

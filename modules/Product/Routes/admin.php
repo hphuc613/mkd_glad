@@ -25,6 +25,7 @@ Route::prefix("admin")->group(function () {
         Route::middleware('can:product-update')->group(function () {
             Route::get("/update/{id}", "ProductController@getUpdate")->name("get.product.update");
             Route::post("/update/{id}", "ProductController@postUpdate")->name("post.product.update");
+            Route::post("/add-image/{id}", "ProductController@addImage")->name("post.product.add_image");
         });
         Route::get("/delete/{id}", "ProductController@delete")->name("get.product.delete")->middleware('can:product-delete');
     });

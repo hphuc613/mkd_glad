@@ -5,6 +5,7 @@ namespace Modules\Product\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -72,6 +73,13 @@ class Product extends Model {
     }
 
     /**
+     * @return HasMany
+     */
+    public function images() {
+        return $this->hasMany(ProductImage::class);
+    }
+
+    /**
      * @return BelongsTo
      */
     public function author() {
@@ -84,6 +92,4 @@ class Product extends Model {
     public function updatedBy() {
         return $this->belongsTo(User::class, 'updated_by');
     }
-
-
 }

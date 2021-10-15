@@ -10,7 +10,7 @@ $(document).on('click', 'button.clear', function (event) {
 
 /***** Hide menu group null *****/
 $(document).find('.menu-child').each(function (key, item) {
-    if($(item).find('li').length === 0){
+    if ($(item).find('li').length === 0) {
         $(item).parents('li').addClass('d-none');
     }
 });
@@ -133,6 +133,7 @@ $('input.year').datetimepicker({
     minView: 4,
     language: lang,
 });
+
 /***********************************************************************/
 /*********** Elfinder Popup *************/
 function openElfinder(btn, url, soundPath, csrf) {
@@ -180,9 +181,20 @@ function openElfinder(btn, url, soundPath, csrf) {
         url: url,
         getFileCallback: function (file) {
             $(btn).parents('.input-group').find('input').val(file.url);
-            if ($(btn).find('.cke_dialog_ui_input_text').length > 0) {
-                $(btn).find('.cke_dialog_ui_input_text').val(file.url)
+            $(btn).find('.cke_dialog_ui_input_text').val(file.url);
+
+            //Add to gallery form
+            var form = $(btn).parents('#gallery-form');
+            if (form.length > 0) {
+                var html = '';
+                html += '<div class="image-item">';
+                html += '<button type="button" href="javascript:" class="btn btn-outline-danger btn-remove"><i class="fa fa-trash"></i></button>';
+                html += '<input value="' + file.url + '" name="images[]" class="d-none">';
+                html += '<img src="' + file.url + '" alt="' + file.url + '">';
+                html += '</div>';
+                form.find('#gallery').append(html);
             }
+
             $('#elfinder-show').modal('hide');
         },
         resizable: false
