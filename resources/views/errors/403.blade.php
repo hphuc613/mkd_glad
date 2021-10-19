@@ -20,7 +20,7 @@
     <div class="error-box">
         <div class="error-body text-center">
             <h1>404</h1>
-            <h3 class="text-uppercase">{{ trans('FORBIDDON ERROR!') }}</h3>
+            <h3 class="text-uppercase">{{ trans('FORBIDDEN ERROR!') }}</h3>
             <p class="text-muted m-t-30 m-b-30">{{ trans("YOU DON'T HAVE PERMISSION TO ACCESS ON THIS FEATURE.") }}</p>
             <a href="{{ route('admin.dashboard') }}" class="btn btn-info btn-rounded waves-effect waves-light m-b-40">{{ trans('Back to home') }}</a> </div>
 
