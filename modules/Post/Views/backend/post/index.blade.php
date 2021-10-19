@@ -35,7 +35,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="title">{{ trans("Title") }}</label>
-                                <input type="text" class="form-control" id="title" name="title" value="{{ $filter['title'] ?? null }}">
+                                <input type="text" class="form-control" id="title" name="title"
+                                       value="{{ $filter['title'] ?? null }}">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -87,14 +88,20 @@
                             <tr>
                                 <td>{{$key++}}</td>
                                 <td>{{ $item->title }}</td>
-                                <td><img src="{{ asset($item->image) }}" width="120" alt="{{ $item->title }}"></td>
+                                <td class="image-box">
+                                    <div class="image-item image-in-listing">
+                                        <a href="{{ asset($item->image) }}" target="">
+                                            <img src="{{ asset($item->image) }}" width="120" alt="{{ $item->title }}">
+                                        </a>
+                                    </div>
+                                </td>
                                 <td>{{ $item->category->name }}</td>
                                 <?php
-                                    $status = $statuses[$item->status] ?? null;
-                                    $color = 'text-danger';
-                                    if($item->status == Modules\Base\Models\Status::STATUS_ACTIVE){
-                                        $color = 'text-success';
-                                    }
+                                $status = $statuses[$item->status] ?? null;
+                                $color = 'text-danger';
+                                if ($item->status == Modules\Base\Models\Status::STATUS_ACTIVE) {
+                                    $color = 'text-success';
+                                }
                                 ?>
                                 <td><b class="{{$color}}">{{ $status }}</b></td>
                                 <td>
@@ -117,14 +124,15 @@
                                 <td class="link-action">
                                     <a href="{{ route('get.post.update', $item->id) }}" class="btn btn-primary">
                                         <i class="fa fa-pencil"></i></a>
-                                    <a href="{{ route('get.post.delete', $item->id) }}" class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('get.post.delete', $item->id) }}"
+                                       class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                     <div class="mt-5 pagination-style">
-                        {{ $data->render('vendor/pagination/default') }}
+                        {{ $data->withQueryString()->render('vendor/pagination/default') }}
                     </div>
                 </div>
             </div>

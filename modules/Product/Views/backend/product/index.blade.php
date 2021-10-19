@@ -84,7 +84,13 @@
                             <tr>
                                 <td>{{$key++}}</td>
                                 <td>{{ $item->name }}</td>
-                                <td><img src="{{ asset($item->image) }}" width="120" alt="{{ $item->title }}"></td>
+                                <td class="image-box">
+                                    <div class="image-item image-in-listing">
+                                        <a href="{{ asset($item->image) }}" target="">
+                                            <img src="{{ asset($item->image) }}" width="120" alt="{{ $item->title }}">
+                                        </a>
+                                    </div>
+                                </td>
                                 <td><b>{{ moneyFormat($item->price, 0) }}</b></td>
                                 <td>{{ $item->category->name }}</td>
                                 <?php
@@ -113,7 +119,7 @@
                         </tbody>
                     </table>
                     <div class="mt-5 pagination-style">
-                        {{ $data->render('vendor/pagination/default') }}
+                        {{ $data->withQueryString()->render('vendor/pagination/default') }}
                     </div>
                 </div>
             </div>

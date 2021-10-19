@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
                 <form action="{{ route('post.product.add_image', $data->id) }}" method="post" id="gallery-form">
-                    <div id="gallery">
+                    <div id="gallery" class="image-box">
                         @foreach($data->images as $item)
                             <div class="image-item">
                                 <button type="button" href="javascript:" class="btn btn-outline-danger btn-remove"><i class="fa fa-trash"></i></button>

@@ -1,23 +1,23 @@
 @extends("Base::backend.master")
 
 @section("content")
-    <div id="product-module">
+    <div id="coupon-module">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="title">{{ trans("Product Category") }}</h4>
+                <h4 class="title">{{ trans("Coupon") }}</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans("Home") }}</a></li>
-                        <li class="breadcrumb-item active">{{ trans("Product Category") }}</li>
+                        <li class="breadcrumb-item active">{{ trans("Coupon") }}</li>
                     </ol>
                 </div>
             </div>
         </div>
         <div class="mb-3 d-flex justify-content-end group-btn">
-            <a href="{{ route('get.product_category.create') }}" class="btn btn-primary"
-               data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Create Product Category") }}">
+            <a href="{{ route("get.coupon.create") }}" class="btn btn-primary"
+               data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Create Coupon") }}">
                 <i class="fa fa-plus"></i>&nbsp; {{ trans("Add New") }}
             </a>
         </div>
@@ -25,8 +25,7 @@
     <!--Search box-->
     <div class="search-box">
         <div class="card">
-            <div class="card-header" data-toggle="collapse" data-target="#form-search-box" aria-expanded="false"
-                 aria-controls="form-search-box">
+            <div class="card-header" data-toggle="collapse" data-target="#form-search-box" aria-expanded="false" aria-controls="form-search-box">
                 <div class="title">{{ trans("Search") }}</div>
             </div>
             <div class="card-body collapse show" id="form-search-box">
@@ -34,8 +33,21 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="text-input">{{ trans("Category name") }}</label>
-                                <input type="text" class="form-control" id="text-input" name="name" value="{{ $filter['name'] ?? null }}">
+                                <label for="code">{{ trans("Coupon Code") }}</label>
+                                <input type="text" class="form-control" id="code" name="code" value="{{ $filter['code'] ?? NULL }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date">{{ trans("Date") }}</label>
+                                <input type="text" class="form-control date" id="date" name="date" value="{{ $filter['date'] ?? NULL }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="text-input">{{ trans('Status') }}</label>
+                                @php($prompt = ['' => trans('Select')])
+                                {!! Form::select('status', $prompt + $statuses, $filter['status'] ?? NULL, ['class' => 'select2 form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -58,7 +70,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{ trans('Name') }}</th>
+                            <th>{{ trans('Code') }}</th>
+                            <th>{{ trans('Image') }}</th>
+                            <th>{{ trans('Date') }}</th>
                             <th>{{ trans('Status') }}</th>
                             <th>{{ trans('Created At') }}</th>
                             <th>{{ trans('Updated At') }}</th>
@@ -70,16 +84,23 @@
                         @foreach($data as $item)
                             <tr>
                                 <td>{{$key++}}</td>
-                                <td>{{ trans($item->name) }}</td>
+                                <td>{{ trans($item->code) }}</td>
+                                <td class="image-box">
+                                    <div class="image-item image-in-listing">
+                                        <a href="{{ asset($item->image) }}" target="">
+                                            <img src="{{ asset($item->image) }}" width="120" alt="{{ $item->title }}">
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>{{ formatDate(strtotime($item->date), 'd-m-Y H:i') }}</td>
                                 <td>{{ \Modules\Base\Models\Status::getStatus($item->status) ?? null }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d-m-Y H:i:s')}}</td>
                                 <td class="link-action">
-                                    <a href="{{ route('get.product_category.update', $item->id) }}" class="btn btn-primary"
-                                       data-toggle="modal" data-target="#form-modal"
-                                       data-title="{{ trans("Update Product Category") }}">
+                                    <a href="{{ route('get.coupon.update', $item->id) }}" class="btn btn-primary"
+                                       data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Update Coupon") }}">
                                         <i class="fa fa-pencil"></i></a>
-                                    <a href="{{ route('get.product_category.delete', $item->id) }}"
+                                    <a href="{{ route('get.coupon.delete', $item->id) }}"
                                        class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
@@ -87,7 +108,7 @@
                         </tbody>
                     </table>
                     <div class="mt-5 pagination-style">
-                        {{ $data->withQueryString()->render('vendor/pagination/default') }}
+                        {{ $data->withQueryString()->render("vendor/pagination/default") }}
                     </div>
                 </div>
             </div>
