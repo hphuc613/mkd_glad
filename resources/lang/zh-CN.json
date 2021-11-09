@@ -164,5 +164,9 @@
     "FORBIDDEN ERROR!": "禁止错误！",
     "YOU DON'T HAVE PERMISSION TO ACCESS ON THIS FEATURE.": "您无权访问此功能。",
     "Back to home": "回到家",
-    "Page Not Found!": "找不到网页！"
+    "Page Not Found!": "找不到网页!",
+    "Discount": "折扣",
+    "Expiration Date": "截止日期",
+    " must be a number.": "必须是数字。",
+    " must be at least 0.": "必须至少为 0。"
 }

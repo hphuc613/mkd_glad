@@ -17,7 +17,9 @@ class CreateCouponsTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('image')->nullable();
-            $table->timestamp('date')->nullable();
+            $table->string('discount')->nullable();
+            $table->string('discount_type')->nullable();
+            $table->timestamp('expiration_date')->nullable();
             $table->string('description')->nullable();
             $table->smallInteger('status')->default(1);
             $table->softDeletes();

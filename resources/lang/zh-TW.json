@@ -165,5 +165,9 @@
     "FORBIDDEN ERROR!": "禁止錯誤！",
     "YOU DON'T HAVE PERMISSION TO ACCESS ON THIS FEATURE.": "您無權訪問此功能。",
     "Back to home": "回到家",
-    "Page Not Found!": "找不到網頁！"
+    "Page Not Found!": "找不到網頁!",
+    "Discount": "折扣",
+    "Expiration Date": "截止日期",
+    " must be a number.": "必须是数字。",
+    " must be at least 0.": "必須至少為 0。"
 }

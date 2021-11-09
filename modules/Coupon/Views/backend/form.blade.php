@@ -2,10 +2,26 @@
     {{ csrf_field() }}
     <div class="form-group row">
         <div class="col-md-3">
-            <label for="name">{{ trans('Code') }}</label>
+            <label for="code">{{ trans('Code') }}</label>
         </div>
         <div class="col-md-9">
             <input type="text" class="form-control" id="code" name="code" value="{{ $data->code ?? old('code') }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label for="discount">{{ trans('Discount') }}</label>
+        </div>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input type="text" class="form-control" id="discount" name="discount"
+                       value="{{ $data->discount ?? old('discount') }}">
+                <div class="input-group-prepend">
+                    <button class="btn btn-default" type="button">
+                        %
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="form-group row">
@@ -26,10 +42,11 @@
     </div>
     <div class="form-group row">
         <div class="col-md-3">
-            <label for="name">{{ trans('Date') }}</label>
+            <label for="expiration_date">{{ trans('Expiration Date') }}</label>
         </div>
         <div class="col-md-9">
-            <input type="text" class="form-control datetime-modal-form" id="date" name="date" value="{{ $data->date ?? old('date') }}">
+            <input type="text" class="form-control datetime-modal-form" id="expiration_date" name="expiration_date"
+                   value="{{ $data->expiration_date ?? old('expiration_date') }}">
         </div>
     </div>
     <div class="form-group row">
@@ -61,7 +78,9 @@
 {!! JsValidator::formRequest('Modules\Coupon\Requests\CouponRequest','#coupon-form') !!}
 <script !src="">
     var lang = $('html').attr('lang');
-    $('input.datetime-modal-form').datetimepicker({
+    var datetime = $('input.datetime-modal-form');
+    datetime.attr('autocomplete', "off");
+    datetime.datetimepicker({
         format: 'dd-mm-yyyy hh:ii',
         fontAwesome: true,
         autoclose: true,

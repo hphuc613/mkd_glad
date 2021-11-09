@@ -25,7 +25,8 @@
     <!--Search box-->
     <div class="search-box">
         <div class="card">
-            <div class="card-header" data-toggle="collapse" data-target="#form-search-box" aria-expanded="false" aria-controls="form-search-box">
+            <div class="card-header" data-toggle="collapse" data-target="#form-search-box" aria-expanded="false"
+                 aria-controls="form-search-box">
                 <div class="title">{{ trans("Search") }}</div>
             </div>
             <div class="card-body collapse show" id="form-search-box">
@@ -34,13 +35,15 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="code">{{ trans("Coupon Code") }}</label>
-                                <input type="text" class="form-control" id="code" name="code" value="{{ $filter['code'] ?? NULL }}">
+                                <input type="text" class="form-control" id="code" name="code"
+                                       value="{{ $filter['code'] ?? NULL }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="date">{{ trans("Date") }}</label>
-                                <input type="text" class="form-control date" id="date" name="date" value="{{ $filter['date'] ?? NULL }}">
+                                <label for="expiration_date">{{ trans("Expiration Date") }}</label>
+                                <input type="text" class="form-control date" id="expiration_date" name="expiration_date"
+                                       value="{{ $filter['expiration_date'] ?? NULL }}">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -71,8 +74,9 @@
                         <tr>
                             <th>#</th>
                             <th>{{ trans('Code') }}</th>
+                            <th>{{ trans('Discount') }}</th>
                             <th>{{ trans('Image') }}</th>
-                            <th>{{ trans('Date') }}</th>
+                            <th>{{ trans('Expiration Date') }}</th>
                             <th>{{ trans('Status') }}</th>
                             <th>{{ trans('Created At') }}</th>
                             <th>{{ trans('Updated At') }}</th>
@@ -85,20 +89,25 @@
                             <tr>
                                 <td>{{$key++}}</td>
                                 <td>{{ trans($item->code) }}</td>
+                                <td>{{ trans($item->discount) }}%</td>
                                 <td class="image-box">
-                                    <div class="image-item image-in-listing">
-                                        <a href="{{ asset($item->image) }}" target="">
-                                            <img src="{{ asset($item->image) }}" width="120" alt="{{ $item->title }}">
-                                        </a>
-                                    </div>
+                                    @if(!empty($item->image))
+                                        <div class="image-item image-in-listing">
+                                            <a href="{{ asset($item->image) }}" target="">
+                                                <img src="{{ asset($item->image) }}" width="120"
+                                                     alt="{{ $item->title }}">
+                                            </a>
+                                        </div>
+                                    @endif
                                 </td>
-                                <td>{{ formatDate(strtotime($item->date), 'd-m-Y H:i') }}</td>
+                                <td>{{ formatDate(strtotime($item->expiration_date), 'd-m-Y H:i') }}</td>
                                 <td>{{ \Modules\Base\Models\Status::getStatus($item->status) ?? null }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d-m-Y H:i:s')}}</td>
+                                <td>{{ formatDate(strtotime($item->created_at), 'd-m-Y H:i:s')}}</td>
+                                <td>{{ formatDate(strtotime($item->updated_at), 'd-m-Y H:i:s')}}</td>
                                 <td class="link-action">
                                     <a href="{{ route('get.coupon.update', $item->id) }}" class="btn btn-primary"
-                                       data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Update Coupon") }}">
+                                       data-toggle="modal" data-target="#form-modal"
+                                       data-title="{{ trans("Update Coupon") }}">
                                         <i class="fa fa-pencil"></i></a>
                                     <a href="{{ route('get.coupon.delete', $item->id) }}"
                                        class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
@@ -114,5 +123,5 @@
             </div>
         </div>
     </div>
-    {!! getModal(["class" => "modal-ajax"]) !!}
+    {!! getModal(["class" => "modal-ajax", "size" => "modal-lg"]) !!}
 @endsection

@@ -28,8 +28,8 @@ class Coupon extends Model {
         if (isset($filter['code'])) {
             $data = $data->where('code', 'LIKE', '%' . $filter['code'] . '%');
         }
-        if (isset($filter['date'])) {
-            $data = $data->whereDate('date', '=', formatDate(strtotime($filter['date']), 'Y-m-d'));
+        if (isset($filter['expiration_date'])) {
+            $data = $data->whereDate('expiration_date', '=', formatDate(strtotime($filter['expiration_date']), 'Y-m-d'));
         }
         if (isset($filter['status'])) {
             $data = $data->where('status', $filter['status']);

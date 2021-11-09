@@ -108,7 +108,6 @@
                 </li>
                 <li class="nav-item dropdown u-pro">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png" alt="user" class="">
                         <span class="hidden-md-down">
                             {{ auth('admin')->user()->name }} <i class="fa fa-angle-down"></i>
                         </span>

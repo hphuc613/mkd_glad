@@ -54,7 +54,7 @@ class CouponController extends Controller {
      */
     public function postCreate(CouponRequest $request) {
         $data         = $request->all();
-        $data['date'] = formatDate(strtotime($request->date), 'Y-m-d H:i');
+        $data['expiration_date'] = formatDate(strtotime($request->expiration_date), 'Y-m-d H:i');
         Coupon::query()->create($data);
         $request->session()->flash('success', 'Created Successfully.');
 
@@ -69,7 +69,7 @@ class CouponController extends Controller {
     public function getUpdate(Request $request, $id) {
         $statuses = Status::getStatuses();
         $data     = Coupon::query()->find($id);
-
+        $data->expiration_date = formatDate(strtotime($data->expiration_date), 'd-m-Y H:i');
         if (!$request->ajax()) {
             return redirect()->back();
         }
@@ -84,7 +84,7 @@ class CouponController extends Controller {
      */
     public function postUpdate(CouponRequest $request, $id) {
         $data         = $request->all();
-        $data['date'] = formatDate(strtotime($request->date), 'Y-m-d H:i');
+        $data['expiration_date'] = formatDate(strtotime($request->expiration_date), 'Y-m-d H:i');
         Coupon::query()->find($id)->update($data);
         $request->session()->flash('success', 'Updated Successfully.');
 
