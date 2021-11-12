@@ -4,11 +4,12 @@ namespace Modules\Member\Models;
 
 use App\Models\Member as BaseMember;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\File;
-use Modules\Base\Models\Status;
+use Modules\Order\Models\Order;
 
-class Member extends BaseMember{
+class Member extends BaseMember {
     use SoftDeletes;
 
     protected $dates = ["deleted_at"];
@@ -19,18 +20,18 @@ class Member extends BaseMember{
      * @param $filter
      * @return Builder
      */
-    public static function filter($filter){
+    public static function filter($filter) {
         $query = self::query();
-        if(isset($filter['name'])){
+        if (isset($filter['name'])) {
             $query->where('name', 'LIKE', '%' . $filter['name'] . '%');
         }
-        if(isset($filter['phone'])){
+        if (isset($filter['phone'])) {
             $query->where('phone', 'LIKE', '%' . $filter['phone'] . '%');
         }
-        if(isset($filter['email'])){
+        if (isset($filter['email'])) {
             $query->where('email', 'LIKE', '%' . $filter['email'] . '%');
         }
-        if(isset($filter['status'])){
+        if (isset($filter['status'])) {
             $query->where('status', $filter['status']);
         }
 
@@ -40,9 +41,9 @@ class Member extends BaseMember{
     /**
      * @return string
      */
-    public function getAvatar(){
+    public function getAvatar() {
         $avatar = $this->avatar;
-        if(!empty($avatar) && File::exists(base_path() . '/storage/app/public/' . $avatar)){
+        if (!empty($avatar) && File::exists(base_path() . '/storage/app/public/' . $avatar)) {
             return url('/storage/' . $avatar);
         }
         return asset('/image/user.png');
@@ -52,20 +53,27 @@ class Member extends BaseMember{
      * @param null $status
      * @return array
      */
-    public static function getArray($status = null){
+    public static function getArray($status = null) {
         $query = self::query()->select('id', 'name', 'phone', 'email', 'username');
-        if(!empty($status)){
+        if (!empty($status)) {
             $query = $query->where('status', $status);
         }
         $query = $query->orderBy('name', 'asc')->get();
 
         $data = [];
 
-        foreach($query as $item){
+        foreach ($query as $item) {
             $data[$item->id] = $item->name . ' | ' . $item->phone . ' | ' . $item->username;
         }
 
         return $data;
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function orders() {
+        return $this->hasMany(Order::class, 'member_id');
     }
 
 }

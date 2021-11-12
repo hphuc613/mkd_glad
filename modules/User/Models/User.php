@@ -3,7 +3,9 @@
 namespace Modules\User\Models;
 
 use App\Models\User as BaseUser;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Order\Models\Order;
 use Modules\Role\Models\Role;
 
 class User extends BaseUser {
@@ -42,5 +44,12 @@ class User extends BaseUser {
      */
     public function role() {
         return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function orders() {
+        return $this->hasMany(Order::class, 'creator_id');
     }
 }

@@ -88,6 +88,12 @@ label, .title {
   width: 100% !important;
 }
 
+.status-box {
+  padding: 0.3rem 1.5rem;
+  color: white;
+  border-radius: 1rem;
+}
+
 /*** Pagination ***/
 .pagination li a {
   border: 1px solid #e5e5e5;

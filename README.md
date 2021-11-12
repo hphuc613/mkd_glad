@@ -34,7 +34,7 @@ VI. Generate Data Fake:
         
 V. Make migration in module:
 
-        php artisan module:migration {migration_name} {--create=} {--table=} {module}
+        php artisan module:migration {migration_name} {--create=migration_name} {--tablemigration_name} {module}
         
 VI. Storage link:
 
