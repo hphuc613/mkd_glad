@@ -34,7 +34,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="text-input">{{ trans("Payment Method Name") }}</label>
-                                <input type="text" class="form-control" id="text-input" name="name" value="">
+                                <input type="text" class="form-control" id="text-input" name="name" value="{{ $filter['name'] ?? NULL }}">
                             </div>
                         </div>
                     </div>
