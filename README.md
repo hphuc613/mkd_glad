@@ -23,12 +23,12 @@ V. Run permission Run this command:
         php artisan permissions:update
 
 VI. Generate Application Key:
-Run this command:
+    Run this command:
 
         php artisan key:generate
 
 VI. Generate Data Fake:
-Run this command:
+    Run this command:
 
         php artisan db:seed
         

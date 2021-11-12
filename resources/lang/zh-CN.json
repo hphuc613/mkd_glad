@@ -168,5 +168,9 @@
     "Discount": "折扣",
     "Expiration Date": "截止日期",
     " must be a number.": "必须是数字。",
-    " must be at least 0.": "必须至少为 0。"
+    " must be at least 0.": "必须至少为 0。",
+    "Payment Method": "付款方法",
+    "Payment Method Name": "付款方式名称",
+    "Create Payment Method": "创建付款方式",
+    "Update Payment Method": "更新付款方式"
 }
