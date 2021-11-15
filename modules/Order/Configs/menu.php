@@ -1,6 +1,6 @@
 <?php
 return [
-    'name' => trans('Order'),
+    'name' => trans('Invoice'),
     'route' => route('get.order.list'),
     'sort' => 5,
     'active'=> TRUE,

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/elfinder/css/theme.css') }}">
     {{-- End Elfinder  --}}
     <link rel="stylesheet" href="{{ asset('assets/backend/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/printjs/print.min.css') }}">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
@@ -66,6 +67,7 @@
 <script src="{{ asset("assets/backend/jquery/modal.js") }}"></script>
 <script src="{{ asset('assets/plugins/jsvalidation/js/jsvalidation.js')}}"></script>
 <script src="{{ asset('assets/plugins/ckeditor/ckeditor.js') }} "></script>
+<script src="{{ asset('assets/plugins/printjs/print.min.js') }}"></script>
 {{-- Elfinder  --}}
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script src="{{ asset('assets/plugins/elfinder/js/elfinder.full.js') }}"></script>

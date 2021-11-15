@@ -173,5 +173,15 @@
     "Payment Method": "付款方法",
     "Payment Method Name": "付款方式名稱",
     "Create Payment Method": "創建付款方式",
-    "Update Payment Method": "更新付款方式"
+    "Update Payment Method": "更新付款方式",
+    "Invoice": "命令",
+    "INVOICE": "命令",
+    "Invoice code": "發票代碼",
+    "Month": "月",
+    "Creator": "創造者",
+    "Total Price": "總價",
+    "Purchase/Abort At": "購買/中止時間",
+    "To": "到",
+    "Quantity": "數量",
+    "Amount": "合计"
 }

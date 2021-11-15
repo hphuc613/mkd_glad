@@ -17,8 +17,6 @@ class CreateOrderDetailsTable extends Migration {
             $table->unsignedBigInteger('product_id');
             $table->string('product_name');
             $table->string('product_price');
-            $table->unsignedBigInteger('coupon_id')->nullable();
-            $table->double('coupon_discount')->nullable();
             $table->double('price')->nullable();
             $table->integer('quantity')->nullable();
             $table->double('amount')->nullable();

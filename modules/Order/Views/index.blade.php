@@ -4,22 +4,16 @@
     <div id="order-module">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="title">{{ trans("Order") }}</h4>
+                <h4 class="title">{{ trans("Invoice") }}</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans("Home") }}</a></li>
-                        <li class="breadcrumb-item active">{{ trans("Order") }}</li>
+                        <li class="breadcrumb-item active">{{ trans("Invoice") }}</li>
                     </ol>
                 </div>
             </div>
-        </div>
-        <div class="mb-3 d-flex justify-content-end group-btn">
-            <a href="#" class="btn btn-primary"
-               data-toggle="modal" data-target="#form-modal" data-title="{{ trans("CreateOrder") }}">
-                <i class="fa fa-plus"></i>&nbsp; {{ trans("Add New") }}
-            </a>
         </div>
     </div>
     <!--Search box-->
@@ -34,14 +28,14 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="text-input">{{ trans("Invoice code") }}</label>
+                                <label for="text-input">{{ trans("Invoice Code") }}</label>
                                 <input type="text" class="form-control" id="text-input" name="code"
                                        value="{{ $filter['code'] ?? NULL }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="text-input">{{ trans("Client") }}</label>
+                                <label for="text-input">{{ trans("Member") }}</label>
                                 {!! Form::select('member_id', ["" => trans("All")] + $members, $filter['member_id'] ?? NULL, ['class' => 'form-control select2 w-100']) !!}
                             </div>
                         </div>
@@ -96,11 +90,11 @@
                             <th width="50px">#</th>
                             <th>{{ trans("Invoice Code") }}</th>
                             <th>{{ trans("Status") }}</th>
-                            <th>{{ trans("Client Name") }}</th>
+                            <th>{{ trans("Member") }}</th>
                             <th>{{ trans("Total Price") }}</th>
                             <th>{{ trans("Purchase/Abort At") }}</th>
                             <th>{{ trans("Payment Method") }}</th>
-                            <th>{{ trans("Order Creator") }}</th>
+                            <th>{{ trans("Creator") }}</th>
                             <th class="action text-center">{{ trans("Action") }}</th>
                         </tr>
                         </thead>
@@ -135,7 +129,7 @@
                                 <td>{{ $item->paymentMethod->name ?? NULL }}</td>
                                 <td>{{ $item->creator_name }}</td>
                                 <td class="text-center">
-                                    <a href="#"
+                                    <a href="{{ route('get.order.detail', $item->id) }}"
                                        class="btn btn-outline-info"
                                        data-toggle="modal" data-title="{{ trans('Invoice Detail') }}"
                                        data-target="#form-modal">
@@ -152,5 +146,5 @@
             </div>
         </div>
     </div>
-    {!! getModal(["class" => "modal-ajax"]) !!}
+    {!! getModal(["class" => "modal-ajax", "size" => "modal-lg"]) !!}
 @endsection

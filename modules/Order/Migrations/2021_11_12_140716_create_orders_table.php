@@ -20,6 +20,10 @@ class CreateOrdersTable extends Migration {
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->double('total_price')->default(0);
+            $table->unsignedBigInteger('coupon_id')->nullable();
+            $table->string('coupon_name')->nullable();
+            $table->double('coupon_discount')->nullable();
+            $table->double('amount')->default(0);
             $table->smallInteger('status')->default(1);
             $table->unsignedBigInteger('creator_id');
             $table->string('creator_name');

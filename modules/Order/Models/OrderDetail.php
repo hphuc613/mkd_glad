@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Member\Models\Member;
+use Modules\Product\Models\Product;
 use Modules\User\Models\User;
 
 class OrderDetail extends Model
@@ -26,6 +27,13 @@ class OrderDetail extends Model
      */
     public function order() {
         return $this->belongsTo(Order::class, 'order_id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function product() {
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
 }

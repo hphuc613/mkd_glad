@@ -94,6 +94,10 @@ label, .title {
   border-radius: 1rem;
 }
 
+.btn i {
+  font-size: 18px;
+}
+
 /*** Pagination ***/
 .pagination li a {
   border: 1px solid #e5e5e5;
