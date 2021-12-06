@@ -181,5 +181,14 @@
     "Purchase/Abort At": "购买/中止时间",
     "To": "到",
     "Quantity": "數量",
-    "Amount": "合计"
+    "Amount": "合计",
+    "Page": "页",
+    "Page name": "页面名称",
+    "Create Page": "创建页面",
+    "Update Page": "更新页面",
+    "About Us": "关于我们",
+    "Our Mission": "我们的使命",
+    "Shipping Information": "寄运资讯",
+    "Common Problem": "常见问题",
+    "Contact Us": "联络我们"
 }
