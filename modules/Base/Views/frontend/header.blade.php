@@ -8,47 +8,22 @@
             <i class="bi-x pe-2"></i>
         </a>
     </div>
-    <!--Banner-->
-    <div id="banner" class="header-group banner"
-         style="background: url({{ asset('storage/upload/Home/banner.svg') }}) no-repeat center;background-size: cover;">
+    <div class="container-fluid text-end py-2 px-5">
+        <a href="#" class="cl-text-blue">註冊</a>
+        <span class="px-2">|</span>
+        <a href="#" class="cl-text-blue">登入</a>
+    </div>
+    <div class="header-group">
         <div class="d-flex justify-content-center">
-            <div id="logo-search" class="logo-search">
+            <div id="logo-search" class="logo-search logo-search-primary">
                 <div class="position-relative">
                     <div id="logo" class="d-flex d-md-block d-lg-flex justify-content-center">
-                        <a href="{{ route('get.home.index') }}"><img src="{{ asset('storage/upload/Home/logo.svg') }}"
-                                                                     alt="Logo"></a>
+                        <a href="{{ route('get.home.index') }}"><img src="{{ asset('storage/upload/Home/logo-primary.svg') }}" alt="Logo"></a>
                     </div>
-                    <nav id="nav" class="nav navbar-expand-lg justify-content-center py-5">
-                        <ul class="navbar-nav">
-                            <li class="nav-item list-unstyled dropdown">
-                                <a href="javascript:" class="nav-link" id="nav-about-us">關於我們</a>
-                                <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"
-                                    aria-labelledby="nav-about-us">
-                                    <li class="dropdown-item"><a href="about-us.html">關於我們</a></li>
-                                    <li class="dropdown-item"><a href="about-us-mission.html">我們的使命</a></li>
-                                    <li class="dropdown-item"><a href="about-us-participating.html">過往參與攤位</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item list-unstyled"><a href="offer-month.html" class="nav-link">本⽉優惠</a></li>
-                            <li class="nav-item list-unstyled"><a href="#" class="nav-link">最新消息</a></li>
-                            <li class="nav-item list-unstyled dropdown">
-                                <a href="all-item.html" class="nav-link" id="nav-scroll-item-dropdown-product">所有產品</a>
-                                <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"
-                                    aria-labelledby="nav-scroll-item-dropdown-product">
-                                    <li class="dropdown-item"><a href="#">護療霜</a></li>
-                                    <li class="dropdown-item"><a href="#">萬用膏</a></li>
-                                    <li class="dropdown-item"><a href="#">潤手霜 </a></li>
-                                    <li class="dropdown-item"><a href="#">乳液 </a></li>
-                                    <li class="dropdown-item"><a href="#">面霜 </a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item list-unstyled"><a href="#" class="nav-link">聯絡我們</a></li>
-                        </ul>
-                    </nav>
-                    <div id="search" class="search">
-                        <div class="input-group border border-2 border-white flex-nowrap">
+                    <div id="search" class="search search-primary">
+                        <div class="input-group input-search">
                             <input type="text" name="search" placeholder="Search">
-                            <span class="input-group-text"><img src="{{ asset('storage/upload/Home/search.svg') }}"
+                            <span class="input-group-text"><img src="{{ asset('storage/upload/Home/search-blue.svg') }}"
                                                                 alt="Search"></span>
                         </div>
                         <div class="group-icon d-md-flex d-none">
@@ -67,17 +42,35 @@
                     </div>
                 </div>
             </div>
-            <div class="position-absolute bottom-0 w-100">
-                <div id="title-banner" class="mt-auto px-5 text-center title-banner">
-                    <p class="text-white mb-3 mx-auto">環保及天然有機護膚品護膚新體驗!</p>
-                    <button class="btn btn-main btn-shop-now">
-                        SHOP NOW
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
-
+    <nav id="nav" class="nav nav-primary navbar-expand-lg d-none d-lg-flex">
+        <ul class="navbar-nav">
+            <li class="nav-item list-unstyled dropdown">
+                <a href="javascript:" class="nav-link" id="nav-item-about-us">關於我們</a>
+                <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"
+                    aria-labelledby="nav-item-about-us">
+                    <li class="dropdown-item"><a href="about-us.html">關於我們</a></li>
+                    <li class="dropdown-item"><a href="about-us-mission.html">我們的使命</a></li>
+                    <li class="dropdown-item"><a href="about-us-participating.html">過往參與攤位</a></li>
+                </ul>
+            </li>
+            <li class="nav-item list-unstyled"><a href="offer-month.html" class="nav-link">本⽉優惠</a></li>
+            <li class="nav-item list-unstyled"><a href="#" class="nav-link">最新消息</a></li>
+            <li class="nav-item list-unstyled dropdown">
+                <a href="all-item.html" class="nav-link" id="nav-item-dropdown-product">所有產品</a>
+                <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"
+                    aria-labelledby="nav-item-dropdown-product">
+                    <li class="dropdown-item"><a href="#">護療霜</a></li>
+                    <li class="dropdown-item"><a href="#">萬用膏</a></li>
+                    <li class="dropdown-item"><a href="#">潤手霜 </a></li>
+                    <li class="dropdown-item"><a href="#">乳液 </a></li>
+                    <li class="dropdown-item"><a href="#">面霜 </a></li>
+                </ul>
+            </li>
+            <li class="nav-item list-unstyled"><a href="#" class="nav-link">聯絡我們</a></li>
+        </ul>
+    </nav>
     <nav id="nav-scroll" class="nav nav-scroll d-flex d-md-none">
         <nav class="navbar navbar-expand-lg navbar-dark w-100 d-flex justify-content-between">
             <a class="navbar-brand" href="{{ route('get.home.index') }}">
