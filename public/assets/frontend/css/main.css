@@ -824,6 +824,55 @@ header .navbar-toggler:focus {
   }
 }
 
+.card-product {
+  padding-bottom: 3.625rem;
+  font-family: HelveticaNeue-Light, sans-serif;
+  font-weight: 300;
+  line-height: 34px;
+}
+.card-product img {
+  margin-bottom: 1.5rem;
+  height: 20rem;
+}
+@media (max-width: 739px) {
+  .card-product img {
+    width: 100%;
+    height: auto;
+  }
+}
+.card-product .product-title {
+  min-height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-product .product-title a {
+  font-size: 22px;
+  font-family: HelveticaNeue-Medium, sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+@media (max-width: 739px) {
+  .card-product .product-title {
+    min-height: auto;
+    display: block;
+  }
+}
+.card-product .description {
+  font-size: 17px;
+  text-transform: uppercase;
+}
+.card-product .price {
+  font-size: 34px;
+  line-height: 52px;
+  padding: 2.675rem 0;
+}
+@media (max-width: 739px) {
+  .card-product .price {
+    padding: 1rem 0;
+  }
+}
+
 .popular {
   padding: 0 9rem;
 }
@@ -842,39 +891,25 @@ header .navbar-toggler:focus {
     font-size: 35px;
   }
 }
+.popular .card-product .product-title a {
+  font-size: 22px;
+  font-family: HelveticaNeue-Medium, sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.popular .card-product .description {
+  height: 18rem;
+}
+@media (max-width: 739px) {
+  .popular .card-product .description {
+    height: auto;
+  }
+}
 @media (max-width: 739px) {
   .popular {
     padding: 0;
     font-size: 35px;
   }
-}
-
-.card-product {
-  padding-bottom: 3.625rem;
-}
-.card-product img {
-  height: 320px;
-}
-.card-product .name {
-  font-size: 22px;
-  font-family: HelveticaNeue-Medium, sans-serif;
-  font-weight: 600;
-  line-height: 34px;
-  margin-bottom: 0;
-}
-.card-product .description {
-  font-size: 22px;
-  font-family: HelveticaNeue-Light, sans-serif;
-  font-weight: 300;
-  line-height: 34px;
-  text-transform: uppercase;
-}
-.card-product .price {
-  font-size: 34px;
-  font-family: HelveticaNeue-Light, sans-serif;
-  font-weight: 300;
-  line-height: 52px;
-  margin: 2.675rem 0;
 }
 
 .btn-shop-more {
@@ -1026,16 +1061,20 @@ header .navbar-toggler:focus {
   font-size: 25px;
 }
 
+.modal-home h3 {
+  font-weight: 600;
+}
+.modal-home .modal-row {
+  border: 0;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
 .modal-login {
   font-family: HelveticaNeue-Medium, sans-serif;
   font-weight: 600;
   color: #316490;
   padding-right: 0 !important;
-}
-.modal-login .modal-row {
-  border: 0;
-  border-radius: 18px;
-  overflow: hidden;
 }
 .modal-login .form-login {
   margin: auto 0;
@@ -1045,9 +1084,6 @@ header .navbar-toggler:focus {
   .modal-login .form-login {
     padding: 5rem 5rem 5rem 6rem;
   }
-}
-.modal-login .form-login h3 {
-  font-weight: 600;
 }
 .modal-login .form-login hr {
   color: #9BBCD8;
@@ -1082,14 +1118,6 @@ header .navbar-toggler:focus {
   font-weight: 600;
   color: #316490;
   padding-right: 0 !important;
-}
-.modal-forgot h3 {
-  font-weight: 600;
-}
-.modal-forgot .modal-row {
-  border: 0;
-  border-radius: 18px;
-  overflow: hidden;
 }
 .modal-forgot .form-forgot {
   margin: auto 0;
@@ -1155,14 +1183,9 @@ header .navbar-toggler:focus {
   font-family: HelveticaNeue, sans-serif;
   color: #316490;
   padding-right: 0 !important;
-}
-.modal-point .modal-row {
   min-height: 47.7rem;
-  border: 0;
-  border-radius: 18px;
-  overflow: hidden;
 }
-.modal-point .modal-row .point-table {
+.modal-point .point-table {
   height: 20rem;
   overflow: auto;
 }
@@ -1251,36 +1274,13 @@ header .navbar-toggler:focus {
   color: white;
   border-radius: 0;
 }
-
-.register {
-  color: #316490;
-  margin-bottom: 12rem;
-}
-.register .title-register {
-  font-family: HelveticaNeue-UltraLight, sans-serif;
-  font-weight: 200;
-  margin-bottom: 2rem;
-}
-.register .form-register {
-  font-family: HelveticaNeue, sans-serif;
-}
-.register .form-register .label-input-login {
-  font-family: HelveticaNeue-Medium, sans-serif;
-  font-weight: 600;
-  font-size: 19px;
-}
-@media (min-width: 1024px) {
-  .register .form-register {
-    max-width: 400px;
+@media (max-width: 739px) {
+  .modal-register-email .form {
+    padding: 0 1rem 3rem 1rem;
   }
-}
-.register .btn-register {
-  width: 100%;
-  margin-top: 2.5rem;
-  font-size: 19px;
-  font-family: HelveticaNeue-Medium, sans-serif;
-  font-weight: 600;
-  padding: 0.5rem;
+  .modal-register-email .form .description {
+    padding: 0;
+  }
 }
 
 .cart-box {
@@ -1408,6 +1408,37 @@ header .navbar-toggler:focus {
   .modal-cart-detail .modal-dialog .modal-cart-detail-row {
     flex-direction: column-reverse;
   }
+}
+
+.register {
+  color: #316490;
+  margin-bottom: 12rem;
+}
+.register .title-register {
+  font-family: HelveticaNeue-UltraLight, sans-serif;
+  font-weight: 200;
+  margin-bottom: 2rem;
+}
+.register .form-register {
+  font-family: HelveticaNeue, sans-serif;
+}
+.register .form-register .label-input-login {
+  font-family: HelveticaNeue-Medium, sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+}
+@media (min-width: 1024px) {
+  .register .form-register {
+    max-width: 400px;
+  }
+}
+.register .btn-register {
+  width: 100%;
+  margin-top: 2.5rem;
+  font-size: 19px;
+  font-family: HelveticaNeue-Medium, sans-serif;
+  font-weight: 600;
+  padding: 0.5rem;
 }
 
 .product-list {

@@ -3,21 +3,53 @@
 namespace Modules\Frontend\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Modules\Frontend\Models\Frontend;
+use Modules\Product\Models\Product;
 
-class HomeController extends Controller{
+class HomeController extends Controller {
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct(){
+    public function __construct() {
         # parent::__construct();
     }
 
-    public function index(Request $request){
-        return view("Frontend::home");
+    /**
+     * @param Request $request
+     * @return Factory|View
+     */
+    public function index(Request $request) {
+        $popular_products = Product::query()->get()->take(3);
+        $discover_products = Product::query()->get()->take(6);
+        return view("Frontend::home", compact('popular_products', 'discover_products'));
+    }
+
+    /**
+     * @return string
+     */
+    public function login() {
+        return view('Frontend::modal.login')->render();
+    }
+
+    /**
+     * @return string
+     */
+    public function forgotPassword() {
+        return view('Frontend::modal.forgot_password')->render();
+    }
+
+
+
+    /**
+     * @return string
+     */
+    public function pointReward() {
+        return view('Frontend::modal.point')->render();
     }
 }

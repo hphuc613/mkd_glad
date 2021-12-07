@@ -19,11 +19,13 @@ class Tag extends BaseModel {
      * @param $data
      * @return array
      */
-    public static  function createTags($data) {
+    public static function createTags($data) {
         $ids = [];
-        foreach ($data as $item) {
-            $tag = self::query()->firstOrCreate($item);
-            $ids[] = $tag->id;
+        if (!empty($data)) {
+            foreach ($data as $item) {
+                $tag   = self::query()->firstOrCreate($item);
+                $ids[] = $tag->id;
+            }
         }
 
         return $ids;

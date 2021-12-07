@@ -40,7 +40,8 @@
             </div>
             @if(isset($data))
                 <div class="form-group">
-                    <a href="#" data-toggle="modal" data-target=".image-gallery" class="btn btn-outline-purple"><i class="fa fa-plus"></i> {{ trans('Add more image') }}
+                    <a href="#" data-toggle="modal" data-target=".image-gallery" class="btn btn-outline-purple"><i
+                            class="fa fa-plus"></i> {{ trans('Add more image') }}
                     </a>
                 </div>
             @endif
@@ -58,7 +59,7 @@
             </div>
             <div class="form-group">
                 <label for="capacity" class="title">{{ trans('Capacity') }}</label>
-                @php($capacity = isset($data) ? json_decode($data->capacity, 1) : [])
+                @php($capacity = isset($data) ? (json_decode($data->capacity, 1) ?? []) : [])
                 {!! Form::select('capacity[]', $capacity, $capacity, [
                     'id' => 'capacity',
                     'multiple' => 'multiple',
@@ -97,7 +98,9 @@
         <button type="reset" class="btn btn-default" data-dismiss="modal">{{ trans('Cancel') }}</button>
     </div>
 </form>
-@include("Product::backend.product._multiple_image")
+@if(isset($data))
+    @include("Product::backend.product._multiple_image")
+@endif
 @push('js')
     {!! JsValidator::formRequest('Modules\Product\Requests\ProductRequest','#product-form') !!}
 
@@ -106,7 +109,12 @@
             $('.dropify').dropify();
             $('.tag-select2').select2({
                 tags: true
-            })
+            });
+
+            CKEDITOR.replace('description', {
+                language: "{{ App::getLocale() }}".toLowerCase(),
+                height: 200
+            });
         })
     </script>
 @endpush

@@ -26,18 +26,18 @@
             <div class="d-flex mb-5">
                 <div>
                     <h4 class="title-footer">追蹤我們</h4>
-                    <a href="#" class="me-4"><img class="mb-2 mb-md-0" alt="Facebook" src="{{ asset('assets/frontend/images/ft_facebook.svg') }}"></a>
-                    <a href="#"><img alt="Instagram" src="{{ asset('assets/frontend/images/ft_instagram.svg') }}"></a>
+                    <a href="#" class="me-4"><img class="mb-2 mb-md-0" alt="Facebook" src="{{ asset('storage/upload/Home/ft_facebook.svg') }}"></a>
+                    <a href="#"><img alt="Instagram" src="{{ asset('storage/upload/Home/ft_instagram.svg') }}"></a>
                 </div>
-                <a><img class="footer-logo" alt="Logo" src="{{ asset('assets/frontend/images/logo-circle.svg') }}"></a>
+                <a><img class="footer-logo" alt="Logo" src="{{ asset('storage/upload/Home/logo-circle.svg') }}"></a>
             </div>
             <div class="footer-brand">
-                <a><img alt="Apple Pay" src="{{ asset('assets/frontend/images/ft_apple_pay.svg') }}"></a>
-                <a><img alt="Google Pay" src="{{ asset('assets/frontend/images/ft_google_pay.svg') }}"></a>
-                <a><img alt="Master card" src="{{ asset('assets/frontend/images/ft_master_card.svg') }}"></a>
-                <a><img alt="Stripe" src="{{ asset('assets/frontend/images/ft_stripe.svg') }}"></a>
-                <a><img alt="Visa" src="{{ asset('assets/frontend/images/ft_visa.svg') }}"></a>
-                <a><img alt="Paypal" src="{{ asset('assets/frontend/images/ft_paypal.svg') }}"></a>
+                <a><img alt="Apple Pay" src="{{ asset('storage/upload/Home/ft_apple_pay.svg') }}"></a>
+                <a><img alt="Google Pay" src="{{ asset('storage/upload/Home/ft_google_pay.svg') }}"></a>
+                <a><img alt="Master card" src="{{ asset('storage/upload/Home/ft_master_card.svg') }}"></a>
+                <a><img alt="Stripe" src="{{ asset('storage/upload/Home/ft_stripe.svg') }}"></a>
+                <a><img alt="Visa" src="{{ asset('storage/upload/Home/ft_visa.svg') }}"></a>
+                <a><img alt="Paypal" src="{{ asset('storage/upload/Home/ft_paypal.svg') }}"></a>
             </div>
 
         </div>

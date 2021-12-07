@@ -9,12 +9,14 @@
         </a>
     </div>
     <!--Banner-->
-    <div id="banner" class="header-group banner" style="background: url({{ asset('assets/frontend/images/banner.svg') }}) no-repeat center;background-size: cover;">
+    <div id="banner" class="header-group banner"
+         style="background: url({{ asset('storage/upload/Home/banner.svg') }}) no-repeat center;background-size: cover;">
         <div class="d-flex justify-content-center">
             <div id="logo-search" class="logo-search">
                 <div class="position-relative">
                     <div id="logo" class="d-flex d-md-block d-lg-flex justify-content-center">
-                        <a href="{{ route('get.home.index') }}"><img src="{{ asset('assets/frontend/images/logo.svg') }}" alt="Logo"></a>
+                        <a href="{{ route('get.home.index') }}"><img src="{{ asset('storage/upload/Home/logo.svg') }}"
+                                                                     alt="Logo"></a>
                     </div>
                     <nav id="nav" class="nav navbar-expand-lg justify-content-center py-5">
                         <ul class="navbar-nav">
@@ -46,15 +48,16 @@
                     <div id="search" class="search">
                         <div class="input-group border border-2 border-white flex-nowrap">
                             <input type="text" name="search" placeholder="Search">
-                            <span class="input-group-text"><img src="{{ asset('assets/frontend/images/search.svg') }}" alt="Search"></span>
+                            <span class="input-group-text"><img src="{{ asset('storage/upload/Home/search.svg') }}"
+                                                                alt="Search"></span>
                         </div>
                         <div class="group-icon d-md-flex d-none">
-                            <a href="#modal-login" class="me-2" data-bs-toggle="modal">
-                                <img src="{{ asset('assets/frontend/images/user.svg') }}" alt="Icon user">
+                            <a href="{{ route('get.home.login') }}" data-bs-toggle="modal" data-bs-target="#form-modal" class="me-2">
+                                <img src="{{ asset('storage/upload/Home/user.svg') }}" alt="Icon user">
                             </a>
                             <div class="position-relative">
-                                <a href="javascript:" id="cart-icon">
-                                    <img src="{{ asset('assets/frontend/images/shopping_bag.svg') }}" alt="Icon bag">
+                                <a href="{{ route('get.cart.cartBox') }}" id="cart-icon">
+                                    <img src="{{ asset('storage/upload/Home/shopping_bag.svg') }}" alt="Icon bag">
                                     <div id="quantity" class="quantity">
                                         <p class="text-white">0</p>
                                     </div>
@@ -78,16 +81,16 @@
     <nav id="nav-scroll" class="nav nav-scroll d-flex d-md-none">
         <nav class="navbar navbar-expand-lg navbar-dark w-100 d-flex justify-content-between">
             <a class="navbar-brand" href="{{ route('get.home.index') }}">
-                <img src="{{ asset('assets/frontend/images/logo-primary.svg') }}" class="logo" alt="Logo">
+                <img src="{{ asset('storage/upload/Home/logo-primary.svg') }}" class="logo" alt="Logo">
             </a>
             <div class="d-flex">
                 <div class="input-group d-flex d-md-none align-items-center me-2">
                     <a href="#modal-login" class="me-2" data-bs-toggle="modal">
-                        <img src="{{ asset('assets/frontend/images/user.svg') }}" alt="Icon user">
+                        <img src="{{ asset('storage/upload/Home/user.svg') }}" alt="Icon user">
                     </a>
                     <div class="position-relative">
                         <a href="javascript:" id="cart-icon-mobile">
-                            <img src="{{ asset('assets/frontend/images/shopping_bag.svg') }}" alt="Icon bag">
+                            <img src="{{ asset('storage/upload/Home/shopping_bag.svg') }}" alt="Icon bag">
                             <div class="quantity">
                                 <p class="text-white">0</p>
                             </div>

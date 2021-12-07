@@ -1,8 +1,15 @@
-
-
 /*** Button Cart ***/
-$(document).on('click', '#cart-icon, #cart-icon-mobile', function () {
-    $(document).find('#cart-box').removeClass('d-none');
+$(document).on('click', '#cart-icon, #cart-icon-mobile', function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    var box = $(document).find('#cart-box');
+    $.ajax({
+        async: true,
+        url: url,
+        type: 'GET',
+    }).done(function (response) {
+        box.html(response);
+    });
 });
 
 /*** Increase Quantity ***/

@@ -23,9 +23,17 @@
 
 @include('Base::frontend.home.footer')
 
+<!-- Modal Point -->
+<div id="title-reward" class="title-reward">
+    <a href="{{ route('get.home.pointReward') }}" data-bs-toggle="modal" data-bs-target="#form-modal">
+        會員積分獎賞
+    </a>
+</div>
+
+<!-- Whats App -->
 <div id="whatsapp" class="whatsapp">
     <a href="#">
-        <img src="{{ asset('assets/frontend/images/whats_app.svg') }}" alt="whatsapp">
+        <img src="{{ asset('storage/upload/Home/whats_app.svg') }}" alt="whatsapp">
     </a>
 </div>
 
@@ -39,6 +47,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{ asset('assets/frontend/plugins/owl-carousel/js/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/frontend/js/modal.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/cart.js') }}"></script>
 
 @stack('js')
