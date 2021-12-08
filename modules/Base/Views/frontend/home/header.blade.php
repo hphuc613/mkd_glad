@@ -24,8 +24,8 @@
                                 <a href="javascript:" class="nav-link" id="nav-about-us">關於我們</a>
                                 <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"
                                     aria-labelledby="nav-about-us">
-                                    <li class="dropdown-item"><a href="about-us.html">關於我們</a></li>
-                                    <li class="dropdown-item"><a href="about-us-mission.html">我們的使命</a></li>
+                                    <li class="dropdown-item"><a href="{{route('get.page.aboutUs')}}">關於我們</a></li>
+                                    <li class="dropdown-item"><a href="{{route('get.page.ourMission')}}">我們的使命</a></li>
                                     <li class="dropdown-item"><a href="about-us-participating.html">過往參與攤位</a></li>
                                 </ul>
                             </li>
@@ -42,7 +42,7 @@
                                     <li class="dropdown-item"><a href="#">面霜 </a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item list-unstyled"><a href="#" class="nav-link">聯絡我們</a></li>
+                            <li class="nav-item list-unstyled"><a href="{{route('get.page.contactUs')}}" class="nav-link">聯絡我們</a></li>
                         </ul>
                     </nav>
                     <div id="search" class="search">
@@ -109,8 +109,8 @@
                         <a href="javascript:" class="nav-link" id="nav-scroll-about-us">關於我們</a>
                         <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"
                             aria-labelledby="nav-scroll-about-us">
-                            <li class="dropdown-item"><a href="about-us.html">關於我們</a></li>
-                            <li class="dropdown-item"><a href="about-us-mission.html">我們的使命</a></li>
+                            <li class="dropdown-item"><a href="{{route('get.page.aboutUs')}}">關於我們</a></li>
+                            <li class="dropdown-item"><a href="{{route('get.page.ourMission')}}">我們的使命</a></li>
                             <li class="dropdown-item"><a href="about-us-participating.html">過往參與攤位</a></li>
                         </ul>
                     </li>
@@ -127,7 +127,7 @@
                             <li class="dropdown-item"><a href="#">面霜 </a></li>
                         </ul>
                     </li>
-                    <li class="nav-item list-unstyled"><a href="#" class="nav-link">聯絡我們</a></li>
+                    <li class="nav-item list-unstyled"><a href="{{route('get.page.contactUs')}}" class="nav-link">聯絡我們</a></li>
                 </ul>
             </div>
         </nav>

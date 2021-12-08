@@ -57,14 +57,28 @@ class PageController extends Controller
     public function postCreate(PageRequest $request)
     {
         $data = $request->all();
-        unset($data['image']);
-        $page = Page::query()->create($data);
-        if ($request->hasFile('image')) {
-            $image = $request->image;
-            $page->image = Helper::storageFile($image, time() . '_' . $image->getClientOriginalName(), 'Page/' . $page->id);
-        }
 
-        $page->save();
+        $page_id = $data['page_id'];
+        $page = Page::query()->where('page_id', $page_id)->first();
+
+        if (!$page) {
+            unset($data['image']);
+            $page = Page::query()->create($data);
+            if ($request->hasFile('image')) {
+                $image = $request->image;
+                $page->image = Helper::storageFile($image, time() . '_' . $image->getClientOriginalName(), 'Page/' . $page->id);
+            }
+            $page->save();
+        } else {
+            if ($request->hasFile('image')) {
+                $image = $request->image;
+                if (file_exists($page->image)) {
+                    unlink($page->image);
+                }
+                $data['image'] = Helper::storageFile($image, time() . '_' . $image->getClientOriginalName(), 'Page/' . $page->id);
+            }
+            $page->update($data);
+        }
         $request->session()->flash('success', trans('Created successfully.'));
 
         return redirect()->route('get.page.list');

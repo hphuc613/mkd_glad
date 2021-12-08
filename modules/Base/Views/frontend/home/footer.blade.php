@@ -16,8 +16,8 @@
                         <li class="title-footer"><a href="#">資訊</a></li>
                         <li><a href="#">寄送資訊</a></li>
                         <li><a href="#">下單教學</a></li>
-                        <li><a href="#">常見問題</a></li>
-                        <li><a href="#">聯絡我們</a></li>
+                        <li><a href="{{route('get.page.commonProblem')}}">常見問題</a></li>
+                        <li><a href="{{route('get.page.contactUs')}}">聯絡我們</a></li>
                     </ul>
                 </div>
             </div>

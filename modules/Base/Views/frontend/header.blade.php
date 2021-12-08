@@ -18,7 +18,8 @@
             <div id="logo-search" class="logo-search logo-search-primary">
                 <div class="position-relative">
                     <div id="logo" class="d-flex d-md-block d-lg-flex justify-content-center">
-                        <a href="{{ route('get.home.index') }}"><img src="{{ asset('storage/upload/Home/logo-primary.svg') }}" alt="Logo"></a>
+                        <a href="{{ route('get.home.index') }}"><img
+                                src="{{ asset('storage/upload/Home/logo-primary.svg') }}" alt="Logo"></a>
                     </div>
                     <div id="search" class="search search-primary">
                         <div class="input-group input-search">
@@ -27,7 +28,8 @@
                                                                 alt="Search"></span>
                         </div>
                         <div class="group-icon d-md-flex d-none">
-                            <a href="{{ route('get.home.login') }}" data-bs-toggle="modal" data-bs-target="#form-modal" class="me-2">
+                            <a href="{{ route('get.home.login') }}" data-bs-toggle="modal" data-bs-target="#form-modal"
+                               class="me-2">
                                 <img src="{{ asset('storage/upload/Home/user.svg') }}" alt="Icon user">
                             </a>
                             <div class="position-relative">
@@ -50,8 +52,8 @@
                 <a href="javascript:" class="nav-link" id="nav-item-about-us">關於我們</a>
                 <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"
                     aria-labelledby="nav-item-about-us">
-                    <li class="dropdown-item"><a href="about-us.html">關於我們</a></li>
-                    <li class="dropdown-item"><a href="about-us-mission.html">我們的使命</a></li>
+                    <li class="dropdown-item"><a href="{{route('get.page.aboutUs')}}">關於我們</a></li>
+                    <li class="dropdown-item"><a href="{{route('get.page.ourMission')}}">我們的使命</a></li>
                     <li class="dropdown-item"><a href="about-us-participating.html">過往參與攤位</a></li>
                 </ul>
             </li>
@@ -68,7 +70,7 @@
                     <li class="dropdown-item"><a href="#">面霜 </a></li>
                 </ul>
             </li>
-            <li class="nav-item list-unstyled"><a href="#" class="nav-link">聯絡我們</a></li>
+            <li class="nav-item list-unstyled"><a href="{{route('get.page.contactUs')}}" class="nav-link">聯絡我們</a></li>
         </ul>
     </nav>
     <nav id="nav-scroll" class="nav nav-scroll d-flex d-md-none">
@@ -78,7 +80,8 @@
             </a>
             <div class="d-flex">
                 <div class="input-group d-flex d-md-none align-items-center me-2">
-                    <a href="{{ route('get.home.login') }}" data-bs-toggle="modal" data-bs-target="#form-modal" class="me-2">
+                    <a href="{{ route('get.home.login') }}" data-bs-toggle="modal" data-bs-target="#form-modal"
+                       class="me-2">
                         <img src="{{ asset('storage/upload/Home/user.svg') }}" alt="Icon user">
                     </a>
                     <div class="position-relative">
@@ -102,8 +105,8 @@
                         <a href="javascript:" class="nav-link" id="nav-scroll-about-us">關於我們</a>
                         <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"
                             aria-labelledby="nav-scroll-about-us">
-                            <li class="dropdown-item"><a href="about-us.html">關於我們</a></li>
-                            <li class="dropdown-item"><a href="about-us-mission.html">我們的使命</a></li>
+                            <li class="dropdown-item"><a href="{{route('get.page.aboutUs')}}">關於我們</a></li>
+                            <li class="dropdown-item"><a href="{{route('get.page.ourMission')}}">我們的使命</a></li>
                             <li class="dropdown-item"><a href="about-us-participating.html">過往參與攤位</a></li>
                         </ul>
                     </li>
@@ -120,7 +123,7 @@
                             <li class="dropdown-item"><a href="#">面霜 </a></li>
                         </ul>
                     </li>
-                    <li class="nav-item list-unstyled"><a href="#" class="nav-link">聯絡我們</a></li>
+                    <li class="nav-item list-unstyled"><a href="{{route('get.page.contactUs')}}" class="nav-link">聯絡我們</a></li>
                 </ul>
             </div>
         </nav>
