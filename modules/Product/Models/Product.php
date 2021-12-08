@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Modules\Base\Models\BaseModel;
 use Modules\Tag\Models\Tag;
 use Modules\User\Models\User;
 
-class Product extends Model {
+class Product extends BaseModel {
     use SoftDeletes;
 
     protected $table = "products";

@@ -134,8 +134,8 @@
                                     {!! $product->name  !!}
                                 </a>
                             </div>
-                            <div class="description text-start">
-                                {!! $product->description !!}
+                            <div class="descri  ption text-start">
+                                {!! $product->content !!}
                             </div>
                             <div class="price">${{ moneyFormat($product->price, false) }}</div>
                             <button class="btn btn-outline-main-light btn-add-to-card">ADD TO CART</button>
