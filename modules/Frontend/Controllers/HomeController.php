@@ -33,13 +33,6 @@ class HomeController extends Controller {
     /**
      * @return string
      */
-    public function login() {
-        return view('Frontend::modal.login')->render();
-    }
-
-    /**
-     * @return string
-     */
     public function forgotPassword() {
         return view('Frontend::modal.forgot_password')->render();
     }

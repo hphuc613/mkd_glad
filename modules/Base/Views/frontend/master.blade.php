@@ -49,6 +49,8 @@
 <script type="text/javascript" src="{{ asset('assets/frontend/js/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/modal.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/cart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/frontend/plugins/toast/toast.js') }}"></script>
+@include('Base::frontend.flash_noti')
 
 @stack('js')
 </body>
