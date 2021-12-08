@@ -1551,6 +1551,11 @@ header .navbar-toggler:focus {
   width: 35rem;
   height: 35rem;
 }
+.about-us .participating .participate-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .about-us .participating.row-reverse .participate-name {
   text-align: right;
 }
