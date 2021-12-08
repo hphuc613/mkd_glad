@@ -2,11 +2,18 @@
     @csrf
     @php($prompt = ['' => trans('Select')])
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="name" class="title">{{ trans('Name') }}</label>
                 <input type="text" class="form-control form-control-line" id="name" name="name"
                        value="{{ $data->name ?? null }}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="sku" class="title">{{ trans('SKU') }}</label>
+                <input type="text" class="form-control form-control-line" id="sku" name="sku"
+                       value="{{ $data->sku ?? null }}">
             </div>
         </div>
         <div class="col-md-3">
@@ -56,6 +63,10 @@
             <div class="form-group">
                 <label for="capacity" class="title">{{ trans('Price') }}</label>
                 <input type="number" name="price" class="form-control" value="{{ $data->price ?? NULL }}">
+            </div>
+            <div class="form-group">
+                <label for="stock_in" class="title">{{ trans('Stock In') }}</label>
+                <input type="number" name="stock_in" class="form-control" value="{{ $data->stock_in ?? NULL }}">
             </div>
             <div class="form-group">
                 <label for="capacity" class="title">{{ trans('Capacity') }}</label>
@@ -109,11 +120,6 @@
             $('.dropify').dropify();
             $('.tag-select2').select2({
                 tags: true
-            });
-
-            CKEDITOR.replace('description', {
-                language: "{{ App::getLocale() }}".toLowerCase(),
-                height: 200
             });
         })
     </script>

@@ -48,6 +48,9 @@ class Product extends Model {
         if (isset($filter['name'])) {
             $data = $data->where('name', 'LIKE', '%' . $filter['name'] . '%');
         }
+        if (isset($filter['sku'])) {
+            $data = $data->where('sku', 'LIKE', '%' . $filter['sku'] . '%');
+        }
         if (isset($filter['status'])) {
             $data = $data->where('status', $filter['status']);
         }

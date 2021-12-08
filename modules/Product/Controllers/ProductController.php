@@ -67,8 +67,8 @@ class ProductController extends Controller {
         $product->save();
         if ($request->hasFile('image')) {
             $image          = $request->image;
-            $image_name    = time() . '_' . $image->getClientOriginalName();
-            $upload_address = 'Product/'.$product->id.'-'.$product->name;
+            $image_name     = time() . '_' . $image->getClientOriginalName();
+            $upload_address = 'Product/' . $product->id . '-' . $product->sku;
             $product->image = Helper::storageFile($image, $image_name, $upload_address);
         }
         $product->save();
@@ -101,13 +101,15 @@ class ProductController extends Controller {
         $tag_ids          = Tag::createTags($request->tags);
         $data['capacity'] = !empty($request->capacity) ? json_encode(array_combine($request->capacity, $request->capacity)) : "[]";
         $product          = Product::query()->find($id);
+        $upload_address   = 'Product/' . $product->id . '-' . $request->sku;
+        $data['image']    = str_replace($product->sku, $request->sku, $product->image);
+        rename('storage/upload/Product/' . $product->id . '-' . $product->sku, 'storage/upload/'.$upload_address);
         if ($request->hasFile('image')) {
             $image = $request->image;
             if (file_exists($product->image)) {
                 unlink($product->image);
             }
             $image_name    = time() . '_' . $image->getClientOriginalName();
-            $upload_address = 'Product/'.$product->id.'-'.$product->name;
             $data['image'] = Helper::storageFile($image, $image_name, $upload_address);
         }
         $product->update($data);
@@ -136,10 +138,10 @@ class ProductController extends Controller {
      * @param $id
      * @return RedirectResponse
      */
-    public function addImage(Request $request, $id){
+    public function addImage(Request $request, $id) {
         $data = Product::query()->find($id);
         $data->images()->delete();
-        foreach ($request->images as $image){
+        foreach ($request->images as $image) {
             ProductImage::query()->firstOrCreate(['image' => $image, 'product_id' => $id]);
         }
 

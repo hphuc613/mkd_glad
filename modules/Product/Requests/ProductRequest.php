@@ -20,8 +20,21 @@ class ProductRequest extends FormRequest {
      * @return array
      */
     public function rules() {
+        $segment = segmentUrl('2');
+        if ($segment == 'update') {
+            return [
+                'name'    => 'required',
+                'sku'     => 'required|validate_unique:products,' . $this->id,
+                'price'   => 'required',
+                'status'  => 'required',
+                'cate_id' => 'required',
+                'image'   => 'image|mimes:jpeg,png,jpg,gif,svg',
+            ];
+        }
+
         return [
             'name'    => 'required',
+            'sku'     => 'required|validate_unique:products',
             'price'   => 'required',
             'status'  => 'required',
             'cate_id' => 'required',
@@ -35,6 +48,7 @@ class ProductRequest extends FormRequest {
     public function messages() {
         return [
             'required'         => ':attribute' . trans(' can not be empty.'),
+            'validate_unique'  => ':attribute' . trans(' was exist.'),
             'cate_id.required' => trans('Please select ') . ':attribute',
             'image'            => ':attribute' . trans(' must be an image.'),
             'mimes'            => ':attribute' .
@@ -51,7 +65,8 @@ class ProductRequest extends FormRequest {
             'price'   => 'Price',
             'status'  => 'Status',
             'cate_id' => 'Category',
-            'image'   => 'Image'
+            'image'   => 'Image',
+            'sku'     => 'SKU'
         ];
     }
 }

@@ -38,6 +38,12 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
+                                <label for="sku">{{ trans("SKU") }}</label>
+                                <input type="text" class="form-control" id="sku " name="sku" value="{{ $filter['sku'] ?? NULL }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
                                 <label for="text-input">{{ trans('Product Category') }}</label>
                                 {!! Form::select('cate_id', $prompt + $categories, $filter['cate_id'] ?? NULL, ['class' => 'select2 form-control']) !!}
                             </div>
@@ -68,6 +74,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>{{ trans('SKU') }}</th>
                             <th>{{ trans('Name') }}</th>
                             <th>{{ trans('Image') }}</th>
                             <th>{{ trans('Price') }}</th>
@@ -83,6 +90,7 @@
                         @foreach($data as $item)
                             <tr>
                                 <td>{{$key++}}</td>
+                                <td>{{ $item->sku }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td class="image-box">
                                     <div class="image-item image-in-listing">
