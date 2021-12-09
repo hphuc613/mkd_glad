@@ -54,7 +54,7 @@
                     aria-labelledby="nav-item-about-us">
                     <li class="dropdown-item"><a href="{{route('get.page.aboutUs')}}">關於我們</a></li>
                     <li class="dropdown-item"><a href="{{route('get.page.ourMission')}}">我們的使命</a></li>
-                    <li class="dropdown-item"><a href="about-us-participating.html">過往參與攤位</a></li>
+                    <li class="dropdown-item"><a href="{{route('get.page.participate')}}">過往參與攤位</a></li>
                 </ul>
             </li>
             <li class="nav-item list-unstyled"><a href="offer-month.html" class="nav-link">本⽉優惠</a></li>
@@ -107,7 +107,7 @@
                             aria-labelledby="nav-scroll-about-us">
                             <li class="dropdown-item"><a href="{{route('get.page.aboutUs')}}">關於我們</a></li>
                             <li class="dropdown-item"><a href="{{route('get.page.ourMission')}}">我們的使命</a></li>
-                            <li class="dropdown-item"><a href="about-us-participating.html">過往參與攤位</a></li>
+                            <li class="dropdown-item"><a href="{{route('get.page.participate')}}">過往參與攤位</a></li>
                         </ul>
                     </li>
                     <li class="nav-item list-unstyled"><a href="offer-month.html" class="nav-link">本⽉優惠</a></li>

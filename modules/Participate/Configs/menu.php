@@ -5,7 +5,7 @@ return [
     'sort' => 2,
     'active'=> TRUE,
     'id'=> 'participate',
-    'icon' => '<i class="fa fa-window-maximize" style="display: inline-flex; align-items: center"></i>',
+    'icon' => '<i class="fas fa-handshake" style="display: inline-flex; align-items: center"></i>',
     'middleware' => ['participate'],
     'group' => []
 ];
