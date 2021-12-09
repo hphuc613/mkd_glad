@@ -1,12 +1,9 @@
 $(document).ready(function () {
-    $('#modal-register-email').modal('show');
-
+    /** Modal Ajax */
     $('.modal-ajax').on('hidden.bs.modal', function () {
         $(document).find('.datetime-modal').html('');
         $(this).find('.modal-body').html('');
     });
-
-    /** Modal Ajax */
     $(document).on('click', '[data-bs-toggle=modal]', function () {
         var modal = $(this).attr('data-bs-target');
         var url = $(this).attr('href');

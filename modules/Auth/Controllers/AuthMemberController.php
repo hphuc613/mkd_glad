@@ -39,25 +39,27 @@ class AuthMemberController extends Controller {
                 if ($this->auth->user()->status != Status::STATUS_ACTIVE) {
                     $request->session()->flash('danger',
                         trans('Your account is inactive. Please contact with admin page to get more information.'));
-                    return $this->logout();
+                    $this->auth->logout();
+                } else {
+                    $request->session()->flash('success', trans('Logged In Successfully!'));
                 }
-                $request->session()->flash('success', trans('Logged In Successfully!'));
-
-                return redirect()->route('get.home.index');
+            } else {
+                $request->session()->flash('danger', trans('Incorrect username or password'));
             }
-            $request->session()->flash('danger', trans('Incorrect username or password'));
 
-            return $this->logout();
+            return redirect()->route('get.home.index');
         }
 
         return view('Frontend::modal.login')->render();
     }
 
     /**
+     * @param Request $request
      * @return RedirectResponse
      */
-    public function logout() {
+    public function logout(Request $request) {
         $this->auth->logout();
+        $request->session()->flash('success', trans('Logged Out Successfully!'));
 
         return redirect()->route('get.home.index');
     }

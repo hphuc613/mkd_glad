@@ -5,7 +5,7 @@ return [
     'sort' => 5,
     'active'=> TRUE,
     'id'=> 'feedback',
-    'icon' => '<i class="fa fa-comment"></i>',
+    'icon' => '<i class="far fa-comment-dots"></i>',
     'middleware' => [],
     'group' => []
 ];

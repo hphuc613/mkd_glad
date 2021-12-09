@@ -2,12 +2,12 @@
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/owl-carousel/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/owl-carousel/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/fontawesome/css/all.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/owl-carousel/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/owl-carousel/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/main.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 
     <title>Glad Beauty</title>
 
@@ -42,14 +42,14 @@
     <i class="fas fa-chevron-up"></i>
 </a>
 
-<script type="text/javascript" src="{{ asset('assets/frontend/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="{{ asset('assets/frontend/plugins/owl-carousel/js/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/owl-carousel/js/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/modal.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/cart.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/frontend/plugins/toast/toast.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/toast/toast.js') }}"></script>
 @include('Base::frontend.flash_noti')
 
 @stack('js')

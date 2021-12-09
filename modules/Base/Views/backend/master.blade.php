@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/dropify/dist/css/dropify.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/dist/css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datetimepicker/css/datetimepicker-custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
     {{-- Elfinder  --}}
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="{{ asset('assets/plugins/elfinder/css/elfinder.min.css') }}">

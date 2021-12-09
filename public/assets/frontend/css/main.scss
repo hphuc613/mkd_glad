@@ -661,6 +661,29 @@ header {
             box-shadow: none;
         }
     }
+
+    .user-dropdown{
+        .dropdown-menu{
+            top: 1rem !important;
+            a{
+                color: $silver-1;
+            }
+
+            .dropdown-item:active {
+                background-color: #E7E7E7;
+            }
+        }
+
+        @include mobile{
+            .dropdown-menu{
+                top: 2rem !important;
+            }
+
+            .dropdown-item {
+                padding-left: 4px !important;
+            }
+        }
+    }
 }
 
 .breadcrumb {

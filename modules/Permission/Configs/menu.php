@@ -5,7 +5,7 @@ return [
     'sort' => 10,
     'active'=> TRUE,
     'id'=> 'permission',
-    'icon' => '<i class="fa fa-delicious"></i>',
+    'icon' => '<i class="fab fa-delicious"></i>',
     'middleware' => ['permission'],
     'group' => []
 ];
