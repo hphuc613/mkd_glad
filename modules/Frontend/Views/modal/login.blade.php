@@ -34,7 +34,7 @@
                                data-bs-target="#form-modal" class="btn btn-forgot">
                                 忘記密碼
                             </a>
-                            <a href="register.html" class="btn btn-main btn-register">建立新帳戶</a>
+                            <a href="{{ route('get.home.register') }}" class="btn btn-main btn-register">建立新帳戶</a>
                         </div>
                     </form>
                 </div>

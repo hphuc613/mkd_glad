@@ -13,6 +13,11 @@
                                value="{{ $member->name ?? old('name') }}">
                     </div>
                     <div class="col-md-4 form-group">
+                        <label for="last_name">{{ trans('Last Name') }}</label>
+                        <input type="text" id="last_name" class="form-control" name="last_name"
+                               value="{{ $member->last_name ?? old('last_name') }}">
+                    </div>
+                    <div class="col-md-4 form-group">
                         <label for="phone">{{ trans('Phone Number') }}</label>
                         <input type="tel" id="phone" class="form-control" name="phone"
                                value="{{ $member->phone ?? old('phone') }}">

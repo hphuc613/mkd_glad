@@ -50,6 +50,7 @@
 <script type="text/javascript" src="{{ asset('assets/frontend/js/modal.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/cart.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/plugins/toast/toast.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/jsvalidation/js/jsvalidation.js')}}"></script>
 @include('Base::frontend.flash_noti')
 
 @stack('js')

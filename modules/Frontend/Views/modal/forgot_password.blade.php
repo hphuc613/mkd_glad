@@ -29,7 +29,7 @@
                         <div class="divider one-line">或</div>
                         <div class="title-forgot mb-1">新客戶</div>
                         <div class="title-noti mb-lg-3 mb-5">申請賬戶後付款更快捷、查看訂單及其他資料</div>
-                        <a href="register.html" class="btn btn-main btn-register">建立新帳戶</a>
+                        <a href="{{ route('get.home.register') }}" class="btn btn-main btn-register">建立新帳戶</a>
                     </form>
                 </div>
             </div>

@@ -9,7 +9,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Modules\Auth\Requests\AuthMemberRequest;
 use Modules\Base\Models\Status;
 use Modules\Member\Models\Member;
 use Modules\User\Models\User;
@@ -35,6 +37,8 @@ class AuthMemberController extends Controller {
         if ($request->post()) {
             $credentials               = $request->only('email', 'password');
             $credentials['deleted_at'] = null;
+
+            dd($credentials);
 
             if ($this->auth->attempt($credentials, $request->has('remember_me'))) {
                 if ($this->auth->user()->status != Status::STATUS_ACTIVE) {
@@ -94,5 +98,29 @@ class AuthMemberController extends Controller {
         }
 
         return view('Frontend::modal.forgot_password')->render();
+    }
+
+
+    /**
+     * @return Factory|View
+     */
+    public function getRegister() {
+        return view('Frontend::register');
+    }
+
+    /**
+     * @param AuthMemberRequest $request
+     * @return RedirectResponse
+     */
+    public function postRegister(AuthMemberRequest $request) {
+        $data           = new Member($request->all());
+        $data->username = strtolower(str_replace(" ", "_", $data->name));
+        $data->save();
+        $this->auth->attempt(['email' => $request->email, 'password' => $request->password]);
+
+        $request->session()->flash('success', 'Registered Successfully');
+
+
+        return redirect()->route('get.home.index');
     }
 }
