@@ -98,7 +98,7 @@
                                             || $item->name != \Modules\Role\Models\Role::ADMINISTRATOR)
                                             <a href="{{ route('get.user.update',$item->id) }}"
                                                class="btn btn-primary">
-                                                <i class="fa fa-pencil"></i></a>
+                                                <i class="fas fa-pencil-alt"></i></a>
                                         @endif
                                         @if((auth('admin')->user()->id !== $item->id
                                             && ($item->role->name ?? null) !== \Modules\Role\Models\Role::ADMINISTRATOR)

@@ -336,7 +336,7 @@ use Illuminate\Support\Facades\Route;
                                 <td class="link-action">
                                     <a href="#" class="btn btn-primary"
                                        data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Update '.$module.'") }}">
-                                        <i class="fa fa-pencil"></i></a>
+                                        <i class="fas fa-pencil-alt"></i></a>
                                     <a href="#"
                                        class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>

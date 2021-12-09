@@ -109,7 +109,7 @@
                                     <a href="{{ route('get.participate.update', $item->id) }}" class="btn btn-primary"
                                        data-toggle="modal" data-target="#form-modal"
                                        data-title="{{ trans("Update Participate") }}">
-                                        <i class="fa fa-pencil"></i></a>
+                                        <i class="fas fa-pencil-alt"></i></a>
                                     <a href="{{ route('get.participate.delete', $item->id) }}"
                                        class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>

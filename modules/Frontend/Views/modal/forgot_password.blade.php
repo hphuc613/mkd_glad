@@ -9,7 +9,8 @@
                     </a>
                 </div>
                 <div class="form-forgot">
-                    <form>
+                    <form action="{{ route('post.home.forgotPassword') }}" method="post">
+                        @csrf
                         <h3>忘記密碼</h3>
                         <hr>
                         <div class="title-noti">我們將會發送電郵給你重設密碼</div>
@@ -21,9 +22,9 @@
                                    class="form-control input-login">
                         </div>
                         <div class="row-send">
-                            <a href="" class="btn btn-main px-5 py-2 rounded-0">提交</a>
+                            <button type="submit" class="btn btn-main px-5 py-2 rounded-0">提交</button>
                             <div class="title-or">或</div>
-                            <a href="" class="text-decoration-none title-cancel">提交</a>
+                            <a href="javascript:"  data-bs-dismiss="modal" class="text-decoration-none title-cancel">取消</a>
                         </div>
                         <div class="divider one-line">或</div>
                         <div class="title-forgot mb-1">新客戶</div>

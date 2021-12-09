@@ -30,13 +30,6 @@ class HomeController extends Controller {
         return view("Frontend::home", compact('popular_products', 'discover_products'));
     }
 
-    /**
-     * @return string
-     */
-    public function forgotPassword() {
-        return view('Frontend::modal.forgot_password')->render();
-    }
-
 
 
     /**

@@ -100,7 +100,7 @@
                                 <td>{{ \Carbon\Carbon::parse($member->updated_at)->format('d/m/Y H:i:s')}}</td>
                                 <td class="text-center">
                                     <a href="{{ route('get.member.update',$member->id) }}" class="btn btn-primary">
-                                        <i class="fa fa-pencil"></i></a>
+                                        <i class="fas fa-pencil-alt"></i></a>
                                     <a href="{{ route('get.member.delete',$member->id) }}"
                                        class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>

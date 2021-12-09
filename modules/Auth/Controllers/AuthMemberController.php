@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Modules\Base\Models\Status;
+use Modules\Member\Models\Member;
 use Modules\User\Models\User;
 
 class AuthMemberController extends Controller {
@@ -64,22 +65,23 @@ class AuthMemberController extends Controller {
         return redirect()->route('get.home.index');
     }
 
+
     /**
      * @param Request $request
-     * @return Factory|View|RedirectResponse
+     * @return RedirectResponse|string
      */
     public function forgotPassword(Request $request) {
         if ($request->post()) {
-            $user = User::query()->where('email', $request->email)->first();
-            if (!empty($user)) {
+            $member = Member::query()->where('email', $request->email)->first();
+            if (!empty($member)) {
                 $password = Str::random(6);
                 $body     = '';
                 $body     .= "<div><p>" . trans("Your password: ") . $password . "</p></div>";
                 $body     .= '<div><i><p style="color: red">' . trans("You should change password after login.") . '</p></i></div>';
-                $send     = Helper::sendMail($user->email, trans('Reset password'), trans('Reset password'), $body);
+                $send     = Helper::sendMail($member->email, trans('Reset password'), trans('Reset password'), $body);
                 if ($send) {
-                    $user->password = $password;
-                    $user->save();
+                    $member->password = $password;
+                    $member->save();
                     $request->session()->flash('success', trans('Send email successfully. Please check your email'));
                 } else {
                     $request->session()->flash('danger', trans('Can not send email. Please contact with admin.'));
@@ -88,9 +90,9 @@ class AuthMemberController extends Controller {
                 $request->session()->flash('danger', trans('Your email not exist.'));
             }
 
-            return redirect()->route('admin.get.login');
+            return redirect()->route('get.home.index');
         }
 
-        return view("Auth::backend.forgot_password");
+        return view('Frontend::modal.forgot_password')->render();
     }
 }

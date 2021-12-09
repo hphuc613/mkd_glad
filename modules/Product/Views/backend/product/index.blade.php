@@ -119,7 +119,7 @@
                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                 <td class="link-action">
                                     <a href="{{ route('get.product.update', $item->id) }}" class="btn btn-primary">
-                                        <i class="fa fa-pencil"></i></a>
+                                        <i class="fas fa-pencil-alt"></i></a>
                                     <a href="{{ route('get.product.delete', $item->id) }}" class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

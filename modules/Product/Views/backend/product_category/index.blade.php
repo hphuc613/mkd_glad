@@ -78,7 +78,7 @@
                                     <a href="{{ route('get.product_category.update', $item->id) }}" class="btn btn-primary"
                                        data-toggle="modal" data-target="#form-modal"
                                        data-title="{{ trans("Update Product Category") }}">
-                                        <i class="fa fa-pencil"></i></a>
+                                        <i class="fas fa-pencil-alt"></i></a>
                                     <a href="{{ route('get.product_category.delete', $item->id) }}"
                                        class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>
