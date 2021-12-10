@@ -128,7 +128,7 @@
                 <div class="row">
                     @foreach($popular_products as $product)
                         <div class="col-lg-6 col-xl-4 card-product">
-                            <a href="#"><img src="{{ $product->image }}" alt="natural"></a>
+                            <a href="{{route('get.product.productDetail',$product->id)}}"><img src="{{ $product->image }}" alt="natural"></a>
                             <div class="product-title">
                                 <a href="#" class="cl-text-primary text-uppercase">
                                     {!! $product->name  !!}
@@ -152,7 +152,7 @@
                 <div class="row discover-row">
                     @foreach($discover_products as $product)
                         <div class="col-lg-6 col-xl-4 card-product">
-                            <a href="#"><img src="{{ $product->image }}" alt="natural"></a>
+                            <a href="{{route('get.product.productDetail',$product->id)}}"><img src="{{ $product->image }}" alt="natural"></a>
                             <div class="product-title">
                                 <a href="#" class="cl-text-primary fw-normal text-uppercase">
                                     {!! $product->name  !!}

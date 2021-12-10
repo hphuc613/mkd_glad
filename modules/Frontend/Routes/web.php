@@ -13,3 +13,5 @@ Route::get('common-problem', 'PageController@getPage')->name('get.page.commonPro
 Route::get('contact-us', 'PageController@getPage')->name('get.page.contactUs');
 
 Route::get('past-participating', 'PageController@participate')->name('get.page.participate');
+
+Route::get('product/{id}', 'ProductController@productDetail')->name('get.product.productDetail');

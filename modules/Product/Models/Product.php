@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Modules\Base\Models\BaseModel;
+use Modules\Feedback\Models\Feedback;
 use Modules\Tag\Models\Tag;
 use Modules\User\Models\User;
 
@@ -95,5 +96,12 @@ class Product extends BaseModel {
      */
     public function updatedBy() {
         return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function feedback() {
+        return $this->hasMany(Feedback::class);
     }
 }
