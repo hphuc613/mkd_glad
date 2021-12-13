@@ -1889,7 +1889,7 @@ header {
 
 .product-detail {
     font-family: HelveticaNeue, sans-serif;
-    margin-top: 8rem;
+    margin-top: 2rem;
     margin-bottom: 5rem;
 
     .content {
@@ -2157,6 +2157,8 @@ header {
             height: 3.5rem;
             color: $blue;
             border: none;
+            display: flex;
+            align-items: center;
         }
 
         &.active {

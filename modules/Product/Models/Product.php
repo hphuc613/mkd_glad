@@ -33,7 +33,7 @@ class Product extends BaseModel {
 
         $author_id = Auth::guard('admin')->user()->id ?? 1;
         static::creating(function ($model) use ($author_id) {
-            $model->key_slug = Str::random(2) . $model->sku . Str::random(2) . time();
+            $model->key_slug   = Str::random(2) . $model->sku . Str::random(2) . time();
             $model->created_by = $author_id;
             $model->updated_by = $author_id;
         });
@@ -62,6 +62,24 @@ class Product extends BaseModel {
             $data = $data->where('cate_id', $filter['cate_id']);
         }
 
+        return $data;
+    }
+
+    /**
+     * @param $star_qty
+     * @param bool $percent
+     * @return float|int|string
+     */
+    public function getPercentStar($star_qty, $percent = true) {
+        $data = 0;
+        if ($this->feedback->count() > 0) {
+            $data = $this->feedback->where('vote', $star_qty)->count();
+            $data = ($data / $this->feedback->count()) * 100;
+        }
+
+        if ($percent) {
+            $data .= '%';
+        }
         return $data;
     }
 

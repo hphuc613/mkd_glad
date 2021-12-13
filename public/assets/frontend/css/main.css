@@ -1673,7 +1673,7 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 
 .product-detail {
   font-family: HelveticaNeue, sans-serif;
-  margin-top: 8rem;
+  margin-top: 2rem;
   margin-bottom: 5rem;
 }
 .product-detail .content h4 {
@@ -1892,6 +1892,8 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
   height: 3.5rem;
   color: #316490;
   border: none;
+  display: flex;
+  align-items: center;
 }
 .pagination .page-item.active {
   font-weight: bold;

@@ -19,7 +19,7 @@
         <label for="name">{{ trans('Vote') }}</label>
     </div>
     <div class="col-md-8">
-        {!! $data->getStar() !!}
+        {!! getStar($data->vote) !!}
     </div>
 </div>
 <div class="form-group ">

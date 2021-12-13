@@ -128,13 +128,13 @@
                 <div class="row">
                     @foreach($popular_products as $product)
                         <div class="col-lg-6 col-xl-4 card-product">
-                            <a href="{{route('get.product.productDetail',$product->id)}}"><img src="{{ $product->image }}" alt="natural"></a>
+                            <a href="{{route('get.product.productDetail',$product->key_slug)}}"><img src="{{ $product->image }}" alt="natural"></a>
                             <div class="product-title">
-                                <a href="#" class="cl-text-primary text-uppercase">
+                                <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="cl-text-primary text-uppercase">
                                     {!! $product->name  !!}
                                 </a>
                             </div>
-                            <div class="descri  ption text-start">
+                            <div class="description text-start">
                                 {!! $product->content !!}
                             </div>
                             <div class="price">${{ moneyFormat($product->price, false) }}</div>
@@ -152,9 +152,9 @@
                 <div class="row discover-row">
                     @foreach($discover_products as $product)
                         <div class="col-lg-6 col-xl-4 card-product">
-                            <a href="{{route('get.product.productDetail',$product->id)}}"><img src="{{ $product->image }}" alt="natural"></a>
+                            <a href="{{route('get.product.productDetail',$product->key_slug)}}"><img src="{{ $product->image }}" alt="natural"></a>
                             <div class="product-title">
-                                <a href="#" class="cl-text-primary fw-normal text-uppercase">
+                                <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="cl-text-primary fw-normal text-uppercase">
                                     {!! $product->name  !!}
                                 </a>
                             </div>
@@ -164,7 +164,7 @@
                     @endforeach
                 </div>
             </div>
-            <button class="btn btn-outline-main-light btn-shop-more">SHOP MORE</button>
+            <a href="{{ route('get.product.productListing') }}" class="btn btn-outline-main-light btn-shop-more">SHOP MORE</a>
         </section>
         <section id="feedback" class="feedback">
             <h1 class="cl-text-blue text-center feedback-title">CUSTOMERS FEEDBACK</h1>

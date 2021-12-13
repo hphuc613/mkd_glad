@@ -5,10 +5,11 @@ namespace Modules\Feedback\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Base\Models\BaseModel;
 use Modules\Member\Models\Member;
 use Modules\Product\Models\Product;
 
-class Feedback extends Model {
+class Feedback extends BaseModel {
     protected $table = "feedback";
 
     protected $primaryKey = "id";
@@ -33,23 +34,6 @@ class Feedback extends Model {
         }
 
         return $query;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStar() {
-        $html = "";
-        $vote = $this->vote;
-        for ($i = 1; $i <= $vote; $i++) {
-            $html .= '<i class="fa fa-star text-warning" style="font-size: 20px;"></i>';
-        }
-
-        for ($i = 1; $i <= 5 - $vote; $i++) {
-            $html .= '<i class="fa fa-star-o text-warning" style="font-size: 20px;"></i>';
-        }
-
-        return $html;
     }
 
     /**
