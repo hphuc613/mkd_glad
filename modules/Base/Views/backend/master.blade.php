@@ -86,7 +86,7 @@
 
     if($('#ckeditor').length > 0){
         var editor = CKEDITOR.replace( 'ckeditor' , {
-            language: "{{ App::getLocale() }}".toLowerCase(),
+            language: $('html').attr('lang'),
             height: 600
         });
     }

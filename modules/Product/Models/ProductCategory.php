@@ -4,6 +4,7 @@ namespace Modules\Product\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Modules\Base\Models\BaseModel;
 
 class ProductCategory extends BaseModel {
@@ -24,6 +25,10 @@ class ProductCategory extends BaseModel {
 
         static::deleting(function ($cate) {
             $cate->posts->each->delete();
+        });
+
+        static::saving(function ($cate) {
+            $cate->key_slug = Str::random(12);
         });
     }
 

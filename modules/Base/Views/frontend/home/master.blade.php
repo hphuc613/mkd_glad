@@ -15,13 +15,13 @@
 </head>
 <body>
 
-@include('Base::frontend.home.header')
+@include('Base::frontend.header.header_home')
 <div class="main-wrap">
     @yield('content')
 </div>
 @include('Base::frontend.modal_group')
 
-@include('Base::frontend.home.footer')
+@include('Base::frontend.footer')
 
 <!-- Modal Point -->
 <div id="title-reward" class="title-reward">

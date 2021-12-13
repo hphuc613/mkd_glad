@@ -15,7 +15,7 @@
 </head>
 <body>
 
-@include('Base::frontend.header')
+@include('Base::frontend.header.header')
 <div class="main-wrap">
     @yield('content')
 </div>

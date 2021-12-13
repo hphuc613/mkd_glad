@@ -38,8 +38,6 @@ class AuthMemberController extends Controller {
             $credentials               = $request->only('email', 'password');
             $credentials['deleted_at'] = null;
 
-            dd($credentials);
-
             if ($this->auth->attempt($credentials, $request->has('remember_me'))) {
                 if ($this->auth->user()->status != Status::STATUS_ACTIVE) {
                     $request->session()->flash('danger',

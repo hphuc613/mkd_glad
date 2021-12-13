@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 @font-face {
   src: url("../fonts/Analogue.otf");
@@ -625,6 +626,16 @@ header .user-dropdown .dropdown-menu a {
 }
 header .user-dropdown .dropdown-menu .dropdown-item:active {
   background-color: #E7E7E7;
+}
+header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover .dropdown-menu {
+  position: absolute;
+  margin: 0;
+  top: 0 !important;
+  right: 3rem;
+  transform: translate(-100px, 4px);
+}
+header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdown-menu {
+  display: block;
 }
 @media (max-width: 739px) {
   header .user-dropdown .dropdown-menu {
@@ -2228,7 +2239,7 @@ header .user-dropdown .dropdown-menu .dropdown-item:active {
 }
 .payment .form .form-floating.phone-input:after {
   position: absolute;
-  content: "\f059";
+  content: "";
   font-family: "Font Awesome 5 Free", serif;
   top: 20%;
   right: 1rem;
