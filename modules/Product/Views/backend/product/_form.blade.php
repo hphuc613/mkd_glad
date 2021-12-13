@@ -60,9 +60,19 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
-                <label for="capacity" class="title">{{ trans('Price') }}</label>
-                <input type="number" name="price" class="form-control" value="{{ $data->price ?? NULL }}">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="capacity" class="title">{{ trans('Price') }}</label>
+                        <input type="number" name="price" class="form-control" value="{{ $data->price ?? NULL }}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="discount" class="title">{{ trans('Discount') }}</label>
+                        <input type="number" name="discount" class="form-control" value="{{ $data->discount ?? NULL }}">
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="stock_in" class="title">{{ trans('Stock In') }}</label>

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Modules\Base\Models\BaseModel;
 use Modules\Feedback\Models\Feedback;
 use Modules\Tag\Models\Tag;
@@ -32,6 +33,7 @@ class Product extends BaseModel {
 
         $author_id = Auth::guard('admin')->user()->id ?? 1;
         static::creating(function ($model) use ($author_id) {
+            $model->key_slug = Str::random(2) . $model->sku . Str::random(2) . time();
             $model->created_by = $author_id;
             $model->updated_by = $author_id;
         });

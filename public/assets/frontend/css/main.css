@@ -926,6 +926,8 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 }
 .popular .card-product .description {
   height: 18rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media (max-width: 739px) {
   .popular .card-product .description {
@@ -1476,23 +1478,31 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 }
 .product-list .product-item img {
   width: 100%;
+  height: 18rem;
+  object-fit: cover;
 }
-.product-list .product-item .content, .product-list .product-item a {
+.product-list .product-item .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 6.5rem;
+}
+.product-list .product-item .content a {
   color: #316490;
 }
-.product-list .product-item .content .description, .product-list .product-item a .description {
+.product-list .product-item .content .description {
   font-family: HelveticaNeue-Light, sans-serif;
   margin-bottom: 2.5rem;
 }
-.product-list .product-item .content .title, .product-list .product-item a .title {
+.product-list .product-item .content .description .title {
   font-family: HelveticaNeue-Medium, sans-serif;
   font-weight: 600;
 }
-.product-list .product-item .content .product-price, .product-list .product-item a .product-price {
+.product-list .product-item .content .product-price {
   color: #6C757D;
   font-weight: 300;
 }
-.product-list .product-item .content .product-price .price, .product-list .product-item a .product-price .price {
+.product-list .product-item .content .product-price .price {
   font-family: HelveticaNeue-Bold, sans-serif;
   color: black;
   font-size: 14px;

@@ -24,11 +24,11 @@ class ProductCategory extends BaseModel {
         parent::boot();
 
         static::deleting(function ($cate) {
-            $cate->posts->each->delete();
+            $cate->products->each->delete();
         });
 
         static::saving(function ($cate) {
-            $cate->key_slug = Str::random(12);
+            $cate->key_slug = Str::random(6) . time();
         });
     }
 

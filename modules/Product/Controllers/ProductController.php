@@ -103,7 +103,9 @@ class ProductController extends Controller {
         $product          = Product::query()->find($id);
         $upload_address   = 'Product/' . $product->id . '-' . $request->sku;
         $data['image']    = str_replace($product->sku, $request->sku, $product->image);
-        rename('storage/upload/Product/' . $product->id . '-' . $product->sku, 'storage/upload/'.$upload_address);
+        if (file_exists($product->image)) {
+            rename('storage/upload/Product/' . $product->id . '-' . $product->sku, 'storage/upload/' . $upload_address);
+        }
         if ($request->hasFile('image')) {
             $image = $request->image;
             if (file_exists($product->image)) {
