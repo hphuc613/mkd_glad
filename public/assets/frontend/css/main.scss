@@ -2023,6 +2023,12 @@ header {
     .feedback-list {
         .feedback-item {
             margin-bottom: 3rem;
+
+            img{
+                width: 100%;
+                height: 30rem;
+                object-fit: cover;
+            }
         }
     }
 }

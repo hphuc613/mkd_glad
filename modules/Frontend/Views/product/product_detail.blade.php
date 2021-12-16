@@ -32,19 +32,23 @@
                         </div>
                         <div class="feature">
                             <div class="feature-item d-flex align-items-center">
-                                <img src="{{ asset('storage/upload/Home/lotion-product-detail.svg') }}" alt="{{ asset('storage/upload/Home/lotion-product-detail.svg') }}">
+                                <img src="{{ asset('storage/upload/Home/lotion-product-detail.svg') }}"
+                                     alt="{{ asset('storage/upload/Home/lotion-product-detail.svg') }}">
                                 <div class="text">適合乾性、混合性及敏感性皮膚</div>
                             </div>
                             <div class="feature-item d-flex align-items-center">
-                                <img src="{{ asset('storage/upload/Home/skin-product-detail.svg') }}" alt="{{ asset('storage/upload/Home/skin.svg') }}">
+                                <img src="{{ asset('storage/upload/Home/skin-product-detail.svg') }}"
+                                     alt="{{ asset('storage/upload/Home/skin.svg') }}">
                                 <div class="text">以潔淨成份作護膚標準</div>
                             </div>
                             <div class="feature-item d-flex align-items-center">
-                                <img src="{{ asset('storage/upload/Home/rating-product-detail.svg') }}" alt="{{ asset('storage/upload/Home/rating-product-detail.svg') }}">
+                                <img src="{{ asset('storage/upload/Home/rating-product-detail.svg') }}"
+                                     alt="{{ asset('storage/upload/Home/rating-product-detail.svg') }}">
                                 <div class="text">超過5000位客戶滿意使用效果並回購產品</div>
                             </div>
                             <div class="feature-item d-flex align-items-center">
-                                <img src="{{ asset('storage/upload/Home/ship-product-detail.svg') }}" alt="{{ asset('storage/upload/Home/ship-product-detail.svg') }}">
+                                <img src="{{ asset('storage/upload/Home/ship-product-detail.svg') }}"
+                                     alt="{{ asset('storage/upload/Home/ship-product-detail.svg') }}">
                                 <div class="text">14天內簡易退換貨程序</div>
                             </div>
                         </div>
@@ -108,7 +112,8 @@
                                     <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="title">
                                         {{$product->name ?? ''}}
                                     </a>
-                                    <div class="product-price">from <span class="price">${{$data->price ?? ''}}</span>
+                                    <div class="product-price">from <span
+                                            class="price">${{ moneyFormat($product->price, false) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -116,139 +121,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="container customer-reviews my-5">
-                <div class="title">
-                    <h1 class="cl-text-blue">{{trans('Customer reviews')}}</h1>
-                </div>
-                <div class="vote-star-section row">
-                    <div class="col-md-6">
-                        <div class="row-star d-md-flex">
-                            <div class="col-default">
-                                <div class="vote-star">
-                                    {!! getStar($data->vote, 'frontend-feedback-color') !!}
-                                </div>
-                                <div class="text">{{trans('Base on')." ".count($data->feedback)." ".trans('reviews')}} </div>
-                            </div>
-                            <div class="col-vote">
-                                <div class="star-vote-group">
-                                    <div class="vote-star p-0">
-                                        {!! getStar(5) !!}
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $data->getPercentStar(5) }}"
-                                             aria-valuenow="{{ $data->getPercentStar(5, false) }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <div class="count">
-                                        <span class="vote-ratio">{{ $data->getPercentStar(5) }}</span>
-                                        <span class="vote-quantity">({{ $data->feedback->where('vote', 5)->count() }})</span>
-                                    </div>
-                                </div>
-                                <div class="star-vote-group">
-                                    <div class="vote-star p-0">
-                                        {!! getStar(4) !!}
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $data->getPercentStar(4) }}"
-                                             aria-valuenow="{{ $data->getPercentStar(4, false) }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <div class="count">
-                                        <span class="vote-ratio">{{ $data->getPercentStar(4) }}</span>
-                                        <span class="vote-quantity">({{ $data->feedback->where('vote', 4)->count() }})</span>
-                                    </div>
-                                </div>
-                                <div class="star-vote-group">
-                                    <div class="vote-star p-0">
-                                        {!! getStar(3) !!}
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $data->getPercentStar(3) }}"
-                                             aria-valuenow="{{ $data->getPercentStar(3, true) }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <div class="count">
-                                        <span class="vote-ratio">{{ $data->getPercentStar(3) }}</span>
-                                        <span class="vote-quantity">({{ $data->feedback->where('vote', 3)->count() }})</span>
-                                    </div>
-                                </div>
-                                <div class="star-vote-group">
-                                    <div class="vote-star p-0">
-                                        {!! getStar(2) !!}
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $data->getPercentStar(2) }}"
-                                             aria-valuenow="{{ $data->getPercentStar(2, true) }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <div class="count">
-                                        <span class="vote-ratio">{{ $data->getPercentStar(2) }}</span>
-                                        <span class="vote-quantity">({{ $data->feedback->where('vote', 2)->count() }})</span>
-                                    </div>
-                                </div>
-                                <div class="star-vote-group">
-                                    <div class="vote-star p-0">
-                                        {!! getStar(1) !!}
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $data->getPercentStar(1) }}"
-                                             aria-valuenow="{{ $data->getPercentStar(1, true) }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <div class="count">
-                                        <span class="vote-ratio">{{ $data->getPercentStar(1) }}</span>
-                                        <span class="vote-quantity">({{ $data->feedback->where('vote', 1)->count() }})</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-outline-main-light btn-write-review">{{trans('WRITE A REVIEW')}}</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="sort-order-group">
-                    <label>
-                        <select class="form-control sort-order-select select2">
-                            <option value="PICTURE FIRST">{{trans('PICTURE FIRST')}}</option>
-                            <option value="PICTURE FIRST">{{trans('PICTURE SECOND')}}</option>
-                        </select>
-                    </label>
-                </div>
-                <hr>
-                <div id="feedback-list">
-                    <div class="feedback-list feedback-list-has-image row">
-                        @foreach($feedback as $item)
-                            <div class="col-md-4">
-                                <div class="feedback-item card">
-                                    @if(!empty($item->image))
-                                        <img src="{{asset($item->image ?? '')}}" class="card-img-top"
-                                             alt="{{$item->image ?? ''}}">
-                                    @endif
-                                    <div class="card-body">
-                                        <div class="card-info mb-5">
-                                            <h6 class="fw-bold m-0">{{$item->member->name ?? '' . $item->member->last_name ?? ''}}</h6>
-                                            <div
-                                                class="date">{{formatDate(strtotime($item->updated_at ?? ''),'d/m/Y')}}</div>
-                                            <div class="vote-star vote-default p-0">
-
-                                                {!! getStar($data->vote, 'frontend-feedback-color') !!} {{-- Don't use default color --}}
-                                            </div>
-                                        </div>
-                                        <div class="card-text">
-                                            <?= $item->content ?? '' ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        <div class="col-md-12">
-                            <div class="d-flex justify-content-center">
-                                {{ $feedback->withQueryString()->render('vendor/pagination/feedback') }}
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
+            @include('Frontend::product.feedback')
         </section>
         <div class="container">
             <hr>
@@ -260,6 +133,7 @@
             <div class="container product-recently-see text-center py-5 mb-5">
                 <div class="product-list row">
                     @foreach($product_recentlies as $product)
+                        @continue($product->id == $data->id)
                         <div class="col-md-3">
                             <div class="product-item">
                                 <a href="{{route('get.product.productDetail',$product->key_slug)}}">
@@ -281,7 +155,8 @@
             <div class="return-product-text">
                 <div class="container">
                     <div class="d-flex">
-                        <img src="{{ asset('storage/upload/Home/offer-month-bundle-return-product.svg') }}" width="155" alt="">
+                        <img src="{{ asset('storage/upload/Home/offer-month-bundle-return-product.svg') }}" width="155"
+                             alt="">
                         <div class="text">如果您不滿意或遇到敏感問題，可於14天內寄回給我們。</div>
                     </div>
                 </div>
@@ -299,7 +174,8 @@
                                     <input type="text" class="form-control border-0 rounded-0" placeholder="輸入你的電郵地址">
                                 </div>
                                 <div class="py-2">
-                                    <button class="btn btn-light border-0 rounded-0 w-100 fw-bold">{{trans('Send')}}</button>
+                                    <button
+                                        class="btn btn-light border-0 rounded-0 w-100 fw-bold">{{trans('Send')}}</button>
                                 </div>
                             </form>
                         </div>

@@ -74,7 +74,7 @@ class Product extends BaseModel {
         $data = 0;
         if ($this->feedback->count() > 0) {
             $data = $this->feedback->where('vote', $star_qty)->count();
-            $data = ($data / $this->feedback->count()) * 100;
+            $data = round(($data / $this->feedback->count()) * 100);
         }
 
         if ($percent) {

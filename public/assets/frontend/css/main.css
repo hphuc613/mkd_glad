@@ -1788,6 +1788,11 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 .customer-reviews .feedback-list .feedback-item {
   margin-bottom: 3rem;
 }
+.customer-reviews .feedback-list .feedback-item img {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+}
 
 .sort-order-group {
   display: flex;

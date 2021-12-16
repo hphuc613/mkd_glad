@@ -22,11 +22,16 @@
                         @include('Base::frontend.header.menu')
                     </nav>
                     <div id="search" class="search">
-                        <div class="input-group border border-2 border-white flex-nowrap">
-                            <input type="text" name="search" placeholder="Search">
-                            <span class="input-group-text"><img src="{{ asset('storage/upload/Home/search.svg') }}"
-                                                                alt="Search"></span>
-                        </div>
+                        <form action="{{ route('get.product.productListing') }}" method="get">
+                            <div class="input-group border border-2 border-white flex-nowrap">
+                                <input type="text" name="key_search" placeholder="{{ trans('Search') }}"
+                                       value="{{ request()->key_search ?? null }}">
+                                <button type="submit" class="input-group-text">
+                                    <img src="{{ asset('storage/upload/Home/search.svg') }}"
+                                         alt="{{ trans('Search') }}}">
+                                </button>
+                            </div>
+                        </form>
                         <div class="group-icon d-md-flex d-none">
                             @include('Base::frontend.header.user_icon')
                             <div class="position-relative">

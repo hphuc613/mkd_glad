@@ -204,7 +204,6 @@
     "Base on": "基於",
     "reviews": "評論",
     "WRITE A REVIEW": "寫評論",
-    "PICTURE FIRST": "圖片第一",
     "PICTURE SECOND": "圖二",
     "RECENTLY VIEWED PRODUCTS": "最近瀏覽過的產品",
     "If you are not satisfied or encounter sensitive issues, you can send it back to us within 14 days.": "如果您不滿意或遇到敏感問題，可於14天內寄回給我們。",
@@ -214,5 +213,9 @@
     "Create new account": "建立新帳户",
     "Last name": "姓氏",
     "Email address": "電郵地址",
-    "SHOP NOW": "現在去購物"
+    "SHOP NOW": "現在去購物",
+    "Choose File...": "选择文件...",
+    "PICTURE FIRST": "图片第一",
+    "HIGH NUMBER OF STARS": "大量的星星",
+    "TIME": "时间"
 }

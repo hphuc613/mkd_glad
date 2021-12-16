@@ -2,30 +2,33 @@
     <nav>
         <ul class="pagination">
             {{-- Previous Page Link --}}
-            <li class="page-item">
-                @if ($paginator->onFirstPage())
-                    <a href="javascript:" class="page-link disabled">
+            @if ($paginator->onFirstPage())
+                <li class="page-item disabled">
+                    <div class="page-link">
                         <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
-                    </a>
-                @else
+                    </div>
+                </li>
+            @else
+                <li class="page-item">
                     <a class="page-link" href="{{ $paginator->previousPageUrl() }}" aria-label="Previous">
                         <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
                     </a>
-                @endif
-            </li>
+                </li>
+            @endif
             {{-- Pagination Elements --}}
             @foreach ($elements as $element)
                 {{-- "Three Dots" Separator --}}
                 @if (is_string($element))
-                    <li class="page-item disabled" aria-disabled="true"><a class="page-link" href="#"><span>{{ $element }}</span></a></li>
+                    <li class="page-item disabled" aria-disabled="true">
+                        <a class="page-link" href="#"><span>{{ $element }}</span></a>
+                    </li>
                 @endif
 
                 {{-- Array Of Links --}}
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
-
-                            <li class="page-item active">
+                            <li class="page-item disabled active">
                                 <a class="page-link" href="javascript:"><span>{{ $page }}</span></a>
                             </li>
                         @else
@@ -43,10 +46,10 @@
                     </a>
                 </li>
             @else
-                <li class="page-item">
-                    <a class="page-link disabled" href="javascript:">
+                <li class="page-item disabled">
+                    <div class="page-link">
                         <span aria-hidden="true"><i class="fas fa-angle-double-right"></i></span>
-                    </a>
+                    </div>
                 </li>
             @endif
         </ul>

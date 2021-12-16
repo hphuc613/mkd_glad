@@ -2,23 +2,41 @@
 
 namespace Modules\Frontend\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Modules\Product\Models\Product as BaseProduct;
 
 class Product extends BaseProduct {
+
     /**
-     * @param null $product_id
-     * @param $product_ids_recently
-     * @return Builder|Builder[]|Collection
+     * @param $data
      */
-    public static function getProductRecently($product_id = null, $product_ids_recently) {
-        $data = self::query()
-                    ->whereIn("id", $product_ids_recently);
-        if (!empty($product_id)) {
-            $data = $data->where('id', '<>', $product_id);
+    public static function storeProductRecently($data) {
+        $session          = request()->session();
+        $recently_session = ($session->has('product_recently')) ? $session->get('product_recently') : [];
+
+        if (($key = self::checkProductRecentlyById($data->id, $recently_session)) !== false) {
+            unset($recently_session[$key]);
         }
-        $data = $data->limit(4)->get();
-        return $data;
+        $recently_session[time()] = self::query()->find($data->id);
+        krsort($recently_session);
+        if (count($recently_session) > 4) {
+            array_pop($recently_session);
+        }
+        $session->put('product_recently', $recently_session);
     }
+
+    /**
+     * @param $id
+     * @param $recently_session
+     * @return bool
+     */
+    static public function checkProductRecentlyById($id, $recently_session) {
+        foreach ($recently_session as $key => $item) {
+            if ($id == $item->id) {
+                return $key;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -98,17 +98,19 @@ class ProductController extends Controller {
     public function postUpdate(ProductRequest $request, $id) {
         $data = $request->all();
         unset($data['tags']);
-        $tag_ids          = Tag::createTags($request->tags);
-        $data['capacity'] = !empty($request->capacity) ? json_encode(array_combine($request->capacity, $request->capacity)) : "[]";
-        $product          = Product::query()->find($id);
-        $upload_address   = 'Product/' . $product->id . '-' . $request->sku;
-        $data['image']    = str_replace($product->sku, $request->sku, $product->image);
-        if (file_exists($product->image)) {
-            rename('storage/upload/Product/' . $product->id . '-' . $product->sku, 'storage/upload/' . $upload_address);
+        $tag_ids            = Tag::createTags($request->tags);
+        $data['capacity']   = !empty($request->capacity) ? json_encode(array_combine($request->capacity, $request->capacity)) : "[]";
+        $product            = Product::query()->find($id);
+        $data['image']      = str_replace($product->sku, $request->sku, $product->image);
+
+        $upload_address     = 'Product/' . $product->id . '-' . $request->sku;
+        $upload_address_old = 'Product/' . $product->id . '-' . $product->sku;
+        if ($upload_address !== $upload_address_old && file_exists($upload_address_old)) {
+            rename('storage/upload/' . $upload_address_old, 'storage/upload/' . $upload_address); //Change file name when update sku
         }
         if ($request->hasFile('image')) {
             $image = $request->image;
-            if (file_exists($product->image)) {
+            if (file_exists('storage/upload/' . $upload_address_old)) {
                 unlink($product->image);
             }
             $image_name    = time() . '_' . $image->getClientOriginalName();

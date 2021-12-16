@@ -2,16 +2,23 @@
 
 namespace Modules\Frontend\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\AppHelpers\Helper;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Base\Controllers\BaseController;
+use Modules\Feedback\Models\Feedback;
 use Modules\Frontend\Models\Product;
 
 class ProductController extends BaseController {
+    /**
+     * @var Guard|StatefulGuard
+     */
+    private $auth;
 
     /**
      * Create a new authentication controller instance.
@@ -31,10 +38,7 @@ class ProductController extends BaseController {
         $data               = Product::query()->with('category');
         $product_recentlies = [];
         if ($request->session()->has('product_recently')) {
-            $product_recently = $request->session()->get('product_recently');
-
-            $product_recentlies = Product::getProductRecently(null, $product_recently);
-
+            $product_recentlies = $request->session()->get('product_recently');
         }
 
         if (isset($request->cate)) {
@@ -42,6 +46,12 @@ class ProductController extends BaseController {
                 return $qc->where('key_slug', $request->cate);
             });
         }
+
+        if (isset($request->key_search)) {
+            $data = $data->where('name', 'LIKE', '%'. $request->key_search. '%');
+        }
+
+
 
         $data = $data->paginate(12);
 
@@ -54,30 +64,56 @@ class ProductController extends BaseController {
      * @return Factory|View|RedirectResponse
      */
     public function productDetail(Request $request, $key_slug) {
-        $data = Product::query()->with(['feedback', 'category'])->where('key_slug', $key_slug)->first();
-
+        $data            = Product::query()->with(['feedback', 'category'])->where('key_slug', $key_slug)->first();
+        $feedback_filter = Feedback::getFilter();
         if (!empty($data)) {
-            $product_recentlies = [];
-            if ($request->session()->has('product_recently')) {
-                $product_recently   = $request->session()->get('product_recently');
-                $product_recentlies = Product::getProductRecently($data->id, $product_recently);
-                if (!in_array($data->id, $product_recently)) {
-                    $product_recently[] = $data->id;
-                    $request->session()->put('product_recently', $product_recently);
+            Product::storeProductRecently($data);
+            $product_recentlies = $request->session()->get('product_recently');
+            $capacities         = json_decode($data->capacity, 1 ?? []);
+            $product_relate     = $data->category->products->where('id', '<>', $data->id)->take(4);
+
+            $feedback = $data->feedback;
+            if (isset($request->feedback_filter)) {
+                if ($request->feedback_filter === Feedback::HIGH_STARS) {
+                    $feedback = $feedback->sortByDesc('vote');
+                } elseif($request->feedback_filter === Feedback::TIME) {
+                    $feedback = $feedback->sortByDesc('created_at');
+                }else{
+                    $feedback = $feedback->sortByDesc('image');
                 }
             } else {
-                $request->session()->put('product_recently', [$data->id]);
+                $feedback = $feedback->sortByDesc('image');
             }
+            $feedback = $this->paginate($feedback, 9);
 
-            $capacities     = json_decode($data->capacity, 1 ?? []);
-            $product_relate = Product::query()
-                                     ->where('cate_id', $data->cate_id)
-                                     ->where('id', '<>', $data->id)
-                                     ->limit(4)
-                                     ->get();
-            $feedback       = $this->paginate($data->feedback, 1);
-            return view("Frontend::product.product_detail", compact('data', 'capacities', 'product_relate', 'feedback', 'product_recentlies'));
+            return view("Frontend::product.product_detail", compact('data', 'capacities', 'product_relate', 'product_recentlies', 'feedback', 'feedback_filter'));
         }
         return redirect()->back();
+    }
+
+    /**
+     * @param Request $request
+     * @param $key_slug
+     * @return string
+     */
+    public function feedback(Request $request, $key_slug) {
+        if ($request->post()) {
+            $input   = $request->all();
+            $product = Product::query()->where('key_slug', $key_slug)->first();
+            $data    = new Feedback();
+            if ($request->hasFile('image')) {
+                $image          = $request->image;
+                $image_name     = $this->auth->user()->email . '_' . time() . '.' . $image->getClientOriginalExtension();
+                $input['image'] = Helper::storageFile($image, $image_name, 'Feedback');
+            }
+            $input['product_id'] = $product->id;
+            $input['member_id']  = $this->auth->id();
+
+            $data->create($input);
+
+            return redirect()->route('get.product.productDetail', [$product->key_slug,'feedback_filter' => Feedback::TIME]);
+        }
+
+        return view('Frontend::product._form_feedback')->render();
     }
 }

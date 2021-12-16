@@ -22,11 +22,16 @@
                                 src="{{ asset('storage/upload/Home/logo-primary.svg') }}" alt="Logo"></a>
                     </div>
                     <div id="search" class="search search-primary">
-                        <div class="input-group input-search">
-                            <input type="text" name="search" placeholder="Search">
-                            <span class="input-group-text"><img src="{{ asset('storage/upload/Home/search-blue.svg') }}"
-                                                                alt="Search"></span>
-                        </div>
+                        <form action="{{ route('get.product.productListing') }}" method="get">
+                            <div class="input-group input-search">
+                                <input type="text" name="key_search" placeholder="{{ trans('Search') }}"
+                                       value="{{ request()->key_search ?? null }}">
+                                <button type="submit" class="input-group-text">
+                                    <img src="{{ asset('storage/upload/Home/search-blue.svg') }}"
+                                         alt="{{ trans('Search') }}">
+                                </button>
+                            </div>
+                        </form>
                         <div class="group-icon d-md-flex d-none">
                             @include('Base::frontend.header.user_icon')
                             <div class="position-relative">

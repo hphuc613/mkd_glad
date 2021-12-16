@@ -3,7 +3,6 @@
 namespace Modules\Feedback\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Base\Models\BaseModel;
 use Modules\Member\Models\Member;
@@ -17,6 +16,32 @@ class Feedback extends BaseModel {
     protected $guarded = [];
 
     public $timestamps = true;
+
+    const PICTURE_FIRST = 'PICTURE_FIRST';
+    const HIGH_STARS    = 'HIGH_STARS';
+    const TIME          = 'TIME';
+
+    protected static function boot() {
+        parent::boot();
+
+        static::created(function ($model) {
+            $product_feedback     = $model->product->feedback;
+            $model->product->vote = round($product_feedback->sum('vote') / (($product_feedback->count() == 0) ? 1
+                    : $product_feedback->count()));
+            $model->product->save();
+        });
+    }
+
+    /**
+     * @return array
+     */
+    public static function getFilter() {
+        return [
+            self::PICTURE_FIRST => trans('PICTURE FIRST'),
+            self::HIGH_STARS    => trans('HIGH NUMBER OF STARS'),
+            self::TIME          => trans('TIME'),
+        ];
+    }
 
     /**
      * @param $filter

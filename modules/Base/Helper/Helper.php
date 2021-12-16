@@ -202,19 +202,20 @@ if (!function_exists('getStar')) {
     /**
      * @param $vote
      * @param null $color
+     * @param int $font_size
      * @return string
      */
-    function getStar($vote, $color = null) {
+    function getStar($vote, $color = null, $font_size = 20) {
         if (empty($color)) {
             $color = "text-warning";
         }
         $html = "";
         for ($i = 1; $i <= $vote; $i++) {
-            $html .= '<i class="fa fa-star ' . $color . '" style="font-size: 20px;"></i>';
+            $html .= '<i class="fa fa-star ' . $color . '" style="font-size: ' . $font_size . 'px;"></i>';
         }
 
         for ($i = 1; $i <= 5 - $vote; $i++) {
-            $html .= '<i class="far fa-star ' . $color . '" style="font-size: 20px;"></i>';
+            $html .= '<i class="far fa-star ' . $color . '" style="font-size: ' . $font_size . 'px;"></i>';
         }
         return $html;
     }

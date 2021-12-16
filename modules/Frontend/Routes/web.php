@@ -14,5 +14,9 @@ Route::get('contact-us', 'PageController@getPage')->name('get.page.contactUs');
 
 Route::get('past-participating', 'PageController@participate')->name('get.page.participate');
 
-Route::get('product', 'ProductController@productListing')->name('get.product.productListing');
-Route::get('product/{id}', 'ProductController@productDetail')->name('get.product.productDetail');
+Route::prefix('product')->group(function () {
+    Route::get('', 'ProductController@productListing')->name('get.product.productListing');
+    Route::get('detail/{slug}', 'ProductController@productDetail')->name('get.product.productDetail');
+    Route::get('feedback/{slug}', 'ProductController@feedback')->name('get.product.feedback');
+    Route::post('feedback/{slug}', 'ProductController@feedback')->name('post.product.feedback');
+});

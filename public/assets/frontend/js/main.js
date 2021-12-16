@@ -15,7 +15,7 @@ $(document).ready(function () {
     });
     $(window).click(function (event) {
         var clickover = $(event.target);
-        if($('#navbar-scroll-content').hasClass('show') && !clickover.hasClass("navbar-toggler")){
+        if ($('#navbar-scroll-content').hasClass('show') && !clickover.hasClass("navbar-toggler")) {
             $('#navbar-scroll-btn').click();
         }
     });
@@ -73,4 +73,29 @@ $(document).ready(function () {
 
 
     $('.select2').select2();
+
+
+    /**
+     * Ajax Paginate
+     *
+     * Listing has ajax-listing class
+     * Paginate much has data-listing-id => id of listing
+     * Paginate much has ajax-paginate class
+     *
+     *
+     * */
+    $(document).on('click', 'a.page-link', function (e) {
+        var paginate = $(this).parents(".ajax-paginate");
+        if (paginate.length > 0) {
+            e.preventDefault();
+            var listing_id = paginate.attr('data-listing-id');
+            $.ajax({
+                url: $(this).attr("href"),
+                type: "get"
+            }).done(function (response) {
+                paginate.html($(response).find("[data-listing-id='"+listing_id+"']").html());
+                $('#'+ listing_id).html($(response).find('#'+ listing_id).html());
+            });
+        }
+    });
 });
