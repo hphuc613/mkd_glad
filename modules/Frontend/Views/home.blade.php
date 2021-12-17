@@ -10,9 +10,9 @@
                         <div class="card-img-overlay d-flex align-items-end">
                             <div class="w-100 text-center">
                                 <h3 class="text-white">金盞花修護乳霜</h3>
-                                <button class="btn btn-main btn-product">
+                                <a href="{{ route('get.product.productListing') }}" class="btn btn-main btn-product">
                                     SHOP NOW
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -23,9 +23,9 @@
                         <div class="card-img-overlay d-flex align-items-end">
                             <div class="w-100 text-center">
                                 <h3 class="text-white">瑰麗亮肌煥彩護療霜</h3>
-                                <button class="btn btn-main btn-product">
+                                <a href="{{ route('get.product.productListing') }}" class="btn btn-main btn-product">
                                     SHOP NOW
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -36,9 +36,9 @@
                         <div class="card-img-overlay d-flex align-items-end">
                             <div class="w-100 text-center">
                                 <h3 class="text-white">薰衣草萬用膏</h3>
-                                <button class="btn btn-main btn-product">
+                                <a href="{{ route('get.product.productListing') }}" class="btn btn-main btn-product">
                                     SHOP NOW
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -49,9 +49,9 @@
                         <div class="card-img-overlay d-flex align-items-end">
                             <div class="w-100 text-center">
                                 <h3 class="text-white">月見草舒敏乳霜</h3>
-                                <button class="btn btn-main btn-product">
+                                <a href="{{ route('get.product.productListing') }}" class="btn btn-main btn-product">
                                     SHOP NOW
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -115,9 +115,9 @@
                             廣環保及天然有機護膚品對地球環境生態以及對我們肌膚健康的好處！本
                             品牌宗旨誓要致力推廣環保及天然有機護膚品對地球環境生態</p>
                         <img class="w-100" src="{{ asset('storage/upload/Home/home_story.svg') }}" alt="story">
-                        <button class="btn btn-main btn-learn-more">
+                        <a href="{{ route('get.page.aboutUs') }}" class="btn btn-main btn-learn-more">
                             LEARN MORE
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

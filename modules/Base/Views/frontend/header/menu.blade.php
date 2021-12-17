@@ -18,6 +18,7 @@
             @foreach($product_cates as $cate)
                 <li class="dropdown-item"><a href="{{ route('get.product.productListing', [ 'cate' => $cate->key_slug]) }}">{{ $cate->name }}</a></li>
             @endforeach
+            <li class="dropdown-item"><a href="{{ route('get.product.productListing', [ 'cate' => "best-seller"]) }}">{{ trans('Best Seller') }}</a></li>
         </ul>
     </li>
     <li class="nav-item list-unstyled"><a href="{{route('get.page.contactUs')}}" class="nav-link">聯絡我們</a></li>

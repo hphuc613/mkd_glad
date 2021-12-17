@@ -11,6 +11,7 @@ Route::get('our-mission', 'PageController@getPage')->name('get.page.ourMission')
 Route::get('shipping-information', 'PageController@getPage')->name('get.page.shippingInformation');
 Route::get('common-problem', 'PageController@getPage')->name('get.page.commonProblem');
 Route::get('contact-us', 'PageController@getPage')->name('get.page.contactUs');
+Route::get('order-teaching', 'PageController@getPage')->name('get.page.orderTeaching');
 
 Route::get('past-participating', 'PageController@participate')->name('get.page.participate');
 

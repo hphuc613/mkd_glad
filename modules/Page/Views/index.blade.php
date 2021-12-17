@@ -95,11 +95,14 @@
                                 <td>{{$key++}}</td>
                                 <td>{{ trans($item->name) }}</td>
                                 <td class="image-box">
-                                    <div class="image-item image-in-listing">
-                                        <a href="{{ asset($item->image) }}" target="">
-                                            <img src="{{ asset($item->image) }}" width="120" alt="{{ $item->title }}">
-                                        </a>
-                                    </div>
+                                    @if(!empty($item->image))
+                                        <div class="image-item image-in-listing">
+                                            <a href="{{ asset($item->image) }}" target="">
+                                                <img src="{{ asset($item->image) }}" width="120"
+                                                     alt="{{ $item->title }}">
+                                            </a>
+                                        </div>
+                                    @endif
                                 </td>
                                 <td>{{ $page_list[$item->page_id] }}</td>
                                 <?php
@@ -109,7 +112,8 @@
                                     $color = 'text-success';
                                 }
                                 ?>
-                                <td><b class="{{$color}}">{{ $status }}</b></td>                                <td>
+                                <td><b class="{{$color}}">{{ $status }}</b></td>
+                                <td>
                                     @if(isset($item->author))
                                         <a href="{{ route('get.user.update', $item->created_by) }}">{{ $item->author->name }}</a>
                                     @else

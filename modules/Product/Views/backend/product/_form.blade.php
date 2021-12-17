@@ -113,6 +113,24 @@
                 </div>
             @endif
         </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="title">{{ trans('What is it?') }}</label>
+                <textarea name="what_is_it" class="form-control" rows="6">{{ $data->what_is_it ?? NULL }}</textarea>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="title">{{ trans('Benefit') }}</label>
+                <textarea name="benefit" class="form-control" rows="6">{{ $data->benefit ?? NULL }}</textarea>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="title">{{ trans('Ingredients') }}</label>
+                <textarea name="ingredients" class="form-control" rows="6">{{ $data->ingredients ?? NULL }}</textarea>
+            </div>
+        </div>
     </div>
     <div class="input-group mt-5">
         <button type="submit" class="btn btn-info mr-2">{{ trans('Save') }}</button>

@@ -10,9 +10,11 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Modules\Base\Controllers\BaseController;
 use Modules\Feedback\Models\Feedback;
 use Modules\Frontend\Models\Product;
+use Modules\Order\Models\OrderDetail;
 
 class ProductController extends BaseController {
     /**
@@ -42,15 +44,25 @@ class ProductController extends BaseController {
         }
 
         if (isset($request->cate)) {
-            $data = $data->whereHas('category', function ($qc) use ($request) {
-                return $qc->where('key_slug', $request->cate);
-            });
+            if ($request->cate === "best-seller") {
+                $ids = OrderDetail::query()
+                                  ->select('product_id', DB::raw('SUM(quantity)  AS sum_qty'))
+                                  ->groupBy('product_id')
+                                  ->orderBy('sum_qty', 'desc')
+                                  ->limit(8)
+                                  ->pluck('product_id')->toArray();
+
+                $data = $data->whereIn('id', $ids);
+            } else {
+                $data = $data->whereHas('category', function ($qc) use ($request) {
+                    return $qc->where('key_slug', $request->cate);
+                });
+            }
         }
 
         if (isset($request->key_search)) {
-            $data = $data->where('name', 'LIKE', '%'. $request->key_search. '%');
+            $data = $data->where('name', 'LIKE', '%' . $request->key_search . '%');
         }
-
 
 
         $data = $data->paginate(12);
@@ -76,9 +88,9 @@ class ProductController extends BaseController {
             if (isset($request->feedback_filter)) {
                 if ($request->feedback_filter === Feedback::HIGH_STARS) {
                     $feedback = $feedback->sortByDesc('vote');
-                } elseif($request->feedback_filter === Feedback::TIME) {
+                } elseif ($request->feedback_filter === Feedback::TIME) {
                     $feedback = $feedback->sortByDesc('created_at');
-                }else{
+                } else {
                     $feedback = $feedback->sortByDesc('image');
                 }
             } else {
@@ -111,7 +123,7 @@ class ProductController extends BaseController {
 
             $data->create($input);
 
-            return redirect()->route('get.product.productDetail', [$product->key_slug,'feedback_filter' => Feedback::TIME]);
+            return redirect()->route('get.product.productDetail', [$product->key_slug, 'feedback_filter' => Feedback::TIME]);
         }
 
         return view('Frontend::product._form_feedback')->render();

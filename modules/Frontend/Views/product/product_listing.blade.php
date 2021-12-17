@@ -1,19 +1,26 @@
 @extends("Base::frontend.master")
-
+<?php
+    $title =  trans('All Items');
+    if (isset(request()->cate)){
+        $title = $data->first()->category->name;
+        if(request()->cate === "best-seller"){
+            $title = trans('Best Seller');
+        }
+    }
+?>
 @section("content")
     <div class="container pt-3">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active"
-                    aria-current="page">@if(isset(request()->cate)) {{ $data->first()->category->name }} @else All
-                    Items @endif</li>
+                    aria-current="page"> {{ $title }} </li>
             </ol>
         </nav>
     </div>
     <section id="all-item" class="all-item">
         <div class="container mb-5 title">
-            <h1 class="cl-text-blue">All Items</h1>
+            <h1 class="cl-text-blue">{{ $title }}</h1>
         </div>
         <div class="container mb-5">
             <div id="product-list" class="product-list row">
@@ -55,7 +62,7 @@
             </div>
             <hr class="mb-5">
             <div class="product-recently-see py-5">
-                <h2 class="cl-text-blue">最近瀏覽過的產品</h2>
+                <h2 class="cl-text-blue text-capitalize">{{ trans("Recently viewed products") }}</h2>
                 <div class="product-list py-5 row">
                     @foreach($product_recentlies as $product)
                         <div class="col-md-3">

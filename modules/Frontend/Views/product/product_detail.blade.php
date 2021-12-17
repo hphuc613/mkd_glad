@@ -60,38 +60,29 @@
                     <ul class="nav nav-pills mb-3" id="description-tab" role="tablist">
                         <li class="nav-item">
                             <a href="#what-is-it" data-bs-toggle="pill" class="nav-link active">
-                                What is it?
+                                {{ trans('What is it?') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#benefit" data-bs-toggle="pill" class="nav-link">
-                                Benefit
+                                {{ trans('Benefit') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#ingredients" data-bs-toggle="pill" class="nav-link">
-                                Ingredients
+                                {{ trans('Ingredients') }}
                             </a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="what-is-it" role="tabpanel">
-                            瑰麗亮肌煥彩護療霜 : 11111111 <br>
-                            坊間玫瑰乳霜大多為白色，若將玫瑰籽油去除顏色和氣味，則大大減低營養價值。 <br>
-                            本產採用的玫瑰籽油保留了原有色澤，所以調製出來的乳霜偏黃，但絕對不令皮膚變黃， <br>
-                            使用後反能提亮膚色。
+                            {!! $data->what_is_it !!}
                         </div>
                         <div class="tab-pane fade" id="benefit" role="tabpanel">
-                            瑰麗亮肌煥彩護療霜 : 22222222 <br>
-                            坊間玫瑰乳霜大多為白色，若將玫瑰籽油去除顏色和氣味，則大大減低營養價值。 <br>
-                            本產採用的玫瑰籽油保留了原有色澤，所以調製出來的乳霜偏黃，但絕對不令皮膚變黃， <br>
-                            使用後反能提亮膚色。
+                            {!! $data->benefit !!}
                         </div>
                         <div class="tab-pane fade" id="ingredients" role="tabpanel">
-                            瑰麗亮肌煥彩護療霜 : 333333333 <br>
-                            坊間玫瑰乳霜大多為白色，若將玫瑰籽油去除顏色和氣味，則大大減低營養價值。 <br>
-                            本產採用的玫瑰籽油保留了原有色澤，所以調製出來的乳霜偏黃，但絕對不令皮膚變黃， <br>
-                            使用後反能提亮膚色。
+                            {!! $data->ingredients !!}
                         </div>
                     </div>
                 </div>

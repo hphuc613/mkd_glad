@@ -42,6 +42,7 @@ class Page extends Model
     const SHIPPING_INFORMATION = 'SHIPPING_INFORMATION';
     const COMMON_PROBLEM = 'COMMON_PROBLEM';
     const CONTACT_US = 'CONTACT_US';
+    const ORDER_TEACHING = 'ORDER_TEACHING';
 
     public static function getPageList()
     {
@@ -51,6 +52,7 @@ class Page extends Model
             self::SHIPPING_INFORMATION => trans('Shipping Information'),
             self::COMMON_PROBLEM => trans('Common Problem'),
             self::CONTACT_US => trans('Contact Us'),
+            self::ORDER_TEACHING => trans('Order Teaching')
         ];
     }
 
