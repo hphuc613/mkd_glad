@@ -21,3 +21,8 @@ Route::prefix('product')->group(function () {
     Route::get('feedback/{slug}', 'ProductController@feedback')->name('get.product.feedback');
     Route::post('feedback/{slug}', 'ProductController@feedback')->name('post.product.feedback');
 });
+
+Route::prefix('post')->group(function () {
+    Route::get('', 'PostController@index')->name('get.post.postListing');
+    Route::get('detail/{id}-{slug}', 'PostController@detail')->name('get.post.postDetail');
+});

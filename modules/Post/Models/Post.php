@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Modules\Tag\Models\Tag;
 use Modules\User\Models\User;
 
@@ -35,6 +36,10 @@ class Post extends Model {
 
         static::updating(function ($model) use ($author_id) {
             $model->updated_by = $author_id;
+        });
+
+        static::saving(function ($model){
+            $model->key_slug   = Str::random(2) . $model->sku . Str::random(2) . time();
         });
     }
 

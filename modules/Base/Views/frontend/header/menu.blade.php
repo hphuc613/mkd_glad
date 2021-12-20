@@ -9,7 +9,7 @@
         </ul>
     </li>
     <li class="nav-item list-unstyled"><a href="offer-month.html" class="nav-link">本⽉優惠</a></li>
-    <li class="nav-item list-unstyled"><a href="#" class="nav-link">最新消息</a></li>
+    <li class="nav-item list-unstyled"><a href="{{ route('get.post.postListing') }}" class="nav-link">最新消息</a></li>
     <li class="nav-item list-unstyled dropdown">
         <a href="{{ route('get.product.productListing', [ 'cate' => null ]) }}" class="nav-link" id="nav-item-dropdown-product">所有產品</a>
         <ul class="dropdown-menu border-0 shadow-036 rounded-0 nav-item-dropdown"

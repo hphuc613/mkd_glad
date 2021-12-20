@@ -132,7 +132,7 @@
             @endforeach
         </div>
         <div class="d-flex justify-content-center ajax-paginate" id="paginate-feedback" data-listing-id="feedback-list">
-            {{ $feedback->withQueryString()->links('vendor.pagination.feedback') }}
+            {{ $feedback->withQueryString()->links('vendor.pagination.frontend') }}
         </div>
     </div>
 
