@@ -22,13 +22,13 @@
                             {{ trans('Chinese') }}(Traditional)
                         </a>
                     </li>
-                    @php($is_cn = session()->get('locale') === 'cn')
+                    {{--@php($is_cn = session()->get('locale') === 'cn')
                     <li class="dropdown-item">
                         <a @if($is_cn) class="text-success" @endif href="{{ route('change_locale','cn') }}">
                             @if($is_cn) <i class="fas fa-check"></i> @endif
                             {{ trans('Chinese') }}(Simplify)
                         </a>
-                    </li>
+                    </li>--}}
                     @php($is_eng = session()->get('locale') === 'en')
                     <li class="dropdown-item">
                         <a @if($is_eng) class="text-success" @endif href="{{ route('change_locale','en') }}">

@@ -55,5 +55,10 @@
 @include('Base::frontend.flash_noti')
 
 @stack('js')
+<script>
+    $(document).ready(function () {
+        addToCart('{{ route('get.cart.addToCart') }}');
+    });
+</script>
 </body>
 </html>

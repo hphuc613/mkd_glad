@@ -34,14 +34,7 @@
                         </form>
                         <div class="group-icon d-md-flex d-none">
                             @include('Base::frontend.header.user_icon')
-                            <div class="position-relative">
-                                <a href="{{ route('get.cart.cartBox') }}" id="cart-icon">
-                                    <img src="{{ asset('storage/upload/Home/shopping_bag.svg') }}" alt="Icon bag">
-                                    <div id="quantity" class="quantity">
-                                        <p class="text-white">0</p>
-                                    </div>
-                                </a>
-                            </div>
+                            @include('Base::frontend.header.cart_icon')
                         </div>
                     </div>
                 </div>

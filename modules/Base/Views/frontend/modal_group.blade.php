@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1 d-flex align-items-center">
-                                <button class="btn btn-main btn-add-to-card rounded w-100">
+                                <button class="btn btn-main btn-add-to-cart rounded w-100" data-product="">
                                     加入購物車
                                 </button>
                             </div>

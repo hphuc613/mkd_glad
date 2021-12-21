@@ -138,7 +138,7 @@
                                 {!! $product->content !!}
                             </div>
                             <div class="price">${{ moneyFormat($product->price, false) }}</div>
-                            <button class="btn btn-outline-main-light btn-add-to-card">ADD TO CART</button>
+                            <button class="btn btn-outline-main-light btn-add-to-cart" data-product="{{ $product->key_slug }}">ADD TO CART</button>
                         </div>
                     @endforeach
                 </div>
@@ -159,7 +159,7 @@
                                 </a>
                             </div>
                             <div class="price">${{ moneyFormat($product->price, false) }}</div>
-                            <button class="btn btn-outline-main-light btn-add-to-card">ADD TO CART</button>
+                            <button class="btn btn-outline-main-light btn-add-to-cart" data-product="{{ $product->key_slug }}">ADD TO CART</button>
                         </div>
                     @endforeach
                 </div>

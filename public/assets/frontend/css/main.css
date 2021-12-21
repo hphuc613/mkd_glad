@@ -420,9 +420,10 @@ header .icon p {
 header .quantity {
   top: -5px;
   left: 50%;
+  padding: 0 3px;
   line-height: 30px;
-  width: 30px;
-  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
   position: absolute !important;
   border-radius: 50% !important;
   background-color: #316490;
@@ -660,7 +661,7 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
   }
 }
 
-.btn-add-to-card {
+.btn-add-to-cart {
   font-size: 14px;
   font-family: HelveticaNeue-Thin, sans-serif;
   padding: 0.8rem 1.5rem;
@@ -903,7 +904,7 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 .popular {
   padding: 0 9rem;
 }
-.popular .btn-add-to-card {
+.popular .btn-add-to-cart {
   font-size: 14px;
   font-family: Helvetica-Light, sans-serif;
   padding: 0.8rem 1.5rem;
@@ -1691,7 +1692,7 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 .product-detail .capacity .select2-container--default .select2-selection--single .select2-selection__arrow {
   display: none;
 }
-.product-detail .btn-add-to-card {
+.product-detail .btn-add-to-cart {
   font-size: 18px;
   padding: 1.3rem 0;
   width: 100%;

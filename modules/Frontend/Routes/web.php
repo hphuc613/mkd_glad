@@ -26,3 +26,8 @@ Route::prefix('post')->group(function () {
     Route::get('', 'PostController@index')->name('get.post.postListing');
     Route::get('detail/{id}-{slug}', 'PostController@detail')->name('get.post.postDetail');
 });
+
+Route::prefix('cart')->group(function () {
+    Route::get('box', 'CartController@cartBox')->name('get.cart.cartBox');
+    Route::get('add', 'CartController@addToCart')->name('get.cart.addToCart');
+});

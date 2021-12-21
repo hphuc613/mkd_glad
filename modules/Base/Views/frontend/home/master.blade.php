@@ -54,8 +54,10 @@
 <script>
     $(document).ready(function () {
         @if(!auth('web')->check())
-            $('#modal-register-email').modal('show');
+        $('#modal-register-email').modal('show');
         @endif
+
+        addToCart('{{ route('get.cart.addToCart') }}');
     });
 </script>
 </body>

@@ -19,6 +19,13 @@ $(document).on('click', 'button.increase', function () {
     value = isNaN(value) ? 0 : value;
     value++;
     input.val(value);
+
+    var cost_price = $(this).parents('.range-quantity').find('.cost-price');
+    var final_price = $(this).parents('.range-quantity').find('.final-price');
+    if (value >= 1){
+        var final_price_value =  parseInt(value) * parseInt(cost_price.html());
+        final_price.html(final_price_value);
+    }
 });
 
 /*** Decrease Quantity ***/
@@ -27,7 +34,35 @@ $(document).on('click', 'button.decrease', function () {
     var value = parseInt(input.val(), 10);
     value = isNaN(value) ? 0 : value;
     value--;
-    if (value > 0){
+    if (value > 0) {
         input.val(value);
     }
+
+    var cost_price = $(this).parents('.range-quantity').find('.cost-price');
+    var final_price = $(this).parents('.range-quantity').find('.final-price');
+    if (value >= 1){
+        var final_price_value =  parseInt(value) * parseInt(cost_price.html());
+        final_price.html(final_price_value);
+    }
 });
+
+/*** Add to cart ***/
+function addToCart(url) {
+    $(document).on('click', '.btn-add-to-cart', function () {
+        var data = $(this).attr('data-product');
+        $.ajax({
+            url: url + '?data=' + data,
+            type: 'get'
+        }).done(function (response) {
+            if (response.status === 200){
+                var quantity = $(document).find('.cart-icon').find('.quantity');
+                quantity.html(parseInt(quantity.html()) + 1);
+
+                $(document).find('.cart-box').removeClass('d-none'); //remove if any
+                $(document).find('.cart-box').addClass('d-none');
+            }else{
+                alert(response.message);
+            }
+        })
+    });
+}

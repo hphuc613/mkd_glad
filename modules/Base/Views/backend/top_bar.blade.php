@@ -91,12 +91,12 @@
                                     class="icon-lang mdi mdi-check text-success"></i> @endif
                                 {{ trans('Chinese') }}(Traditional)
                             </a>
-                            <a class="dropdown-item @if(session()->get('locale') === 'cn') active @endif"
+                            {{--<a class="dropdown-item @if(session()->get('locale') === 'cn') active @endif"
                                href="{{ route('change_locale','cn') }}">
                                 @if(session()->get('locale') === 'cn') <i
                                     class="icon-lang mdi mdi-check text-success"></i> @endif
                                 {{ trans('Chinese') }}(Simplify)
-                            </a>
+                            </a>--}}
                             <a class="dropdown-item @if(session()->get('locale') === 'en') active @endif"
                                href="{{ route('change_locale','en') }}">
                                 @if(session()->get('locale') === 'en') <i

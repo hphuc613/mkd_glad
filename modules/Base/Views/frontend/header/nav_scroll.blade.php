@@ -6,14 +6,7 @@
         <div class="d-flex">
             <div class="input-group d-flex d-md-none align-items-center me-2">
                 @include('Base::frontend.header.user_icon')
-                <div class="position-relative">
-                    <a href="{{ route('get.cart.cartBox') }}" id="cart-icon-mobile">
-                        <img src="{{ asset('storage/upload/Home/shopping_bag.svg') }}" alt="Icon bag">
-                        <div id="quantity" class="quantity">
-                            <p class="text-white">0</p>
-                        </div>
-                    </a>
-                </div>
+                @include('Base::frontend.header.cart_icon')
             </div>
             <button class="navbar-toggler" id="navbar-scroll-btn" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbar-scroll-content" aria-controls="navbar-scroll-content"
@@ -23,6 +16,9 @@
         </div>
         <div class="collapse navbar-collapse justify-content-end px-5 pb-5 pb-sm-0" id="navbar-scroll-content">
             @include('Base::frontend.header.menu')
+        </div>
+        <div class=" d-none d-md-block pe-5">
+            @include('Base::frontend.header.cart_icon')
         </div>
     </nav>
 </nav>

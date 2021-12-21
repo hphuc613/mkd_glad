@@ -420,9 +420,10 @@ header {
     .quantity {
         top: -5px;
         left: 50%;
+        padding: 0 3px;
         line-height: 30px;
-        width: 30px;
-        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
         position: absolute !important;
         border-radius: 50% !important;
         background-color: $blue;
@@ -718,7 +719,7 @@ header {
     }
 }
 
-.btn-add-to-card {
+.btn-add-to-cart {
     font-size: 14px;
     font-family: HelveticaNeue-Thin, sans-serif;
     padding: 0.8rem 1.5rem;
@@ -967,7 +968,7 @@ header {
 .popular {
     padding: 0 9rem;
 
-    .btn-add-to-card {
+    .btn-add-to-cart {
         font-size: 14px;
         font-family: Helvetica-Light, sans-serif;
         padding: 0.8rem 1.5rem;
@@ -1915,7 +1916,7 @@ header {
         }
     }
 
-    .btn-add-to-card {
+    .btn-add-to-cart {
         font-size: 18px;
         padding: 1.3rem 0;
         width: 100%;
