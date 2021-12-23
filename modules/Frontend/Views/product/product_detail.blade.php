@@ -28,7 +28,7 @@
                                     'name' => 'capacity',
                                     'class' => 'select2 form-control capacity']) !!}
                             </div>
-                            <button class="btn btn-sub-blue btn-add-to-cart" data-product="{{ $product->key_slug }}">ADD TO CART</button>
+                            <button class="btn btn-sub-blue btn-add-to-cart" data-product="{{ $data->key_slug }}">ADD TO CART</button>
                         </div>
                         <div class="feature">
                             <div class="feature-item d-flex align-items-center">

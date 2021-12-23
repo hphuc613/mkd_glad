@@ -4,14 +4,14 @@
     <div class="user-module">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="title">{{ trans('Offer') }}</h4>
+                <h4 class="title">{{ trans('Offer of the month') }}</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans('Home') }}</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route("get.offer.list") }}">{{ trans('Offer') }}</a></li>
-                        <li class="breadcrumb-item active">{{ trans('Update Offer') }}</li>
+                        <li class="breadcrumb-item"><a href="{{ route("get.offer.list") }}">{{ trans('Offer of the month') }}</a></li>
+                        <li class="breadcrumb-item active">{{ trans('Update Offer of the month') }}</li>
                     </ol>
                 </div>
             </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">{{ trans('Update Offer') }}</h4>
+                <h4 class="card-title">{{ trans('Update Offer of the month') }}</h4>
             </div>
             <div class="card-body">
                 @include('Offer::form')

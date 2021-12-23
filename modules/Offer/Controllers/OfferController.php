@@ -31,7 +31,7 @@ class OfferController extends Controller
     public function index(Request $request)
     {
         $filter = $request->all();
-        $data = Offer::filter($filter)->orderBy("title")->paginate(20);
+        $data = Offer::filter($filter)->orderBy("name")->paginate(20);
 
         return view("Offer::index", compact("data", "filter"));
     }
@@ -82,8 +82,8 @@ class OfferController extends Controller
     {
         $data = Offer::query()->with('bundles')->find($id);
         $product_ids = $data->bundles->first()->product_ids;
-        $product = Product::getArray(Status::STATUS_ACTIVE,false,Helper::isJson($product_ids, 1));
-        $bundles = $this->getProductList($product_ids);
+        $product = Product::getArray(Status::STATUS_ACTIVE, false, Helper::isJson($product_ids, 1));
+        $bundles = OfferBundle::getProductList($product_ids);
 
         return view("Offer::update", compact('data', 'product', 'bundles'));
     }
@@ -103,7 +103,7 @@ class OfferController extends Controller
             $offer->image = Helper::storageFile($image, time() . '_' . $image->getClientOriginalName(), 'Offer/' . $offer->id);
         }
         $offer->update($data);
-        $offer_bundle = OfferBundle::query()->where('offer_id',$offer->id)->first();
+        $offer_bundle = OfferBundle::query()->where('offer_id', $offer->id)->first();
         $offer_bundle->update([
             'product_ids' => $product_ids,
         ]);
@@ -114,25 +114,12 @@ class OfferController extends Controller
     }
 
     /**
-     * @param $product_ids
-     * @return array
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function getProductList($product_ids)
+    public function delete(Request $request, $id)
     {
-        $data = Helper::isJson($product_ids, 1);
-        $list = [];
-        if ($data) {
-            foreach ($data as $id) {
-                $product = Product::find($id);
-                if (!empty($product)) {
-                    $list[] = $product;
-                }
-            }
-        }
-        return $list;
-    }
-
-    public function delete(Request $request, $id){
         $offer = Offer::query()->find($id);
         $offer->delete();
 

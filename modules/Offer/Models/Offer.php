@@ -25,6 +25,9 @@ class Offer extends Model
         if (isset($filter['name'])) {
             $data = $data->where('name', 'LIKE', '%' . $filter['name'] . '%');
         }
+        if (isset($filter['month'])){
+            $data = $data->where('month', '=', $filter['month']);
+        }
         return $data;
     }
 

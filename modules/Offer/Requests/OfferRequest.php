@@ -24,8 +24,8 @@ class OfferRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'nullable',
-            'content' => 'nullable',
+            'name' => 'nullable',
+            'description' => 'nullable',
             'month' => 'nullable',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ];
@@ -43,8 +43,8 @@ class OfferRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title'   => 'Title',
-            'content'  => 'Content',
+            'name'   => 'Name',
+            'description'  => 'Description',
             'month'  => 'Month',
             'image'   => 'Image'
         ];

@@ -1,6 +1,6 @@
 <?php
 return [
-    'name' => trans('Offer'),
+    'name' => trans('Offer of the month'),
     'route' => route('get.offer.list'),
     'sort' => 6,
     'active'=> TRUE,

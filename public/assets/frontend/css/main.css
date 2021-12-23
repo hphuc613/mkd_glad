@@ -1623,6 +1623,14 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 .offer-month .offer-list .offer-item:last-child {
   border-bottom: none;
 }
+.offer-month .offer-list .offer-item .offer-image {
+  width: 35%;
+}
+@media (max-width: 739px) {
+  .offer-month .offer-list .offer-item .offer-image {
+    width: 100%;
+  }
+}
 .offer-month .offer-list .offer-item .offer-content .content {
   width: 50%;
 }

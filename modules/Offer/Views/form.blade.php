@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-md-9">
             <div class="form-group">
-                <label for="title" class="title">{{ trans('Title') }}</label>
-                <input type="text" class="form-control form-control-line" id="title" name="title"
-                       value="{{ $data->title ?? null }}">
+                <label for="name" class="title">{{ trans('Name') }}</label>
+                <input type="text" class="form-control form-control-line" id="name" name="name"
+                       value="{{ $data->name ?? null }}">
             </div>
         </div>
         <div class="col-md-3">
@@ -18,8 +18,8 @@
         </div>
         <div class="col-md-9">
             <div class="form-group">
-                <label for="ckeditor" class="title">{{ trans('Content') }}</label>
-                <textarea name="content" id="ckeditor">{{ $data->content ?? NULL }}</textarea>
+                <label for="ckeditor" class="title">{{ trans('Description') }}</label>
+                <textarea name="description" id="ckeditor">{{ $data->description ?? NULL }}</textarea>
             </div>
         </div>
         <div class="col-md-3">

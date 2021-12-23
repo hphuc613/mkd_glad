@@ -31,3 +31,8 @@ Route::prefix('cart')->group(function () {
     Route::get('box', 'CartController@cartBox')->name('get.cart.cartBox');
     Route::get('add', 'CartController@addToCart')->name('get.cart.addToCart');
 });
+
+Route::prefix('offer')->group(function () {
+    Route::get('', 'OfferController@index')->name('get.offer.offerListing');
+    Route::get('bundle/{id}', 'OfferController@bundle')->name('get.offer.bundle');
+});

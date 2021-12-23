@@ -4,13 +4,13 @@
     <div id="offer-module">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="title">{{ trans("Offer") }}</h4>
+                <h4 class="title">{{ trans("Offer of the month") }}</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans("Home") }}</a></li>
-                        <li class="breadcrumb-item active">{{ trans("Offer") }}</li>
+                        <li class="breadcrumb-item active">{{ trans("Offer of the month") }}</li>
                     </ol>
                 </div>
             </div>
@@ -33,8 +33,16 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="text-input">{{ trans("Offer name") }}</label>
-                                <input type="text" class="form-control" id="text-input" name="name" value="">
+                                <label for="text-input">{{ trans("Name") }}</label>
+                                <input type="text" class="form-control" id="text-input" name="name"
+                                       value="{{$filter['name'] ?? null}}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="month" class="title">{{ trans('Month') }}</label>
+                                <input type="text" class="form-control datetime-modal-form" id="month" name="month"
+                                       value="{{ $filter['month'] ?? null }}">
                             </div>
                         </div>
                     </div>
@@ -70,9 +78,9 @@
                         @foreach($data as $item)
                             <tr>
                                 <td>{{$key++}}</td>
-                                <td>{{ trans($item->title) }}</td>
-                                <td>{{ trans($item->content) }}</td>
-                                <td>{{ trans($item->month) }}</td>
+                                <td>{{ $item->name ?? '' }}</td>
+                                <td>{{ $item->description ?? '' }}</td>
+                                <td>{{ $item->month ?? '' }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d/m/Y H:i:s')}}</td>
                                 <td class="link-action">
@@ -94,3 +102,18 @@
     </div>
     {!! getModal(["class" => "modal-ajax"]) !!}
 @endsection
+@push('js')
+    <script>
+        var datetime = $('input.datetime-modal-form');
+        datetime.attr('autocomplete', "off");
+        datetime.datetimepicker({
+            format: 'mm-yyyy',
+            fontAwesome: true,
+            startView: 'year',
+            minView: 'year',
+            autoclose: true,
+            language: lang,
+        });
+    </script>
+
+@endpush
