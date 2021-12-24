@@ -20,10 +20,10 @@
                             </div>
                             <div class="flex-grow-1 ms-3 content">
                                 <h6 class="title">{{ $item_product->name }}</h6>
-                                <div class="capacity">{{ $item['capacity'] }}</div>
+                                <div class="capacity">{{ $item['capacity'] ?? NULL}}</div>
                                 <div class="quantity">
                                     {{ $item['quantity'] }} X
-                                    <span class="fw-bold">${{ moneyFormat(!empty($item_product->discount) ? $item_product->discount : $item_product->price, false) }}</span>
+                                    <span class="fw-bold">${{ moneyFormat($item['price'], false) }}</span>
                                 </div>
                             </div>
                         </div>

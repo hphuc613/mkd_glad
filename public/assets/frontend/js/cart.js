@@ -50,19 +50,29 @@ $(document).on('click', 'button.decrease', function () {
 function addToCart(url) {
     $(document).on('click', '.btn-add-to-cart', function () {
         var data = $(this).attr('data-product');
-        $.ajax({
-            url: url + '?data=' + data,
-            type: 'get'
-        }).done(function (response) {
-            if (response.status === 200){
-                var quantity = $(document).find('.cart-icon').find('.quantity');
-                quantity.html(parseInt(quantity.html()) + 1);
+        var select_capacity = $(this).parents('#group-add-to-cart').find("#capacity-select");
 
-                $(document).find('.cart-box').removeClass('d-none'); //remove if any
-                $(document).find('.cart-box').addClass('d-none');
+        if(select_capacity.length > 0 && select_capacity.val() === ""){
+            if ($('html').attr("lang") === "en"){
+                alert('Please select the capacity');
             }else{
-                alert(response.message);
+                alert('請選擇容量');
             }
-        })
+        }else{
+            $.ajax({
+                url: url + '?data=' + data + '&capacity=' + (select_capacity.val() ?? ""),
+                type: 'get'
+            }).done(function (response) {
+                if (response.status === 200) {
+                    var quantity = $(document).find('.cart-icon').find('.quantity');
+                    quantity.html(parseInt(quantity.html()) + 1);
+
+                    $(document).find('.cart-box').removeClass('d-none'); //remove if any
+                    $(document).find('.cart-box').addClass('d-none');
+                } else {
+                    alert(response.message);
+                }
+            });
+        }
     });
 }

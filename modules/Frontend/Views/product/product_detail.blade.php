@@ -11,7 +11,8 @@
                     <div class="col-md-6">
                         <div class="content">
                             <h4 class="cl-text-blue text-uppercase mb-3">{{$data->name ?? ''}}</h4>
-                            <h4 class="fw-bold mb-0">${{$data->price ?? ''}}</h4>
+                            <h4 class="fw-bold mb-0">@if($data->capacities->count() > 0){{ trans('from') . " $" . moneyFormat($data->capacities->sortBy('capacity')->first()->price,false) }}@else
+                                    ${{$data->price ?? ''}}@endif</h4>
                             <div class="vote-star">
                                 {!! getStar($data->vote) !!}
                                 <span>{{count($data->feedback)}} reviews</span>
@@ -22,21 +23,26 @@
                             <div class="content">
                                 <?= $data->content ?? '' ?>
                             </div>
-                            @if($data->capacities->count() > 0)
-                                <div class="capacity mb-3">
-                                    <select name="capacity" id="capacity-select" class="form-control select2 w-100">
-                                        <option value="">{{ trans('Select Capacity') }}</option>
-                                        @foreach($data->capacities->sortBy('capacity') as $capacity)
-                                            <option value="{{ $capacity->id }}">
-                                                {{ $capacity->capacity.$capacity->unit }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            @endif
-                            <button class="btn btn-sub-blue btn-add-to-cart" data-product="{{ $data->key_slug }}">
-                                {{ trans('ADD TO CART') }}
-                            </button>
+                            <div id="group-add-to-cart">
+                                @if($data->capacities->count() > 0)
+                                    <div class="capacity mb-3">
+                                        <select name="capacity" id="capacity-select" class="form-control select2 w-100">
+                                            <option value="">{{ trans('Select Capacity') }}</option>
+                                            @foreach($data->capacities->sortBy('capacity') as $capacity)
+                                                <option value="{{ $capacity->id }}"
+                                                        data-price="${{ moneyFormat(($capacity->discount > 0) ? $capacity->discount : $capacity->price, false) }}">
+                                                    {{ $capacity->capacity.$capacity->unit }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="fw-bold mb-2">{{ trans('Price') }}: <span id="product-price"></span>
+                                    </div>
+                                @endif
+                                <button class="btn btn-sub-blue btn-add-to-cart" data-product="{{ $data->key_slug }}">
+                                    {{ trans('ADD TO CART') }}
+                                </button>
+                            </div>
                         </div>
                         <div class="feature">
                             <div class="feature-item d-flex align-items-center">
@@ -184,3 +190,13 @@
         </section>
     </div>
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $(document).on('change', "#capacity-select", function () {
+                var capacity = $('option:selected', this).attr('data-price');
+                $(document).find("#product-price").html(capacity);
+            })
+        })
+    </script>
+@endpush

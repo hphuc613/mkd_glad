@@ -80,12 +80,12 @@
                                                                        class="title">
                                                                         {{ $item_product->name }}
                                                                     </a>
-                                                                    <div class="capacity">{{ $item['capacity'] }}</div>
+                                                                    <div class="capacity">{{ $item['capacity'] ?? NULL }}</div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 range-quantity">
                                                                 <div class="price">
-                                                                    $<span class="cost-price">{{ !empty($item_product->discount) ? $item_product->discount : $item_product->price }}</span>
+                                                                    $<span class="cost-price">{{ $item['price'] }}</span>
                                                                 </div>
                                                                 <div class="px-2">
                                                                     <div class="input-group">
@@ -102,7 +102,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="price">
-                                                                    $<span class="final-price">{{ $item['price'] }}</span>
+                                                                    $<span class="final-price">{{ $item['final_price'] }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
