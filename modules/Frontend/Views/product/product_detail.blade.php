@@ -11,8 +11,16 @@
                     <div class="col-md-6">
                         <div class="content">
                             <h4 class="cl-text-blue text-uppercase mb-3">{{$data->name ?? ''}}</h4>
-                            <h4 class="fw-bold mb-0">@if($data->capacities->count() > 0){{ trans('from') . " $" . moneyFormat($data->capacities->sortBy('capacity')->first()->price,false) }}@else
-                                    ${{$data->price ?? ''}}@endif</h4>
+                            <h4 class="fw-bold mb-0">
+                                @if($data->capacities->count() > 0)
+                                    <?php
+                                    $capacity = $data->capacities->sortBy('price')->first();
+                                    $price = !empty($capacity->discount) ? $capacity->discount : $capacity->price;
+                                    ?>
+                                    {{ trans('from') . " $" . moneyFormat($price, false) }}
+                                @else
+                                    ${{moneyFormat($data->price ?? 0, false)}}
+                                @endif</h4>
                             <div class="vote-star">
                                 {!! getStar($data->vote) !!}
                                 <span>{{count($data->feedback)}} reviews</span>
@@ -39,7 +47,7 @@
                                     <div class="fw-bold mb-2">{{ trans('Price') }}: <span id="product-price"></span>
                                     </div>
                                 @endif
-                                <button class="btn btn-sub-blue btn-add-to-cart" data-product="{{ $data->key_slug }}">
+                                <button class="btn btn-sub-blue btn-add-to-cart" id="btn-add-to-cart" data-product="{{ $data->key_slug }}">
                                     {{ trans('ADD TO CART') }}
                                 </button>
                             </div>

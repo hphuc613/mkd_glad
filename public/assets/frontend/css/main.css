@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 @font-face {
   src: url("../fonts/Analogue.otf");
@@ -1960,6 +1961,11 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
   padding: 2rem 0;
   border-bottom: 1px solid #d4e2ee;
 }
+.shopping-cart .cart-content .shopping-list .cart-list .cart-item img {
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
+}
 .shopping-cart .cart-content .shopping-list .cart-list .cart-item:last-child {
   border-bottom: none;
 }
@@ -2264,7 +2270,7 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 }
 .payment .form .form-floating.phone-input:after {
   position: absolute;
-  content: "\f059";
+  content: "";
   font-family: "Font Awesome 5 Free", serif;
   top: 20%;
   right: 1rem;

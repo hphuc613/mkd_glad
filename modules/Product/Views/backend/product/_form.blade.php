@@ -143,7 +143,7 @@
                             <td><input type="text" name="capacity[{{ $key }}][unit]" class="form-control"
                                        placeholder="{{ trans('Unit') }}" value="{{ $capacity->unit }}"></td>
                             <td><input type="text" name="capacity[{{ $key }}][price]" class="form-control"
-                                       placeholder="{{ trans('Price') }}" value="{{ $capacity->capacity }}"></td>
+                                       placeholder="{{ trans('Price') }}" value="{{ $capacity->price }}"></td>
                             <td><input type="text" name="capacity[{{ $key }}][discount]" class="form-control"
                                        placeholder="{{ trans('Discount') }}" value="{{ $capacity->discount }}"></td>
                             <td><input type="text" name="capacity[{{ $key }}][stock_in]" class="form-control"

@@ -30,6 +30,8 @@ Route::prefix('post')->group(function () {
 Route::prefix('cart')->group(function () {
     Route::get('box', 'CartController@cartBox')->name('get.cart.cartBox');
     Route::get('add', 'CartController@addToCart')->name('get.cart.addToCart');
+    Route::get('update', 'CartController@updateCart')->name('get.cart.updateCart');
+    Route::get('shopping-cart', 'CartController@shoppingCart')->name('get.cart.shoppingCart');
 });
 
 Route::prefix('offer')->group(function () {

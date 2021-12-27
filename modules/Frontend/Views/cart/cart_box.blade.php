@@ -37,8 +37,7 @@
                 <h5>總額:</h5>
                 <div class="total-price">{{ moneyFormat($cart['amount'] ?? 0) }}</div>
             </div>
-            <a href="javascript:" class="btn btn-outline-dark rounded-0 w-100 close close-hide" data-bs-toggle="modal"
-               data-bs-target="#modal-cart-detail">
+            <a href="{{ route('get.cart.shoppingCart') }}" class="btn btn-outline-dark rounded-0 w-100">
                 查看購物⾞
             </a>
         </div>

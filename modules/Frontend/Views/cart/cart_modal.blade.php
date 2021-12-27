@@ -132,7 +132,7 @@
                                                 <a href="{{ route('get.product.productDetail', ['id' => $product->id, 'slug' => $product->key_slug]) }}" class="title">
                                                     {{ $product->name }}
                                                 </a>
-                                                <div class="product-price">from <span class="price">${{ moneyFormat(!empty($item_product->discount) ? $item_product->discount : $item_product->price, false) }}</span></div>
+                                                <div class="product-price">from <span class="price">${{ moneyFormat(!empty($product->discount) ? $product->discount : $product->price, false) }}</span></div>
                                             </div>
                                         </div>
                                     </div>

@@ -137,8 +137,8 @@
                             <div class="description text-start">
                                 {!! $product->content !!}
                             </div>
-                            <div class="price">${{ moneyFormat($product->price, false) }}</div>
-                            <button class="btn btn-outline-main-light btn-add-to-cart" data-product="{{ $product->key_slug }}">ADD TO CART</button>
+                            <div class="price">${{ moneyFormat(!empty($capacity = $product->capacities->sortBy('price')->first()) ? (!empty($capacity->discount) ? $capacity->discount : $capacity->price) : $product->price, false) }}</div>
+                            <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="btn btn-outline-main-light btn-add-to-cart">ADD TO CART</a>
                         </div>
                     @endforeach
                 </div>
@@ -158,8 +158,8 @@
                                     {!! $product->name  !!}
                                 </a>
                             </div>
-                            <div class="price">${{ moneyFormat($product->price, false) }}</div>
-                            <button class="btn btn-outline-main-light btn-add-to-cart" data-product="{{ $product->key_slug }}">ADD TO CART</button>
+                            <div class="price">${{ moneyFormat(!empty($capacity = $product->capacities->sortBy('price')->first()) ? (!empty($capacity->discount) ? $capacity->discount : $capacity->price) : $product->price, false) }}</div>
+                            <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="btn btn-outline-main-light btn-add-to-cart">ADD TO CART</a>
                         </div>
                     @endforeach
                 </div>

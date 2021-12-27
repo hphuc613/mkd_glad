@@ -107,4 +107,50 @@ class CartController extends Controller {
             'status' => 200
         ];
     }
+
+    /**
+     * @param Request $request
+     * @return Factory|View
+     */
+    public function shoppingCart(Request $request) {
+        $cart = [];
+        if ($request->session()->has('cart')) {
+            $cart = $request->session()->get('cart');
+        }
+
+        $products = Product::query()
+                           ->where('status', Status::STATUS_ACTIVE)
+                           ->orderBy('created_at', 'desc')
+                           ->limit(8)
+                           ->get();
+
+        return view('Frontend::cart.shopping_cart', compact('cart', 'products'));
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function updateCart(Request $request) {
+        $cart          = $request->session()->get('cart');
+        $cart_item_key = $request->cart_item;
+        $cart_item     = $cart['items'][$cart_item_key];
+        if (isset($request->quantity)) {
+            $cart_item['quantity']         = $request->quantity;
+            $cart_item['final_price']      = $request->quantity * (int)$cart_item['price'];
+            $cart['items'][$cart_item_key] = $cart_item;
+        } else {
+            if (isset($request->remove) && $request->remove) {
+                unset($cart['items'][$cart_item_key]);
+            }
+        }
+        $cart['amount']   = array_sum(array_column($cart['items'], 'final_price'));
+        $cart['quantity'] = array_sum(array_column($cart['items'], 'quantity'));
+        $request->session()->put('cart', $cart);
+
+        return [
+            "quantity" => $cart['quantity'],
+            "price"    => "$" . moneyFormat($cart['amount'] ?? 0, false)
+        ];
+    }
 }

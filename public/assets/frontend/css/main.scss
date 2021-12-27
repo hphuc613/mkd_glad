@@ -2251,6 +2251,12 @@ header {
                     padding: 2rem 0;
                     border-bottom: 1px solid $color_secondary;
 
+                    img{
+                        width: 12rem;
+                        height: 12rem;
+                        object-fit: cover;
+                    }
+
                     &:last-child {
                         border-bottom: none;
                     }
