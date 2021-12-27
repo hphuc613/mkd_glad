@@ -124,4 +124,11 @@ class Product extends BaseModel {
     public function feedback() {
         return $this->hasMany(Feedback::class);
     }
+
+    /**
+     * @return HasMany
+     */
+    public function capacities(){
+        return $this->hasMany(ProductCapacity::class, 'product_id');
+    }
 }

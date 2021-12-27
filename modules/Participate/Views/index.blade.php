@@ -5,20 +5,20 @@
     <div id="participate-module">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="title">{{ trans("Participate") }}</h4>
+                <h4 class="title">{{ trans("Participate Store") }}</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans("Home") }}</a></li>
-                        <li class="breadcrumb-item active">{{ trans("Participate") }}</li>
+                        <li class="breadcrumb-item active">{{ trans("Participate Store") }}</li>
                     </ol>
                 </div>
             </div>
         </div>
         <div class="mb-3 d-flex justify-content-end group-btn">
             <a href="{{route('get.participate.create')}}" class="btn btn-primary"
-               data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Create Participate") }}">
+               data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Create Participate Store") }}">
                 <i class="fa fa-plus"></i>&nbsp; {{ trans("Add New") }}
             </a>
         </div>
@@ -108,7 +108,7 @@
                                 <td class="link-action">
                                     <a href="{{ route('get.participate.update', $item->id) }}" class="btn btn-primary"
                                        data-toggle="modal" data-target="#form-modal"
-                                       data-title="{{ trans("Update Participate") }}">
+                                       data-title="{{ trans("Update Participate Store") }}">
                                         <i class="fas fa-pencil-alt"></i></a>
                                     <a href="{{ route('get.participate.delete', $item->id) }}"
                                        class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>

@@ -23,22 +23,26 @@ class ProductRequest extends FormRequest {
         $segment = segmentUrl('2');
         if ($segment == 'update') {
             return [
-                'name'    => 'required',
-                'sku'     => 'required|validate_unique:products,' . $this->id,
-                'price'   => 'required',
-                'status'  => 'required',
-                'cate_id' => 'required',
-                'image'   => 'image|mimes:jpeg,png,jpg,gif,svg',
+                'name'     => 'required',
+                'sku'      => 'required|validate_unique:products,' . $this->id,
+                'price'    => 'required',
+                'discount' => 'required',
+                'status'   => 'required',
+                'cate_id'  => 'required',
+                'stock_in' => 'required',
+                'image'    => 'image|mimes:jpeg,png,jpg,gif,svg',
             ];
         }
 
         return [
-            'name'    => 'required',
-            'sku'     => 'required|validate_unique:products',
-            'price'   => 'required',
-            'status'  => 'required',
-            'cate_id' => 'required',
-            'image'   => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'name'     => 'required',
+            'sku'      => 'required|validate_unique:products',
+            'price'    => 'required',
+            'discount' => 'required',
+            'status'   => 'required',
+            'cate_id'  => 'required',
+            'stock_in' => 'required',
+            'image'    => 'image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 
@@ -61,12 +65,14 @@ class ProductRequest extends FormRequest {
      */
     public function attributes() {
         return [
-            'name'    => 'Name',
-            'price'   => 'Price',
-            'status'  => 'Status',
-            'cate_id' => 'Category',
-            'image'   => 'Image',
-            'sku'     => 'SKU'
+            'name'     => trans('Name'),
+            'price'    => trans('Price'),
+            'status'   => trans('Status'),
+            'cate_id'  => trans('Category'),
+            'image'    => trans('Image'),
+            'sku'      => trans('SKU'),
+            'stock_in' => trans('Stock In'),
+            'discount' => trans('Discount')
         ];
     }
 }

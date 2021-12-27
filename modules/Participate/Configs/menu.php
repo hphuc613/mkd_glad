@@ -1,6 +1,6 @@
 <?php
 return [
-    'name' => trans('Participate'),
+    'name' => trans('Participate Store'),
     'route' => route('get.participate.list'),
     'sort' => 2,
     'active'=> TRUE,

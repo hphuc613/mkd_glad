@@ -76,12 +76,11 @@ class ProductController extends BaseController {
      * @return Factory|View|RedirectResponse
      */
     public function productDetail(Request $request, $key_slug) {
-        $data            = Product::query()->with(['feedback', 'category'])->where('key_slug', $key_slug)->first();
+        $data            = Product::query()->with(['feedback', 'category', 'capacities'])->where('key_slug', $key_slug)->first();
         $feedback_filter = Feedback::getFilter();
         if (!empty($data)) {
             Product::storeProductRecently($data);
             $product_recentlies = $request->session()->get('product_recently');
-            $capacities         = json_decode($data->capacity, 1 ?? []);
             $product_relate     = $data->category->products->where('id', '<>', $data->id)->take(4);
 
             $feedback = $data->feedback;
@@ -98,7 +97,7 @@ class ProductController extends BaseController {
             }
             $feedback = $this->paginate($feedback, 9);
 
-            return view("Frontend::product.product_detail", compact('data', 'capacities', 'product_relate', 'product_recentlies', 'feedback', 'feedback_filter'));
+            return view("Frontend::product.product_detail", compact('data', 'product_relate', 'product_recentlies', 'feedback', 'feedback_filter'));
         }
         return redirect()->back();
     }

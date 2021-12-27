@@ -22,13 +22,21 @@
                             <div class="content">
                                 <?= $data->content ?? '' ?>
                             </div>
-                            <div class="capacity mb-3">
-                                {!! Form::select('capacity[]', $capacities, $capacities, [
-                                    'id' => 'capacity',
-                                    'name' => 'capacity',
-                                    'class' => 'select2 form-control capacity']) !!}
-                            </div>
-                            <button class="btn btn-sub-blue btn-add-to-cart" data-product="{{ $data->key_slug }}">ADD TO CART</button>
+                            @if($data->capacities->count() > 0)
+                                <div class="capacity mb-3">
+                                    <select name="capacity" id="capacity-select" class="form-control select2 w-100">
+                                        <option value="">{{ trans('Select Capacity') }}</option>
+                                        @foreach($data->capacities->sortBy('capacity') as $capacity)
+                                            <option value="{{ $capacity->id }}">
+                                                {{ $capacity->capacity.$capacity->unit }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endif
+                            <button class="btn btn-sub-blue btn-add-to-cart" data-product="{{ $data->key_slug }}">
+                                {{ trans('ADD TO CART') }}
+                            </button>
                         </div>
                         <div class="feature">
                             <div class="feature-item d-flex align-items-center">

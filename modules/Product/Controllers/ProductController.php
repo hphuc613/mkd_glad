@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Modules\Base\Models\Status;
 use Modules\Product\Models\Product;
+use Modules\Product\Models\ProductCapacity;
 use Modules\Product\Models\ProductCategory;
 use Modules\Product\Models\ProductImage;
 use Modules\Product\Requests\ProductRequest;
@@ -62,8 +63,8 @@ class ProductController extends Controller {
         unset($data['tags']);
         unset($data['image']);
         $tag_ids           = Tag::createTags($request->tags);
+        unset($data['capacity']);
         $product           = new Product($data);
-        $product->capacity = json_encode($request->capacity);
         $product->save();
         if ($request->hasFile('image')) {
             $image          = $request->image;
@@ -73,6 +74,7 @@ class ProductController extends Controller {
         }
         $product->save();
         $product->tags()->sync($tag_ids);
+        ProductCapacity::createCapacity($request->capacity, $product->id);
         $request->session()->flash('success', trans('Created successfully.'));
 
         return redirect()->route('get.product.list');
@@ -83,7 +85,7 @@ class ProductController extends Controller {
      * @return Factory|View
      */
     public function getUpdate(Request $request, $id) {
-        $data       = Product::query()->find($id);
+        $data       = Product::query()->with('capacities')->find($id);
         $categories = ProductCategory::getArray();
         $statuses   = Status::getStatuses();
         $tags       = Tag::getTagArray();
@@ -99,7 +101,6 @@ class ProductController extends Controller {
         $data = $request->all();
         unset($data['tags']);
         $tag_ids            = Tag::createTags($request->tags);
-        $data['capacity']   = !empty($request->capacity) ? json_encode(array_combine($request->capacity, $request->capacity)) : "[]";
         $product            = Product::query()->find($id);
         $data['image']      = str_replace($product->sku, $request->sku, $product->image);
 
@@ -116,8 +117,10 @@ class ProductController extends Controller {
             $image_name    = time() . '_' . $image->getClientOriginalName();
             $data['image'] = Helper::storageFile($image, $image_name, $upload_address);
         }
+        unset($data['capacity']);
         $product->update($data);
         $product->tags()->sync($tag_ids);
+        ProductCapacity::createCapacity($request->capacity, $product->id);
         $request->session()->flash('success', trans('Updated successfully.'));
 
         return redirect()->route('get.product.update', $product->id);
