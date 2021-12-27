@@ -46,19 +46,38 @@ $(document).on('click', 'button.decrease', function () {
     }
 });
 
+
+
+
 /*** Add to cart ***/
+
+$(document).on('change', '#capacity-select', function () { /* Select Capacity */
+    var parent = $(this).parents('#group-add-to-cart');
+    if ($(this).val() !== "") {
+        parent.find('.select2-selection--single').attr('style', 'border: solid 2px #198754 !important');
+        parent.find('.select2-selection__rendered').removeClass('text-danger');
+        parent.find('.select2-selection__rendered').addClass('text-success');
+        parent.find('.validate-msg').remove();
+    }
+});
+
 function addToCart(url) {
     $(document).on('click', '#btn-add-to-cart', function () {
         var data = $(this).attr('data-product');
-        var select_capacity = $(this).parents('#group-add-to-cart').find("#capacity-select");
+        var parent = $(this).parents('#group-add-to-cart');
+        var select_capacity = parent.find("#capacity-select");
 
         if (select_capacity.length > 0 && select_capacity.val() === "") {
-            if ($('html').attr("lang") === "en") {
-                alert('Please select the capacity');
-            } else {
-                alert('請選擇容量');
+            var validate_msg = ($('html').attr("lang") === "en") ? 'Please select the capacity' : '請選擇容量';
+            parent.find('.select2-selection--single').attr('style', 'border: solid 2px red !important');
+            parent.find('.select2-selection__rendered').addClass('text-danger');
+            if (parent.find('.validate-msg').length === 0){
+                parent.find('.capacity').append('<span class="text-danger validate-msg">' + validate_msg + '</span>')
             }
         } else {
+            parent.find('.select2-selection--single').removeAttr('style');
+            parent.find('.select2-selection__rendered').removeClass('text-success');
+            parent.find('.validate-msg').remove();
             $.ajax({
                 url: url + '?data=' + data + '&capacity=' + (select_capacity.val() ?? ""),
                 type: 'get'

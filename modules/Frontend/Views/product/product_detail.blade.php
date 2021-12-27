@@ -34,7 +34,7 @@
                             <div id="group-add-to-cart">
                                 @if($data->capacities->count() > 0)
                                     <div class="capacity mb-3">
-                                        <select name="capacity" id="capacity-select" class="form-control select2 w-100">
+                                        <select name="capacity" id="capacity-select" class="form-control select2 w-100 required">
                                             <option value="">{{ trans('Select Capacity') }}</option>
                                             @foreach($data->capacities->sortBy('capacity') as $capacity)
                                                 <option value="{{ $capacity->id }}"
