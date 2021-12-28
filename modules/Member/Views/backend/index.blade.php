@@ -77,6 +77,7 @@
                         <tr>
                             <th width="50px">#</th>
                             <th>{{ trans('Name') }}</th>
+                            <th>{{ trans('Last Name') }}</th>
                             <th>{{ trans('Username') }}</th>
                             <th>{{ trans('Email') }}</th>
                             <th>{{ trans('Phone Number') }}</th>
@@ -91,7 +92,8 @@
                         @foreach($members as $member)
                             <tr>
                                 <td>{{ $key++ }}</td>
-                                <td>{{ $member->name }}</td>
+                                <td>{{ $member->name}}</td>
+                                <td>{{ $member->last_name }}</td>
                                 <td>{{ $member->username }}</td>
                                 <td>{{ $member->email }}</td>
                                 <td>{{ $member->phone }}</td>

@@ -2312,6 +2312,8 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
 }
 .payment .order-detail .product-list .product-item img {
   width: 5.5rem;
+  height: 5.5rem;
+  object-fit: cover;
 }
 .payment .order-detail .product-list .product-item h6 {
   margin-bottom: 0;

@@ -50,7 +50,7 @@ class AuthMemberController extends Controller {
                 $request->session()->flash('danger', trans('Incorrect username or password'));
             }
 
-            return redirect()->route('get.home.index');
+            return redirect()->back();
         }
 
         return view('Frontend::modal.login')->render();
@@ -92,7 +92,7 @@ class AuthMemberController extends Controller {
                 $request->session()->flash('danger', trans('Your email not exist.'));
             }
 
-            return redirect()->route('get.home.index');
+            return redirect()->back();
         }
 
         return view('Frontend::modal.forgot_password')->render();
@@ -100,9 +100,12 @@ class AuthMemberController extends Controller {
 
 
     /**
-     * @return Factory|View
+     * @return Factory|View|RedirectResponse
      */
     public function getRegister() {
+        if ($this->auth->check()) {
+            return redirect()->back();
+        }
         return view('Frontend::register');
     }
 
@@ -112,7 +115,7 @@ class AuthMemberController extends Controller {
      */
     public function postRegister(AuthMemberRequest $request) {
         $data           = new Member($request->all());
-        $data->username = strtolower(str_replace(" ", "_", $data->name));
+        $data->username = Str::random(8);
         $data->save();
         $this->auth->attempt(['email' => $request->email, 'password' => $request->password]);
 

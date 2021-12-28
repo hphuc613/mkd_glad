@@ -89,18 +89,18 @@
                                     <div
                                         class="cart-total-price d-flex align-items-end border-bottom border-cl-secondary py-4 mb-4">
                                         <h5 class="fw-bold me-2">總額:</h5>
-                                        <div class="price" id="cart-amount">${{ moneyFormat($cart['amount'] ?? 0, false) }}</div>
+                                        <div class="price" id="cart-amount">
+                                            ${{ moneyFormat($cart['amount'] ?? 0, false) }}</div>
                                     </div>
                                     <div class="comment">
                                         <div class="form-group">
                                             <label class="note fw-bold mb-2">
                                                 <span class="text-light fw-normal cl-bg-primary px-2 me-2">Note</span>
-                                                Additional
-                                                comments
+                                                Additional comments
                                             </label>
                                             <textarea class="form-control mb-3" name="" id="" rows="5"></textarea>
                                         </div>
-                                        <a href="payment-info.html" class="btn btn-main w-100">付款</a>
+                                        <a href="{{ route('get.payment.getPaymentInfo') }}" class="btn btn-main w-100">付款</a>
                                     </div>
                                     <div class="cart-method text-center">
                                         <div class="fw-bold p-4">Express Checkout</div>

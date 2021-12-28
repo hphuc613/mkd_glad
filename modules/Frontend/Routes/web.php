@@ -38,3 +38,9 @@ Route::prefix('offer')->group(function () {
     Route::get('', 'OfferController@index')->name('get.offer.offerListing');
     Route::get('bundle/{id}', 'OfferController@bundle')->name('get.offer.bundle');
 });
+
+Route::prefix('payment')->group(function () {
+    Route::get('payment-info', 'PaymentController@getPaymentInfo')->name('get.payment.getPaymentInfo');
+    Route::get('payment-shipping', 'PaymentController@getPaymentShipping')->name('get.payment.getPaymentShipping');
+    Route::get('payment-now', 'PaymentController@getPaymentNow')->name('get.payment.getPaymentNow');
+});
