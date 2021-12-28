@@ -246,5 +246,10 @@
     "Background": "背景",
     "Favicon": "圖標",
     "Website Name": "網站名稱",
-    "Logo Payment Page": "標誌支付頁面"
+    "Logo Payment Page": "標誌支付頁面",
+    "Shipping": "船運",
+    "Create Shipping": "創建運輸",
+    "Update Shipping": "更新航運",
+    "Shipping name": "送貨名稱",
+    "Value": "價值"
 }
