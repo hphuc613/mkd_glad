@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-@php($locale = App::getLocale())
 @php
     use App\AppHelpers\Helper;
+    $locale = App::getLocale();
     $favicon = Helper::getSetting('FAVICON');
+    $website_name = Helper::getSetting('WEBSITE_NAME');
 @endphp
 <html lang="{{ !empty($locale) ? $locale : 'en' }}">
 <head>
@@ -13,7 +14,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" href="{{ url(asset( !empty($favicon) ? $favicon :'storage/upload/Home/products.png')) }}">
-    <title>Admin Page</title>
+    <title>{{!empty($website_name) ? $website_name : 'Admin Page'}}</title>
     <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/morrisjs/morris.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/toast-master/css/jquery.toast.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/select2/css/select2.min.css') }}">

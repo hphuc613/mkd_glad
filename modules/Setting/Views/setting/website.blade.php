@@ -56,6 +56,19 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="LOGO_PAYMENT_PAGE">{{ trans('Logo Payment Page') }}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="LOGO_PAYMENT_PAGE"
+                                       name="{{ \Modules\Setting\Models\Website::LOGO_PAYMENT_PAGE }}"
+                                       value="{{ $website_config[\Modules\Setting\Models\Website::LOGO_PAYMENT_PAGE] ?? null}}">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-main-color btn-elfinder" type="button">
+                                        {{ trans('Open File Manager') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="BACKGROUND">{{ trans('Background') }}</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="BACKGROUND"
@@ -69,6 +82,8 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="FAVICON">{{ trans('Favicon') }}</label>
                             <div class="input-group">
@@ -81,6 +96,14 @@
                                         {{ trans('Open File Manager') }}
                                     </button>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="WEBSITE_NAME">{{ trans('Website Name') }}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="WEBSITE_NAME"
+                                       name="{{ \Modules\Setting\Models\Website::WEBSITE_NAME }}"
+                                       value="{{ $website_config[\Modules\Setting\Models\Website::WEBSITE_NAME] ?? null}}">
                             </div>
                         </div>
                         <div class="form-group">

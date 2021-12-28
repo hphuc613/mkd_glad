@@ -5,7 +5,7 @@
     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
         <!-- Logo -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{route('admin.dashboard')}}">
                 <!-- Dark Logo icon -->
                 <img width="30%"
                      src="https://s3-ap-southeast-1.amazonaws.com/homepage-media/wp-content/uploads/2019/11/06160433/laravel-logo_s.png"

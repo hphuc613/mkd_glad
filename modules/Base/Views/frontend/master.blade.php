@@ -2,6 +2,7 @@
     use App\AppHelpers\Helper;
     $logo = Helper::getSetting('LOGO_NORMAL');
     $favicon = Helper::getSetting('FAVICON');
+    $website_name = Helper::getSetting('WEBSITE_NAME');
 @endphp
 <html lang="{{ !empty(App::getLocale()) ? App::getLocale() : 'en' }}">
 <head>
@@ -14,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <link rel="icon" href="{{ url(asset( !empty($favicon) ? $favicon :'storage/upload/Home/products.png')) }}">
-    <title>Glad Beauty</title>
+    <title>{{!empty($website_name) ? $website_name : 'Glad Beauty'}}</title>
 
     @stack('css')
 </head>

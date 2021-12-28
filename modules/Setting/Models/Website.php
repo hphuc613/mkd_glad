@@ -11,18 +11,22 @@ class Website extends Setting
 
     const LOGO = 'LOGO';
     const LOGO_NORMAL = 'LOGO_NORMAL';
+    const LOGO_PAYMENT_PAGE = 'LOGO_PAYMENT_PAGE';
     const BACKGROUND = 'BACKGROUND';
     const FAVICON = 'FAVICON';
     const PHONE_NUMBER = 'PHONE_NUMBER';
     const EMAIL = 'EMAIL';
+    const WEBSITE_NAME = 'WEBSITE_NAME';
 
     const WEBSITE_CONFIG = [
         self::LOGO,
         self::LOGO_NORMAL,
+        self::LOGO_PAYMENT_PAGE,
         self::BACKGROUND,
         self::FAVICON,
         self::PHONE_NUMBER,
-        self::EMAIL
+        self::EMAIL,
+        self::WEBSITE_NAME
     ];
 
     /**
