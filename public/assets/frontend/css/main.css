@@ -919,6 +919,11 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
     font-size: 35px;
   }
 }
+.popular .card-product img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+}
 .popular .card-product .product-title a {
   font-size: 22px;
   font-family: HelveticaNeue-Medium, sans-serif;
@@ -965,6 +970,11 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
   .discover .discover-row {
     padding: 0;
   }
+}
+.discover .discover-row .card-product img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
 }
 
 .feedback {

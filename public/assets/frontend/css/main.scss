@@ -985,6 +985,12 @@ header {
     }
 
     .card-product {
+        img{
+            width: 20rem;
+            height: 20rem;
+            object-fit: cover;
+        }
+
         .product-title {
             a {
                 font-size: 22px;
@@ -1034,6 +1040,14 @@ header {
 
         @include mobile {
             padding: 0;
+        }
+
+        .card-product{
+            img{
+                width: 20rem;
+                height: 20rem;
+                object-fit: cover;
+            }
         }
     }
 }

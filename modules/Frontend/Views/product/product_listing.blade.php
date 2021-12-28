@@ -1,12 +1,12 @@
 @extends("Base::frontend.master")
 <?php
-    $title =  trans('All Items');
-    if (isset(request()->cate)){
-        $title = $data->first()->category->name;
-        if(request()->cate === "best-seller"){
-            $title = trans('Best Seller');
-        }
+$title = trans('All Items');
+if (isset(request()->cate)) {
+    $title = $data->first()->category->name;
+    if (request()->cate === "best-seller") {
+        $title = trans('Best Seller');
     }
+}
 ?>
 @section("content")
     <div class="container pt-3">
@@ -36,13 +36,19 @@
                                        class="title">{{ $item->name }}</a>
                                 </div>
                                 <div class="product-price">
-                                    @if((int)$item->discount > 0)
-                                        <span
-                                            class="price text-secondary text-decoration-line-through">${{ moneyFormat($item->price, false) }}</span>
-                                        <span
-                                            class="price text-danger">${{ moneyFormat($item->discount, false) }}</span>
+                                    @if(!empty($capacity = $item->capacities->sortBy('price')->first()))
+                                        from <span
+                                            class="price">${{ moneyFormat(!empty($capacity->discount) ? $capacity->discount : $capacity->price, false) }}</span>
                                     @else
-                                        from <span class="price">${{ moneyFormat($item->price, false) }}</span>
+                                        @if((int)$item->discount > 0)
+                                            <span
+                                                class="price text-secondary text-decoration-line-through">${{ moneyFormat($item->price, false) }}</span>
+                                            <span
+                                                class="price text-danger">${{ moneyFormat($item->discount, false) }}</span>
+                                        @else
+                                            <span
+                                                class="price">${{ moneyFormat($item->price, false) }}</span>
+                                        @endif
                                     @endif
                                 </div>
                             </div>
@@ -55,10 +61,10 @@
                     $check_has_next_page = ($data->currentPage()+1 <= $data->lastPage());
                     $next_page = ($check_has_next_page) ? $data->currentPage()+1 : $data->currentPage()
                 @endphp
-                    <a href="{{ route('get.product.productListing', ['cate' => request('cate') ?? null, 'page' => $next_page]) }}"
-                       class="btn btn-outline-main btn-shop-more @if(!$check_has_next_page) d-none @endif" id="show-more"
-                       data-check="{{ $check_has_next_page }}">SHOW
-                        MORE</a>
+                <a href="{{ route('get.product.productListing', ['cate' => request('cate') ?? null, 'page' => $next_page]) }}"
+                   class="btn btn-outline-main btn-shop-more @if(!$check_has_next_page) d-none @endif" id="show-more"
+                   data-check="{{ $check_has_next_page }}">SHOW
+                    MORE</a>
             </div>
             <hr class="mb-5">
             <div class="product-recently-see py-5">
