@@ -66,7 +66,6 @@
                         <tr>
                             <th>#</th>
                             <th>{{ trans('Name') }}</th>
-                            <th>{{ trans('Description') }}</th>
                             <th>{{ trans('Month') }}</th>
                             <th>{{ trans('Created At') }}</th>
                             <th>{{ trans('Updated At') }}</th>
@@ -79,7 +78,6 @@
                             <tr>
                                 <td>{{$key++}}</td>
                                 <td>{{ $item->name ?? '' }}</td>
-                                <td>{{ $item->description ?? '' }}</td>
                                 <td>{{ $item->month ?? '' }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d/m/Y H:i:s')}}</td>
