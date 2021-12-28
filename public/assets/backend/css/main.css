@@ -131,4 +131,9 @@ label, .title {
   background: inherit;
 }
 
+.logo-admin {
+  width: 90%;
+  max-height: 60px;
+}
+
 /*# sourceMappingURL=main.css.map */

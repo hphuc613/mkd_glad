@@ -239,5 +239,10 @@
     "Unit": "單元",
     "Participate Store": "參與店鋪",
     "Create Participate Store": "創建參與商店",
-    "Update Participate Store": "更新參與商店"
+    "Update Participate Store": "更新參與商店",
+    "Website Config": "網站配置",
+    "Logo Home": "標誌首頁",
+    "Logo Normal": "普通標誌",
+    "Background": "背景",
+    "Favicon": "圖標"
 }

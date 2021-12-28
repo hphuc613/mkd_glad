@@ -1,3 +1,6 @@
+@php
+    $logo = \App\AppHelpers\Helper::getSetting('LOGO')
+@endphp
 <header class="topbar">
     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
         <!-- Logo -->
@@ -8,9 +11,8 @@
                      src="https://s3-ap-southeast-1.amazonaws.com/homepage-media/wp-content/uploads/2019/11/06160433/laravel-logo_s.png"
                      alt="homepage" class="dark-logo"/>
                 <!-- Light Logo icon -->
-                <img width="30%"
-                     src="https://s3-ap-southeast-1.amazonaws.com/homepage-media/wp-content/uploads/2019/11/06160433/laravel-logo_s.png"
-                     alt="homepage" class="light-logo"/>
+                <img src="{{asset(!empty($logo) ? $logo : 'storage/upload/Home/logo.svg')}}"
+                     alt="homepage" class="light-logo logo-admin"/>
             </a>
         </div>
         <div class="navbar-collapse">

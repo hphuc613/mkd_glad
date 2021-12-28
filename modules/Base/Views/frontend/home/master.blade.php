@@ -1,4 +1,10 @@
-<html lang="" xmlns:https="http://www.w3.org/1999/xhtml">
+<html lang="">
+@php
+    use App\AppHelpers\Helper;
+    $banner = Helper::getSetting('BACKGROUND');
+    $logo = Helper::getSetting('LOGO');
+    $favicon = Helper::getSetting('FAVICON');
+@endphp
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
-
+    <link rel="icon" href="{{ url(asset( !empty($favicon) ? $favicon :'storage/upload/Home/products.png')) }}">
     <title>Glad Beauty</title>
 
     @stack('css')

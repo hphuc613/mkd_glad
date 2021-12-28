@@ -10,12 +10,12 @@
     </div>
     <!--Banner-->
     <div id="banner" class="header-group banner"
-         style="background: url({{ asset('storage/upload/Home/banner.svg') }}) no-repeat center;background-size: cover;">
+         style="background: url({{ asset(!empty($banner) ? $banner : 'storage/upload/Home/banner.svg') }}) no-repeat center;background-size: cover;">
         <div class="d-flex justify-content-center">
             <div id="logo-search" class="logo-search">
                 <div class="position-relative">
                     <div id="logo" class="d-flex d-md-block d-lg-flex justify-content-center">
-                        <a href="{{ route('get.home.index') }}"><img src="{{ asset('storage/upload/Home/logo.svg') }}"
+                        <a href="{{ route('get.home.index') }}"><img src="{{asset(!empty($logo) ? $logo : 'storage/upload/Home/logo.svg')}}"
                                                                      alt="Logo"></a>
                     </div>
                     <nav id="nav" class="nav navbar-expand-lg justify-content-center py-5">

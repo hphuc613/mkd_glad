@@ -1,7 +1,7 @@
 <nav id="nav-scroll" class="nav nav-scroll d-flex d-md-none">
     <nav class="navbar navbar-expand-lg navbar-dark w-100 d-flex justify-content-between">
         <a class="navbar-brand" href="{{ route('get.home.index') }}">
-            <img src="{{ asset('storage/upload/Home/logo-primary.svg') }}" class="logo" alt="Logo">
+            <img src="{{asset(!empty($logo) ? $logo : 'storage/upload/Home/logo-primary.svg')}}" class="logo" alt="Logo">
         </a>
         <div class="d-flex">
             <div class="input-group d-flex d-md-none align-items-center me-2">

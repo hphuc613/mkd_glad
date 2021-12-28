@@ -7,6 +7,7 @@ use App\AppHelpers\Mail\SendMail;
 use Exception;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Modules\Setting\Models\Setting;
 use Pusher\ApiErrorException;
 use Pusher\Pusher;
 use Pusher\PusherException;
@@ -89,5 +90,14 @@ class Helper {
         $file->storeAs('public/upload/' . $upload_address, $file_name);
 
         return 'storage/upload/'.$upload_address . '/' . $file_name;
+    }
+
+    /**
+     * @param $key
+     * @return null
+     */
+    public static function getSetting($key) {
+        $data = Setting::where('key', $key)->first();
+        return !empty($data) ? $data->value : null;
     }
 }

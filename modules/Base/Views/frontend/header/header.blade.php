@@ -19,7 +19,7 @@
                 <div class="position-relative">
                     <div id="logo" class="d-flex d-md-block d-lg-flex justify-content-center">
                         <a href="{{ route('get.home.index') }}"><img
-                                src="{{ asset('storage/upload/Home/logo-primary.svg') }}" alt="Logo"></a>
+                                src="{{asset(!empty($logo) ? $logo : 'storage/upload/Home/logo-primary.svg')}}" alt="Logo"></a>
                     </div>
                     <div id="search" class="search search-primary">
                         <form action="{{ route('get.product.productListing') }}" method="get">

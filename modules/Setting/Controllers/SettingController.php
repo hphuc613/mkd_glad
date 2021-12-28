@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Modules\Setting\Models\MailConfig;
+use Modules\Setting\Models\Website;
 
 class SettingController extends Controller {
 
@@ -75,4 +76,33 @@ class SettingController extends Controller {
         return redirect()->back();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|Factory|View|RedirectResponse
+     */
+    public function websiteConfig(Request $request)
+    {
+        $post = $request->post();
+        $website_config = Website::getWebsiteConfig();
+        if ($post) {
+            unset($post['_token']);
+            foreach ($post as $key => $value) {
+                $website_config = Website::query()->where('key', $key)->first();
+                if (!empty($website_config)) {
+                    $website_config->update(['value' => $value]);
+                } else {
+                    $website_config = new Website();
+                    $website_config->key = $key;
+                    $website_config->value = $value;
+                    $website_config->save();
+                }
+            }
+
+            $request->session()->flash('success', 'Updated successfully.');
+
+            return redirect()->back();
+        }
+
+        return view("Setting::setting.website", compact('website_config'));
+    }
 }

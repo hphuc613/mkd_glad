@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 @php($locale = App::getLocale())
+@php
+    use App\AppHelpers\Helper;
+    $favicon = Helper::getSetting('FAVICON');
+@endphp
 <html lang="{{ !empty($locale) ? $locale : 'en' }}">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-{{--    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">--}}
+    <link rel="icon" href="{{ url(asset( !empty($favicon) ? $favicon :'storage/upload/Home/products.png')) }}">
     <title>Admin Page</title>
     <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/morrisjs/morris.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/node_modules/toast-master/css/jquery.toast.css') }}">
@@ -19,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datetimepicker/css/datetimepicker-custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
     {{-- Elfinder  --}}
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="{{ asset('assets/plugins/elfinder/css/elfinder.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/elfinder/css/theme.css') }}">
     {{-- End Elfinder  --}}

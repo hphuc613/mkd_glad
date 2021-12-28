@@ -14,7 +14,7 @@
                 <div class="point">
                     <div class="py-4">
                         <a href="index.html">
-                            <img src="{{ asset('storage/upload/Home/logo-primary.svg') }}" class="logo" height="50px" alt="Logo">
+                            <img src="{{asset(!empty($logo) ? $logo : 'storage/upload/Home/logo-primary.svg')}}" class="logo" height="50px" alt="Logo">
                         </a>
                     </div>
                     <div class="title-point">申請賬戶後即可參與獨家獎勵！</div>
