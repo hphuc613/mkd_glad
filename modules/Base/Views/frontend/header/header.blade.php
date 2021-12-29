@@ -2,16 +2,16 @@
     <div id="noti" class="row cl-bg-primary container-fluid m-0 text-center noti">
         <div class="col-1"></div>
         <div class="col-10">
-            <a class="text-white">劃一 HKD$35 送遞全港 - 14日信心退換保證</a>
+            <a class="text-white">{{trans('劃一 HKD$35 送遞全港 - 14日信心退換保證')}}</a>
         </div>
         <a href="javascript:" class="col-1 text-end text-white close">
             <i class="bi-x pe-2"></i>
         </a>
     </div>
     <div class="container-fluid text-end py-2 px-5">
-        <a href="#" class="cl-text-blue">註冊</a>
+        <a href="#" class="cl-text-blue">{{trans('註冊')}}</a>
         <span class="px-2">|</span>
-        <a href="#" class="cl-text-blue">登入</a>
+        <a href="#" class="cl-text-blue">{{trans('登入')}}</a>
     </div>
     <div class="header-group">
         <div class="d-flex justify-content-center">

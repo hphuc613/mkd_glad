@@ -4,17 +4,17 @@
     <div class="container pt-3">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                <li class="breadcrumb-item"><a href="#">{{trans('Home')}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{trans('Shopping Cart')}}</li>
             </ol>
         </nav>
         <section id="cart-detail" class="shopping-cart">
             <div class="d-flex justify-content-between align-items-cente mb-5">
                 <div class="title">
-                    <h1 class="cl-text-blue">我的購物車</h1>
+                    <h1 class="cl-text-blue">{{trans('我的購物車')}}</h1>
                 </div>
                 <a href="#" class="continue-shopping">
-                    繼續購物 <i class="fas fa-chevron-right"></i>
+                    {{trans('繼續購物')}} <i class="fas fa-chevron-right"></i>
                 </a>
             </div>
             <form action="">
@@ -23,7 +23,7 @@
                         <div class="col-lg-8">
                             <div class="shopping-list card border-0 rounded-0">
                                 <div class="card-header">
-                                    <h5>產品</h5>
+                                    <h5>{{trans('產品')}}</h5>
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="cart-list">
@@ -42,7 +42,7 @@
                                                         <div class="capacity">{{ $item["capacity"] ?? NULL }}</div>
                                                     </div>
                                                     <div class="bottom">
-                                                        <div class="mb-1">數量:</div>
+                                                        <div class="mb-1">{{trans('數量')}}:</div>
                                                         <div class="range-quantity">
                                                             <div class="input-group">
                                                                 <button type="button" class="btn border decrease">-
@@ -58,7 +58,7 @@
                                                                     class="btn btn-outline-dark btn-update-cart"
                                                                     data-bs-target="#modal-purchase-offer-limit"
                                                                     data-bs-toggle="modal">
-                                                                更新購物車
+                                                                {{trans('更新購物車')}}
                                                             </button>
                                                         </div>
                                                     </div>
@@ -66,7 +66,7 @@
                                                 <div class="col-md-2">
                                                     <button class="remove-cart-item close" data-key="{{ $key }}">
                                                         <i class="bi bi-x-lg"></i>
-                                                        移除
+                                                        {{trans('移除')}}
                                                     </button>
                                                 </div>
                                             </div>
@@ -78,34 +78,34 @@
                         <div class="col-lg-4">
                             <div class="shopping-overview card border-0 rounded-0">
                                 <div class="card-header text-center">
-                                    <h5>訂單</h5>
+                                    <h5>{{trans('訂單')}}</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="input-group">
                                         <input type="text" class="form-control rounded-0"
                                                placeholder="Gift card or discount code">
-                                        <button class="btn btn-main w-25">Apply</button>
+                                        <button class="btn btn-main w-25">{{trans('Apply')}}</button>
                                     </div>
                                     <div
                                         class="cart-total-price d-flex align-items-end border-bottom border-cl-secondary py-4 mb-4">
-                                        <h5 class="fw-bold me-2">總額:</h5>
+                                        <h5 class="fw-bold me-2">{{trans('總額')}}:</h5>
                                         <div class="price" id="cart-amount">
                                             ${{ moneyFormat($cart['amount'] ?? 0, false) }}</div>
                                     </div>
                                     <div class="comment">
                                         <div class="form-group">
                                             <label class="note fw-bold mb-2">
-                                                <span class="text-light fw-normal cl-bg-primary px-2 me-2">Note</span>
-                                                Additional comments
+                                                <span class="text-light fw-normal cl-bg-primary px-2 me-2">{{trans('Note')}}</span>
+                                                {{trans('Additional comments')}}
                                             </label>
                                             <textarea class="form-control mb-3" name="" id="" rows="5"></textarea>
                                         </div>
                                         <a href="{{ route('get.payment.getPaymentInfo') }}" class="btn btn-main w-100">付款</a>
                                     </div>
                                     <div class="cart-method text-center">
-                                        <div class="fw-bold p-4">Express Checkout</div>
+                                        <div class="fw-bold p-4">{{trans('Express Checkout')}}</div>
                                         <button class="btn btn-dark btn-method gg-pay">
-                                            Buy with
+                                            {{trans('Buy with')}}
                                             <img
                                                 src="https://www.nicepng.com/png/full/769-7692974_googlepay-2-google-pay-logo-black.png"
                                                 alt="">
@@ -116,7 +116,7 @@
                                                 alt="">
                                         </button>
                                         <button class="btn btn-method shop-pay">
-                                            Shop Pay
+                                            {{trans('Shop Pay')}}
                                         </button>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
                     <hr>
                     <div class="mb-5">
                         <div class="title py-5">
-                            <h4 class="fw-bold cl-text-blue">BEST SELLERS</h4>
+                            <h4 class="fw-bold cl-text-blue">{{trans('BEST SELLERS')}}</h4>
                         </div>
                         <div class="product-list owl-carousel">
                             @foreach($products as $product)
@@ -139,7 +139,7 @@
                                         <a href="{{ route('get.product.productDetail', $product->key_slug) }}"
                                            class="title">{{ $product->name }}</a>
                                         <div class="product-price">
-                                            from <span
+                                            {{trans('from')}} <span
                                                 class="price"> {{ !empty($capacity = $product->capacities->sortBy('price')->first()) ? (!empty($capacity->discount) ? $capacity->discount : $capacity->price) : $product->price }} </span>
                                         </div>
                                     </div>

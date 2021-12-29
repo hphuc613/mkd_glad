@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('assets/plugins/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/owl-carousel/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datetimepicker/css/datetimepicker-custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/main.css') }}">
@@ -31,7 +32,7 @@
 <!-- Modal Point -->
 <div id="title-reward" class="title-reward">
     <a href="{{ route('get.home.pointReward') }}" data-bs-toggle="modal" data-bs-target="#form-modal">
-        會員積分獎賞
+        {{trans('會員積分獎賞')}}
     </a>
 </div>
 
@@ -52,6 +53,9 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript" src="{{ asset('assets/plugins/pjax/jquery.pjax.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/plugins/owl-carousel/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datetimepicker/js/datetimepicker.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-TW.js') }}"></script>
+<script src="{{ asset('assets/plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/modal.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/js/cart.js') }}"></script>

@@ -1,11 +1,11 @@
 <!-- Cart -->
 <div class="cart-box selector-close">
     <a href="javascript:" class="d-flex justify-content-end cl-text-blue close close-hide">
-        <i class="bi-x" style="font-size: 25px;"></i>關閉
+        <i class="bi-x" style="font-size: 25px;"></i>{{trans('關閉')}}
     </a>
     <div class="cart-content">
         <div class="cart-header">
-            <h5>購物⾞</h5>
+            <h5>{{trans('購物⾞')}}</h5>
             <hr>
         </div>
         <div class="cart-body pb-4">
@@ -34,11 +34,11 @@
         <div class="cart-footer">
             <hr>
             <div class="d-flex justify-content-between mb-3">
-                <h5>總額:</h5>
+                <h5>{{trans('總額')}}:</h5>
                 <div class="total-price">{{ moneyFormat($cart['amount'] ?? 0) }}</div>
             </div>
             <a href="{{ route('get.cart.shoppingCart') }}" class="btn btn-outline-dark rounded-0 w-100">
-                查看購物⾞
+                {{trans('查看購物⾞')}}
             </a>
         </div>
     </div>

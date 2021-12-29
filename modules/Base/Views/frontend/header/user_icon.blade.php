@@ -10,6 +10,7 @@
             <img src="{{ asset('storage/upload/Home/user.svg') }}" alt="Icon user">
         </a>
         <ul class="dropdown-menu border-0 shadow-036 rounded-0" aria-labelledby="user-dropdown-content">
+            <li class="dropdown-item"><a href="{{ route('get.home.profile') }}">{{ trans('Profile') }}</a></li>
             <li class="dropdown-item dropdown dropdown-hover">
                 <a href="javascript:" class="dropdown-toggle" id="user-dropdown-language" data-bs-toggle="dropdown">
                     {{ trans('Languages') }}

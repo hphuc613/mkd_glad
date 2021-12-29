@@ -9,9 +9,9 @@
                         <img src="{{ asset('storage/upload/Home/home_calendula_cream.svg') }}" alt="">
                         <div class="card-img-overlay d-flex align-items-end">
                             <div class="w-100 text-center">
-                                <h3 class="text-white">金盞花修護乳霜</h3>
+                                <h3 class="text-white">{{trans('金盞花修護乳霜')}}</h3>
                                 <a href="{{ route('get.product.productListing') }}" class="btn btn-main btn-product">
-                                    SHOP NOW
+                                    {{trans('SHOP NOW')}}
                                 </a>
                             </div>
                         </div>
@@ -22,9 +22,9 @@
                         <img src="{{ asset('storage/upload/Home/home_magnificent_cream.svg') }}" alt="">
                         <div class="card-img-overlay d-flex align-items-end">
                             <div class="w-100 text-center">
-                                <h3 class="text-white">瑰麗亮肌煥彩護療霜</h3>
+                                <h3 class="text-white">{{trans('瑰麗亮肌煥彩護療霜')}}</h3>
                                 <a href="{{ route('get.product.productListing') }}" class="btn btn-main btn-product">
-                                    SHOP NOW
+                                    {{trans('SHOP NOW')}}
                                 </a>
                             </div>
                         </div>
@@ -35,9 +35,9 @@
                         <img src="{{ asset('storage/upload/Home/home_lavender_oil.svg') }}" alt="">
                         <div class="card-img-overlay d-flex align-items-end">
                             <div class="w-100 text-center">
-                                <h3 class="text-white">薰衣草萬用膏</h3>
+                                <h3 class="text-white">{{trans('薰衣草萬用膏')}}</h3>
                                 <a href="{{ route('get.product.productListing') }}" class="btn btn-main btn-product">
-                                    SHOP NOW
+                                    {{trans('SHOP NOW')}}
                                 </a>
                             </div>
                         </div>
@@ -48,9 +48,9 @@
                         <img src="{{ asset('storage/upload/Home/home_primrose _cream.svg') }}" alt="">
                         <div class="card-img-overlay d-flex align-items-end">
                             <div class="w-100 text-center">
-                                <h3 class="text-white">月見草舒敏乳霜</h3>
+                                <h3 class="text-white">{{trans('月見草舒敏乳霜')}}</h3>
                                 <a href="{{ route('get.product.productListing') }}" class="btn btn-main btn-product">
-                                    SHOP NOW
+                                    {{trans('SHOP NOW')}}
                                 </a>
                             </div>
                         </div>
@@ -64,22 +64,22 @@
                      style="background-image: url('{{ asset('storage/upload/Home/home_natural.svg') }}')">
                     <div class="card-img-overlay d-flex align-items-center">
                         <div class="w-100 text-center">
-                            <h1 class="text-white title-story">NATURAL, ORGANIC, HARMLESS !</h1>
-                            <h1 class="text-white title-description text-center">天然有機護膚品帶來護膚新體驗！</h1>
+                            <h1 class="text-white title-story">{{trans('NATURAL, ORGANIC, HARMLESS !')}}</h1>
+                            <h1 class="text-white title-description text-center">{{trans('天然有機護膚品帶來護膚新體驗！')}}</h1>
                         </div>
                     </div>
                 </div>
                 <div id="story-right" class="story-right cl-bg-primary text-center">
-                    <h1 class="cl-text-blue title-story">NATURAL, ORGANIC, HARMLESS !</h1>
-                    <h6 class="text-white title-description">堅持嚴選原材料是本店宗旨,堅持才能帶來希望所以,敬請現正飽受皮膚問題困擾您,不要
-                        灰心,快來敝店攤擋跟我們交流,我們已準備好試用裝,只要大家有需要便可免費索取。</h6>
+                    <h1 class="cl-text-blue title-story">{{trans('NATURAL, ORGANIC, HARMLESS !')}}</h1>
+                    <h6 class="text-white title-description">{{trans('堅持嚴選原材料是本店宗旨,堅持才能帶來希望所以,敬請現正飽受皮膚問題困擾您,不要
+                        灰心,快來敝店攤擋跟我們交流,我們已準備好試用裝,只要大家有需要便可免費索取。')}}</h6>
                     <div id="img-natural" class="text-center img-natural">
                         <div class="row">
                             <div class="col-lg-6 col-xl-4">
                                 <img src="{{ asset('storage/upload/Home/home_lotion.svg') }}" class="card-img-top"
                                      alt="{{ asset('storage/upload/Home/home_lotion.svg') }}">
                                 <div class="card-body d-flex align-items-end text-center justify-content-center">
-                                    <p class="text-white card-text">優質潔淨成分安全高效配方</p>
+                                    <p class="text-white card-text">{{trans('優質潔淨成分安全高效配方')}}</p>
                                 </div>
                             </div>
 
@@ -87,7 +87,7 @@
                                 <img src="{{ asset('storage/upload/Home/home_wallet.svg') }}" class="card-img-top"
                                      alt="{{ asset('storage/upload/Home/home_wallet.svg') }}">
                                 <div class="card-body d-flex align-items-end justify-content-center">
-                                    <p class="text-white card-text">櫃位領件 (免郵費)寄出或面交</p>
+                                    <p class="text-white card-text">{{trans('櫃位領件 (免郵費)寄出或面交')}}</p>
                                 </div>
                             </div>
 
@@ -95,7 +95,7 @@
                                 <img src="{{ asset('storage/upload/Home/home_rating.svg') }}" class="card-img-top"
                                      alt="{{ asset('storage/upload/Home/home_rating.svg') }}">
                                 <div class="card-body d-flex align-items-end justify-content-center">
-                                    <p class="text-white card-text">大量真實用家分享敏感肌適用</p>
+                                    <p class="text-white card-text">{{trans('大量真實用家分享敏感肌適用')}}</p>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +103,8 @@
                 </div>
                 <div id="story" class="story container">
                     <div class="text-center cl-bg-secondary story-content">
-                        <h1 class="cl-text-blue title-story">OUR STORY</h1>
-                        <p class="text-white intent px-3">本品牌宗旨誓要致力推廣環保及天然有機護膚品對地球環境生態以及對我
+                        <h1 class="cl-text-blue title-story">{{trans('OUR STORY')}}</h1>
+                        <p class="text-white intent px-3">{{trans('本品牌宗旨誓要致力推廣環保及天然有機護膚品對地球環境生態以及對我
                             們肌膚健康的好處！本品牌宗旨誓要致力推廣環保及天然有機護膚品對地
                             球環境生態以及對我們肌膚健康的好處！本品牌宗旨誓要致力推廣環保及
                             天然有機護膚品對地球環境生態以及對我們肌膚健康的好處！本品牌宗旨
@@ -113,10 +113,10 @@
                             以及對我們肌膚健康的好處！本品牌宗旨誓要致力推廣環保及天然有機護
                             膚品對地球環境生態以及對我們肌膚健康的好處！本品牌宗旨誓要致力推
                             廣環保及天然有機護膚品對地球環境生態以及對我們肌膚健康的好處！本
-                            品牌宗旨誓要致力推廣環保及天然有機護膚品對地球環境生態</p>
+                            品牌宗旨誓要致力推廣環保及天然有機護膚品對地球環境生態')}}</p>
                         <img class="w-100" src="{{ asset('storage/upload/Home/home_story.svg') }}" alt="story">
                         <a href="{{ route('get.page.aboutUs') }}" class="btn btn-main btn-learn-more">
-                            LEARN MORE
+                            {{trans('LEARN MORE')}}
                         </a>
                     </div>
                 </div>
@@ -132,15 +132,18 @@
                                 <img src="{{ $product->image }}" alt="natural">
                             </a>
                             <div class="product-title">
-                                <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="cl-text-primary text-uppercase">
+                                <a href="{{route('get.product.productDetail',$product->key_slug)}}"
+                                   class="cl-text-primary text-uppercase">
                                     {!! $product->name  !!}
                                 </a>
                             </div>
                             <div class="description text-start">
                                 {!! $product->content !!}
                             </div>
-                            <div class="price">${{ moneyFormat(!empty($capacity = $product->capacities->sortBy('price')->first()) ? (!empty($capacity->discount) ? $capacity->discount : $capacity->price) : $product->price, false) }}</div>
-                            <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="btn btn-outline-main-light btn-add-to-cart">ADD TO CART</a>
+                            <div class="price">
+                                ${{ moneyFormat(!empty($capacity = $product->capacities->sortBy('price')->first()) ? (!empty($capacity->discount) ? $capacity->discount : $capacity->price) : $product->price, false) }}</div>
+                            <a href="{{route('get.product.productDetail',$product->key_slug)}}"
+                               class="btn btn-outline-main-light btn-add-to-cart">{{trans('ADD TO CART')}}</a>
                         </div>
                     @endforeach
                 </div>
@@ -148,7 +151,7 @@
         </section>
         <section id="discover" class="text-center discover">
             <h1 class="text-center text-white cl-bg-primary title-discover">
-                DISCOVER MORE
+                {{trans('DISCOVER MORE')}}
             </h1>
             <div class="container-fluid">
                 <div class="row discover-row">
@@ -158,17 +161,21 @@
                                 <img src="{{ $product->image }}" alt="natural">
                             </a>
                             <div class="product-title">
-                                <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="cl-text-primary fw-normal text-uppercase">
+                                <a href="{{route('get.product.productDetail',$product->key_slug)}}"
+                                   class="cl-text-primary fw-normal text-uppercase">
                                     {!! $product->name  !!}
                                 </a>
                             </div>
-                            <div class="price">${{ moneyFormat(!empty($capacity = $product->capacities->sortBy('price')->first()) ? (!empty($capacity->discount) ? $capacity->discount : $capacity->price) : $product->price, false) }}</div>
-                            <a href="{{route('get.product.productDetail',$product->key_slug)}}" class="btn btn-outline-main-light btn-add-to-cart">ADD TO CART</a>
+                            <div class="price">
+                                ${{ moneyFormat(!empty($capacity = $product->capacities->sortBy('price')->first()) ? (!empty($capacity->discount) ? $capacity->discount : $capacity->price) : $product->price, false) }}</div>
+                            <a href="{{route('get.product.productDetail',$product->key_slug)}}"
+                               class="btn btn-outline-main-light btn-add-to-cart">{{trans('ADD TO CART')}}</a>
                         </div>
                     @endforeach
                 </div>
             </div>
-            <a href="{{ route('get.product.productListing') }}" class="btn btn-outline-main-light btn-shop-more">SHOP MORE</a>
+            <a href="{{ route('get.product.productListing') }}" class="btn btn-outline-main-light btn-shop-more">{{trans('SHOP
+                MORE')}}</a>
         </section>
         <section id="feedback" class="feedback">
             <h1 class="cl-text-blue text-center feedback-title">CUSTOMERS FEEDBACK</h1>
@@ -236,7 +243,7 @@
                 <button class="rounded-circle btn indicator-item mx-3 p-0 active"></button>
             </div>
             <div class="d-flex justify-content-center">
-                <button class="btn btn-main btn-feedback-more">更多用家分享</button>
+                <button class="btn btn-main btn-feedback-more">{{trans('更多用家分享')}}</button>
             </div>
         </section>
     </div>

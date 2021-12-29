@@ -12,33 +12,33 @@
                 <div class="cart-content">
                     <div class="container pb-5" style="border-bottom: 1px solid #d4e2ee;">
                         <div class="modal-title pb-3 mb-5">
-                            <h4>以下產品已加⼊購物⾞:</h4>
+                            <h4>{{trans('以下產品已加⼊購物⾞')}}:</h4>
                         </div>
                         <div class="modal-cart-detail-row row">
                             <div class="col-lg-4">
                                 <div class="shopping-overview">
                                     <div class="card border-0 rounded-0">
                                         <div class="card-header text-center">
-                                            <h5 class="fw-bold">查看購物⾞</h5>
+                                            <h5 class="fw-bold">{{trans('查看購物⾞')}}</h5>
                                         </div>
                                         <div class="card-body">
                                             <div class="cart-count-product text-center p-5">
-                                                {{ $cart['quantity'] ?? 0 }}購物⾞中的產品
+                                                {{ $cart['quantity'] ?? 0 }}{{trans('購物⾞中的產品')}}
                                             </div>
                                             <div
                                                 class="cart-total-price d-flex justify-content-between align-items-center py-3 mb-3">
-                                                <h5 class="fw-bold">總額:</h5>
+                                                <h5 class="fw-bold">{{trans('總額')}}:</h5>
                                                 <div class="price">${{ moneyFormat($cart['amount'] ?? 0, false) }}</div>
                                             </div>
                                             <div class="cart-btn">
                                                 <button class="btn btn-outline-dark rounded-0" data-bs-dismiss="modal">
-                                                    繼續購物
+                                                    {{trans('繼續購物')}}
                                                 </button>
-                                                <a href="shopping-cart.html" class="btn btn-main">付款</a>
+                                                <a href="shopping-cart.html" class="btn btn-main">{{trans('付款')}}</a>
                                             </div>
                                             <div class="cart-method">
                                                 <button class="btn btn-dark btn-method gg-pay">
-                                                    Buy with
+                                                    {{trans('Buy with')}}
                                                     <img
                                                         src="https://www.nicepng.com/png/full/769-7692974_googlepay-2-google-pay-logo-black.png"
                                                         alt="">
@@ -49,7 +49,7 @@
                                                         alt="">
                                                 </button>
                                                 <button class="btn btn-method shop-pay">
-                                                    Shop Pay
+                                                    {{trans('Shop Pay')}}
                                                 </button>
                                             </div>
                                         </div>
@@ -60,7 +60,7 @@
                                 <div class="shopping-list">
                                     <div class="card border-0 rounded-0">
                                         <div class="card-header text-center">
-                                            <h5 class="fw-bold">你的訂單</h5>
+                                            <h5 class="fw-bold">{{trans('你的訂單')}}</h5>
                                         </div>
                                         <div class="card-body p-0">
                                             <div class="cart-list">
@@ -117,7 +117,7 @@
                     </div>
                     <div class="container product-list">
                         <div class="title text-center p-4">
-                            <h4 class="fw-bold">YOU MAY ALSO LIKE</h4>
+                            <h4 class="fw-bold">{{trans('YOU MAY ALSO LIKE')}}</h4>
                         </div>
                         <div class="container mb-5">
                             <div class="product-list row">

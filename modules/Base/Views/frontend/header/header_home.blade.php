@@ -2,7 +2,7 @@
     <div id="noti" class="row cl-bg-primary container-fluid m-0 text-center noti">
         <div class="col-1"></div>
         <div class="col-10">
-            <a class="text-white">劃一 HKD$35 送遞全港 - 14日信心退換保證</a>
+            <a class="text-white">{{trans('劃一 HKD$35 送遞全港 - 14日信心退換保證')}}</a>
         </div>
         <a href="javascript:" class="col-1 text-end text-white close">
             <i class="bi-x pe-2"></i>
@@ -41,9 +41,9 @@
             </div>
             <div class="position-absolute bottom-0 w-100">
                 <div id="title-banner" class="mt-auto px-5 text-center title-banner">
-                    <p class="text-white mb-3 mx-auto">環保及天然有機護膚品護膚新體驗!</p>
+                    <p class="text-white mb-3 mx-auto">{{trans('環保及天然有機護膚品護膚新體驗!')}}</p>
                     <button class="btn btn-main btn-shop-now">
-                        SHOP NOW
+                        {{trans('SHOP NOW')}}
                     </button>
                 </div>
             </div>

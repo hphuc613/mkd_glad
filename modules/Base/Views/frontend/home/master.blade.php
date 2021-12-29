@@ -33,7 +33,7 @@
 <!-- Modal Point -->
 <div id="title-reward" class="title-reward">
     <a href="{{ route('get.home.pointReward') }}" data-bs-toggle="modal" data-bs-target="#form-modal">
-        會員積分獎賞
+        {{trans('會員積分獎賞')}}
     </a>
 </div>
 

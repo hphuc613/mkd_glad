@@ -44,3 +44,6 @@ Route::prefix('payment')->group(function () {
     Route::get('payment-shipping', 'PaymentController@getPaymentShipping')->name('get.payment.getPaymentShipping');
     Route::get('payment-now', 'PaymentController@getPaymentNow')->name('get.payment.getPaymentNow');
 });
+
+Route::get('profile', 'MemberController@getProfile')->name('get.home.profile');
+Route::post('profile', 'MemberController@postProfile')->name('post.home.profile');
