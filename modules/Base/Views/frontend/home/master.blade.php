@@ -60,7 +60,7 @@
 @stack('js')
 <script>
     $(document).ready(function () {
-        @if(!auth('web')->check())
+        @if(auth('web')->check())
         $('#modal-register-email').modal('show');
         @endif
 

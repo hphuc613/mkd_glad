@@ -47,3 +47,5 @@ Route::prefix('payment')->group(function () {
 
 Route::get('profile', 'MemberController@getProfile')->name('get.home.profile');
 Route::post('profile', 'MemberController@postProfile')->name('post.home.profile');
+
+Route::post('register-email', 'VoucherController@registerEmail')->name('post.home.registerEmail');

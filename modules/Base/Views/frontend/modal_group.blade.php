@@ -34,13 +34,16 @@
                                     <h3 class="fw-bold title">{{trans('HELLO!')}}</h3>
                                     <div class="description">
                                         {{trans('新⽤⼾登記EMAIL將會收到9折優惠碼亦誠邀')}}
-                                        <a href="#" class="cl-text-primary">{{trans('加入FB群組!')}}</a> {{trans('睇更多⽤家分享')}}
+                                        <a href="#"
+                                           class="cl-text-primary">{{trans('加入FB群組!')}}</a> {{trans('睇更多⽤家分享')}}
                                     </div>
-                                    <form class="mb-5">
+                                    <form action="{{route('post.home.registerEmail')}}" method="POST" class="mb-5"
+                                          id="voucher-form">
+                                        @csrf
                                         <div class="input-group">
-                                            <input type="text" class="form-control rounded-0" placeholder="登記你的電郵地址"
-                                                   aria-describedby="basic-addon2">
-                                            <button class="btn" id="basic-addon2">{{trans('提交')}}</button>
+                                            <input type="email" class="form-control rounded-0" placeholder="登記你的電郵地址"
+                                                   aria-describedby="basic-addon2" name="email" required>
+                                            <button type="submit" class="btn" id="basic-addon2">{{trans('提交')}}</button>
                                         </div>
                                         <div class="form-group text-start">
                                             <label class="checkmark-group">{{trans('想收取更多驚喜資訊！')}}
@@ -80,7 +83,8 @@
                         <h5 class="fw-bold cl-text-blue">{{trans('限時加購優惠')}}</h5>
                     </div>
                     <div class="date-end">
-                        <h4 class="fw-bold">{{trans('限時優惠快將完結:')}} <span class="remain-time fw-bold text-danger">10:40</span></h4>
+                        <h4 class="fw-bold">{{trans('限時優惠快將完結:')}} <span
+                                class="remain-time fw-bold text-danger">10:40</span></h4>
                     </div>
                     <div class="container content px-md-5">
                         <div class="product-info border-bottom">
