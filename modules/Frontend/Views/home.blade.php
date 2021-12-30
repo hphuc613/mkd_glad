@@ -181,61 +181,17 @@
             <h1 class="cl-text-blue text-center feedback-title">CUSTOMERS FEEDBACK</h1>
             <div class="feedback-row">
                 <div class="owl-carousel">
-                    <div class="feedback-item">
-                        <img src="{{ asset('storage/upload/Home/feedback.svg') }}">
-                        <div class="text-center">
-                            <h4 class="name">Mary Chan</h4>
-                            <div class="comment">抗炎幾work啊！谷緊嘅暗瘡搽左之後冇咁腫~~~
-                                好用呀！對我濕疹定唔知敏感好有效👍🏻👍🏻
-                                親身試過手霜，原本乾到有少少甩皮嘅手指隙位即刻潤返
-                                同埋唔「笠」，唔錯唔錯！讚👍🏻
+                    @foreach($feedbacks as $feedback)
+                        <div class="feedback-item">
+                            <img src="{{ asset($feedback->image ?? '') }}" alt="{{$feedback->image ?? ''}}">
+                            <div class="text-center">
+                                <h4 class="name">{{($feedback->member->name ?? '') . ' ' . ($feedback->member->last_name ?? '')}}</h4>
+                                <div class="comment">
+                                    <?= $feedback->content ?? '' ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="feedback-item">
-                        <img src="{{ asset('storage/upload/Home/feedback.svg') }}">
-                        <div class="text-center">
-                            <h4 class="name">Mary Chan</h4>
-                            <div class="comment">抗炎幾work啊！谷緊嘅暗瘡搽左之後冇咁腫~~~
-                                好用呀！對我濕疹定唔知敏感好有效👍🏻👍🏻
-                                親身試過手霜，原本乾到有少少甩皮嘅手指隙位即刻潤返
-                                同埋唔「笠」，唔錯唔錯！讚👍🏻
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feedback-item">
-                        <img src="{{ asset('storage/upload/Home/feedback.svg') }}">
-                        <div class="text-center">
-                            <h4 class="name">Mary Chan</h4>
-                            <div class="comment">抗炎幾work啊！谷緊嘅暗瘡搽左之後冇咁腫~~~
-                                好用呀！對我濕疹定唔知敏感好有效👍🏻👍🏻
-                                親身試過手霜，原本乾到有少少甩皮嘅手指隙位即刻潤返
-                                同埋唔「笠」，唔錯唔錯！讚👍🏻
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feedback-item">
-                        <img src="{{ asset('storage/upload/Home/feedback.svg') }}">
-                        <div class="text-center">
-                            <h4 class="name">Mary Chan</h4>
-                            <div class="comment">抗炎幾work啊！谷緊嘅暗瘡搽左之後冇咁腫~~~
-                                好用呀！對我濕疹定唔知敏感好有效👍🏻👍🏻
-                                親身試過手霜，原本乾到有少少甩皮嘅手指隙位即刻潤返
-                                同埋唔「笠」，唔錯唔錯！讚👍🏻
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feedback-item">
-                        <img src="{{ asset('storage/upload/Home/feedback.svg') }}">
-                        <div class="text-center">
-                            <h4 class="name">Mary Chan</h4>
-                            <div class="comment">抗炎幾work啊！谷緊嘅暗瘡搽左之後冇咁腫~~~
-                                好用呀！對我濕疹定唔知敏感好有效👍🏻👍🏻
-                                親身試過手霜，原本乾到有少少甩皮嘅手指隙位即刻潤返
-                                同埋唔「笠」，唔錯唔錯！讚👍🏻
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div id="dots" class="row owl-carousel-dots mx-0 justify-content-center indicator">

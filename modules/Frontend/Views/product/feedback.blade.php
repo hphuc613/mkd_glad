@@ -115,7 +115,7 @@
                         @endif
                         <div class="card-body">
                             <div class="card-info mb-5">
-                                <h6 class="fw-bold m-0">{{$item->member->name ?? '' . $item->member->last_name ?? ''}}</h6>
+                                <h6 class="fw-bold m-0">{{($item->member->name ?? '') . ' ' . ($item->member->last_name ?? '')}}</h6>
                                 <div
                                     class="date">{{formatDate(strtotime($item->updated_at ?? ''),'d/m/Y')}}</div>
                                 <div class="vote-star vote-default p-0">
