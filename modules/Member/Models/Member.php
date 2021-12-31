@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\File;
 use Modules\Order\Models\Order;
+use Modules\Voucher\Models\VoucherMember;
 
 class Member extends BaseMember {
     use SoftDeletes;
@@ -75,5 +76,14 @@ class Member extends BaseMember {
     public function orders() {
         return $this->hasMany(Order::class, 'member_id');
     }
+
+    /**
+     * @return HasMany
+     */
+    public function member_voucher() {
+        return $this->hasMany(VoucherMember::class, 'member_id');
+    }
+
+
 
 }

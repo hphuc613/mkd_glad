@@ -684,6 +684,7 @@ header {
                         right: 3rem;
                         transform: translate(-100px, 4px);
                     }
+
                     &:hover {
                         .dropdown-menu {
                             display: block;
@@ -985,7 +986,7 @@ header {
     }
 
     .card-product {
-        img{
+        img {
             width: 20rem;
             height: 20rem;
             object-fit: cover;
@@ -1002,8 +1003,8 @@ header {
 
         .description {
             height: 18rem;
-            overflow:hidden;
-            text-overflow:ellipsis;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
             @include mobile {
                 height: auto;
@@ -1042,8 +1043,8 @@ header {
             padding: 0;
         }
 
-        .card-product{
-            img{
+        .card-product {
+            img {
                 width: 20rem;
                 height: 20rem;
                 object-fit: cover;
@@ -1074,15 +1075,15 @@ header {
         .feedback-item {
             padding: 0 50px;
             margin-bottom: 3rem;
-            @include mobile{
+            @include mobile {
                 padding: 0 20px;
             }
 
-            img{
+            img {
                 width: 100%;
                 height: 35rem;
                 object-fit: cover;
-                @include mobile{
+                @include mobile {
                     height: 25rem;
                 }
             }
@@ -1098,10 +1099,10 @@ header {
                 font-family: HelveticaNeue, sans-serif;
                 text-align: left;
                 line-height: 26px;
-                overflow:hidden;
-                text-overflow:ellipsis;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 height: 7rem;
-                @include mobile{
+                @include mobile {
                     height: 10rem;
                 }
             }
@@ -1678,17 +1679,18 @@ header {
             width: 100%;
             height: 18rem;
             object-fit: cover;
-            @include mobile{
+            @include mobile {
                 height: 7rem;
             }
         }
 
-        .content{
+        .content {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             min-height: 6.5rem;
-            a{
+
+            a {
                 color: $blue;
             }
 
@@ -1855,7 +1857,7 @@ header {
                 border-bottom: none;
             }
 
-            .offer-image{
+            .offer-image {
                 width: 35%;
                 @include mobile {
                     width: 100%;
@@ -2062,7 +2064,7 @@ header {
         .feedback-item {
             margin-bottom: 3rem;
 
-            img{
+            img {
                 width: 100%;
                 height: 30rem;
                 object-fit: cover;
@@ -2281,7 +2283,7 @@ header {
                     padding: 2rem 0;
                     border-bottom: 1px solid $color_secondary;
 
-                    img{
+                    img {
                         width: 12rem;
                         height: 12rem;
                         object-fit: cover;
@@ -3048,8 +3050,8 @@ header {
         margin-bottom: 11rem;
     }
 
-    .product-item{
-        .content{
+    .product-item {
+        .content {
             height: 8rem;
         }
     }
@@ -3128,5 +3130,16 @@ header {
         height: 550px;
         border: 1px solid $silver-1;
         margin-bottom: 5rem;
+    }
+}
+
+.table-voucher {
+    font-family: HelveticaNeue, sans-serif;
+    font-size: 18px;
+    margin-top: 2rem;
+    color: $blue;
+
+    td, th {
+        padding: 1rem 0.5rem;
     }
 }

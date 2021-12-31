@@ -2681,4 +2681,14 @@ header .user-dropdown .dropdown-menu .dropdown-item.dropdown-hover:hover .dropdo
   margin-bottom: 5rem;
 }
 
+.table-voucher {
+  font-family: HelveticaNeue, sans-serif;
+  font-size: 18px;
+  margin-top: 2rem;
+  color: #316490;
+}
+.table-voucher td, .table-voucher th {
+  padding: 1rem 0.5rem;
+}
+
 /*# sourceMappingURL=main.css.map */

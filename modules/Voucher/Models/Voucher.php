@@ -72,4 +72,8 @@ class Voucher extends Model
     public function updatedBy() {
         return $this->belongsTo(User::class, 'updated_by');
     }
+
+    public function member_voucher() {
+        return $this->hasMany(VoucherMember::class, 'voucher_id');
+    }
 }

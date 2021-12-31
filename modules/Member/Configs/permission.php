@@ -15,5 +15,9 @@ return [
             'name' => 'member-delete',
             'display_name' => trans('Delete Member'),
         ],
+        [
+            'name' => 'member-voucher',
+            'display_name' => trans('Voucher Member'),
+        ],
     ]
 ];

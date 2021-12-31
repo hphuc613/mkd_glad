@@ -14,5 +14,9 @@ Route::prefix("admin")->group(function () {
             Route::post('/update/{id}', 'MemberController@postUpdate')->name('post.member.update');
         });
         Route::get('/delete/{id}', 'MemberController@delete')->name('get.member.delete')->middleware('can:member-delete');
+        Route::group(['middleware' => 'can:member-voucher'], function () {
+            Route::get("/voucher/{id}", "MemberController@getVoucher")->name("get.member.voucher");
+            Route::get("/voucher/{member_id}/delete/{voucher_id}", "MemberController@deleteVoucher")->name("get.member.deleteVoucher");
+        });
     });
 });

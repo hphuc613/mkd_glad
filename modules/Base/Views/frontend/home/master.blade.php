@@ -60,7 +60,7 @@
 @stack('js')
 <script>
     $(document).ready(function () {
-        @if(auth('web')->check())
+        @if(auth('web')->check() && !(\Modules\Voucher\Models\VoucherMember::isReceiveVoucher((auth('web')->id()))))
         $('#modal-register-email').modal('show');
         @endif
 

@@ -39,6 +39,7 @@
                     </li>
                 </ul>
             </li>
+            <li class="dropdown-item"><a href="{{ route('get.home.voucher') }}">{{ trans('My Voucher') }}</a></li>
             <li class="dropdown-item"><a href="{{ route('get.home.logout') }}">{{ trans('Logout') }}</a></li>
         </ul>
     </div>

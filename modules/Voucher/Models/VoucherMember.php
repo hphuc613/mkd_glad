@@ -3,11 +3,7 @@
 namespace Modules\Voucher\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Modules\User\Models\User;
 
 class VoucherMember extends Model
 {
@@ -22,4 +18,15 @@ class VoucherMember extends Model
     protected $guarded = [];
 
     public $timestamps = true;
+
+    public static function isReceiveVoucher($id)
+    {
+        $data = self::query()->where('member_id', $id)->where('voucher_id',1)->first();
+
+        return $data != null;
+    }
+
+    public function voucher() {
+        return $this->hasOne(Voucher::class,'id','voucher_id');
+    }
 }

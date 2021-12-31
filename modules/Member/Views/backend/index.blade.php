@@ -84,6 +84,7 @@
                             <th>{{ trans('Status') }}</th>
                             <th>{{ trans('Created At') }}</th>
                             <th>{{ trans('Updated At') }}</th>
+                            <th style="width: 200px;" class="text-center">{{ trans('Voucher') }}</th>
                             <th style="width: 200px;" class="text-center">{{ trans('Action') }}</th>
                         </tr>
                         </thead>
@@ -100,6 +101,10 @@
                                 <td>{{ $statuses[$member->status] }}</td>
                                 <td>{{ \Carbon\Carbon::parse($member->created_at)->format('d/m/Y H:i:s')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($member->updated_at)->format('d/m/Y H:i:s')}}</td>
+                                <td class="text-center">
+                                    <a href="{{ route('get.member.voucher',$member->id) }}" class="btn btn-cyan">
+                                        <i class="fas fa-eye"></i></a>
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ route('get.member.update',$member->id) }}" class="btn btn-primary">
                                         <i class="fas fa-pencil-alt"></i></a>

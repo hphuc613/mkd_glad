@@ -4,26 +4,20 @@
     <div id="voucher-module">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="title">{{ trans("Voucher") }}</h4>
+                <h4 class="title">{{ trans("Member Voucher").': '.($member->name ?? '').' '.($member->last_name ?? '') }}</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans("Home") }}</a></li>
-                        <li class="breadcrumb-item active">{{ trans("Voucher") }}</li>
+                        <li class="breadcrumb-item active">{{ trans("Member Voucher") }}</li>
                     </ol>
                 </div>
             </div>
         </div>
-        <div class="mb-3 d-flex justify-content-end group-btn">
-            <a href="{{ route("get.voucher.create") }}" class="btn btn-primary"
-               data-toggle="modal" data-target="#form-modal" data-title="{{ trans("Create Voucher") }}">
-                <i class="fa fa-plus"></i>&nbsp; {{ trans("Add New") }}
-            </a>
-        </div>
     </div>
     <!--Search box-->
-    <div class="search-box">
+  {{--  <div class="search-box">
         <div class="card">
             <div class="card-header" data-toggle="collapse" data-target="#form-search-box" aria-expanded="false"
                  aria-controls="form-search-box">
@@ -74,7 +68,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>--}}
     <div class="listing">
         <div class="card">
             <div class="card-body">
@@ -94,7 +88,7 @@
                             <th>{{ trans('Author') }}</th>
                             <th>{{ trans('Created At') }}</th>
                             <th>{{ trans('Updated At') }}</th>
-                            <th class="action">{{ trans('Action') }}</th>
+                            <th style="width: 120px" class="action">{{ trans('Action') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -102,26 +96,22 @@
                         @foreach($data as $item)
                             <tr>
                                 <td>{{$key++}}</td>
-                                <td>{{ $item->code ?? '' }}</td>
-                                <td>{{ $item->name ?? '' }}</td>
-                                <td>{{ ($item->value ?? '') . ($item->type == 1 ? '$' : '%') }}</td>
-                                <td>{{ $item->expiration_date != null ? formatDate(strtotime($item->expiration_date), 'd-m-Y H:i') : '' }}</td>
-                                <td>{{ \Modules\Base\Models\Status::getStatus($item->status) ?? null }}</td>
+                                <td>{{ $item->voucher->code ?? '' }}</td>
+                                <td>{{ $item->voucher->name ?? '' }}</td>
+                                <td>{{ ($item->voucher->value ?? '') . ($item->voucher->type == 1 ? '$' : '%') }}</td>
+                                <td>{{ $item->voucher->expiration_date != null ? formatDate(strtotime($item->voucher->expiration_date), 'd-m-Y H:i') : '' }}</td>
+                                <td>{{ \Modules\Base\Models\Status::getStatus($item->voucher->status) ?? null }}</td>
                                 <td>
-                                    @if(isset($item->author))
-                                        <a href="{{ route('get.user.update', $item->created_by) }}">{{ $item->author->name }}</a>
+                                    @if(isset($item->voucher->author))
+                                        <a href="{{ route('get.user.update', $item->voucher->created_by) }}">{{ $item->voucher->author->name }}</a>
                                     @else
                                         N/A
                                     @endif
                                 </td>
-                                <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s')}}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d/m/Y H:i:s')}}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->voucher->created_at)->format('d/m/Y H:i:s')}}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->voucher->updated_at)->format('d/m/Y H:i:s')}}</td>
                                 <td class="link-action">
-                                    <a href="{{route('get.voucher.update',$item->id)}}" class="btn btn-primary"
-                                       data-toggle="modal" data-target="#form-modal"
-                                       data-title="{{ trans("Update Voucher") }}">
-                                        <i class="fas fa-pencil-alt"></i></a>
-                                    <a href="{{route('get.voucher.delete',$item->id)}}"
+                                    <a href="{{route('get.member.deleteVoucher',['member_id'=> $member->id,'voucher_id'=>$item->voucher->id])}}"
                                        class="btn btn-danger btn-delete"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
