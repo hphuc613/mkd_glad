@@ -5,12 +5,12 @@ namespace Modules\Frontend\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Modules\Base\Models\Status;
 use Modules\Frontend\Models\Frontend;
 use Modules\Product\Models\Product;
 use Modules\Product\Models\ProductCapacity;
-use function Doctrine\Common\Cache\Psr6\get;
 
 class CartController extends Controller {
 
@@ -110,12 +110,17 @@ class CartController extends Controller {
 
     /**
      * @param Request $request
-     * @return Factory|View
+     * @return Factory|View|RedirectResponse
      */
     public function shoppingCart(Request $request) {
         $cart = [];
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart');
+        }
+        if (empty($cart) || empty($cart['items'])) {
+            $request->session()->flash('danger', trans('Please add some product to cart!'));
+
+            return redirect()->back();
         }
 
         $products = Product::query()

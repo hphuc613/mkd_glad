@@ -43,7 +43,8 @@
                   </span>
         </div>
         <div class="contact-info-form">
-            <form action="{{ route('get.payment.getPaymentShipping') }}" class="form" method="get" id="payment-info-form">
+            <form action="{{ route('get.payment.getPaymentShipping') }}" class="form" method="get"
+                  id="payment-info-form">
                 <div class="contact-info">
                     <div class="label">
                         <h4>{{ trans('Contact infomation') }}</h4>
@@ -82,21 +83,24 @@
                         <div class="col-6">
                             <div class="form-floating">
                                 <input type="text" name="last_name" id="last-name" placeholder="Last name"
-                                       class="form-control" value="{{ $request->last_name ?? $auth->user()->last_name ?? NULL }}">
+                                       class="form-control"
+                                       value="{{ $request->last_name ?? $auth->user()->last_name ?? NULL }}">
                                 <label for="last-name">{{ trans('Last name') }}</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" name="company" id="company" placeholder="Company (optional)"
-                                       class="form-control" value="{{ $request->company ?? $auth->user()->company ?? NULL }}">
+                                       class="form-control"
+                                       value="{{ $request->company ?? $auth->user()->company ?? NULL }}">
                                 <label for="company">{{ trans('Company (optional)') }}</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" name="address" id="address" placeholder="Address"
-                                       class="form-control" value="{{ $request->address ?? $auth->user()->address ?? NULL }}">
+                                       class="form-control"
+                                       value="{{ $request->address ?? $auth->user()->address ?? NULL }}">
                                 <label for="address">{{ trans('Address') }}</label>
                             </div>
                         </div>
@@ -118,32 +122,36 @@
                         </div>
                         <div class="col-6">
                             <div class="form-floating">
-                                <select name="country" class="form-select" id="country"
-                                        aria-label="Floating label select">
-                                    <option value="1">Hong Kong SAR</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <label for="country" class="label-select">Country/Region</label>
+                                <input type="text" name="country" id="country"
+                                       class="form-control" value="Hong Kong SAR" readonly>
+                                <label for="country" class="label-select">{{ trans('Country/Region') }}</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-floating">
                                 <select name="region" class="form-select" id="region">
-                                    <option value="1">Kowloon</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option value="Hong Kong"
+                                            @if(($request->region ?? NULL) == "Hong Kong") selected @endif>Hong Kong
+                                    </option>
+                                    <option value="Kowloon"
+                                            @if(($request->region ?? NULL) == "Kowloon") selected @endif>Kowloon
+                                    </option>
+                                    <option value="New Territories"
+                                            @if(($request->region ?? NULL) == "New Territories") selected @endif>New
+                                        Territories
+                                    </option>
                                 </select>
-                                <label for="country" class="label-select">Region</label>
+                                <label for="region" class="label-select">{{ trans('Region') }}</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating phone-input">
                                 <input type="text" name="phone" id="phone"
                                        placeholder="{{ trans('Phone number for updates and exclusive offers') }}"
-                                       class="form-control phone" value="{{ $request->phone ?? $auth->user()->phone ?? NULL }}">
+                                       class="form-control phone"
+                                       value="{{ $request->phone ?? $auth->user()->phone ?? NULL }}">
                                 <label
-                                    for="district">{{ trans('Phone number for updates and exclusive offers') }}</label>
+                                    for="phone">{{ trans('Phone number for updates and exclusive offers') }}</label>
                             </div>
                         </div>
                         <div class="col-12">

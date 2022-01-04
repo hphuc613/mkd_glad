@@ -41,6 +41,20 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
+                                <label for="email">{{ trans("Email") }}</label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                       value="{{ $filter['email'] ?? NULL }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="phone">{{ trans("Phone") }}</label>
+                                <input type="text" class="form-control" id="phone" name="phone"
+                                       value="{{ $filter['phone'] ?? NULL }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
                                 <label for="text-input">{{ trans("Status") }}</label>
                                 {!! Form::select('status', ["" => trans("All")] + $statuses, $filter['status'] ?? NULL, ['class' => 'form-control select2 w-100']) !!}
                             </div>
@@ -50,12 +64,6 @@
                                 <label for="text-input">{{ trans("Month") }}</label>
                                 <input type="text" name="month" class="form-control month"
                                        value="{{ $filter['month'] ?? NULL }}">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="text-input">{{ trans("Creator") }}</label>
-                                {!! Form::select('creator', ["" => trans("All")] + $creators, $filter['creator'] ?? NULL, ['class' => 'form-control select2 w-100']) !!}
                             </div>
                         </div>
                     </div>
@@ -91,10 +99,11 @@
                             <th>{{ trans("Invoice Code") }}</th>
                             <th>{{ trans("Status") }}</th>
                             <th>{{ trans("Member") }}</th>
+                            <th>{{ trans("Email") }}</th>
+                            <th>{{ trans("Phone") }}</th>
                             <th>{{ trans("Total Price") }}</th>
                             <th>{{ trans("Purchase/Abort At") }}</th>
                             <th>{{ trans("Payment Method") }}</th>
-                            <th>{{ trans("Creator") }}</th>
                             <th class="action text-center">{{ trans("Action") }}</th>
                         </tr>
                         </thead>
@@ -109,7 +118,7 @@
                                     if($item->status === Modules\Order\Models\Order::STATUS_DRAFT)
                                         $bg_status = 'bg-warning';
                                     elseif($item->status === Modules\Order\Models\Order::STATUS_PAID)
-                                       $bg_status = 'bg-success';
+                                       $bg_status = 'bg-success'
                                 @endphp
                                 <td>
                                     <span class="status-box {{ $bg_status }}">
@@ -124,10 +133,11 @@
                                         {{ $item->member_name  }}
                                     @endif
                                 </td>
-                                <td>{{ moneyFormat($item->total_price) }}</td>
+                                <td>{{ $item->email  }}</td>
+                                <td>{{ $item->phone  }}</td>
+                                <td>{{ moneyFormat($item->amount) }}</td>
                                 <td>{{ formatDate(strtotime($item->updated_at), 'd-m-Y H:i') }}</td>
                                 <td>{{ $item->paymentMethod->name ?? NULL }}</td>
-                                <td>{{ $item->creator_name }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('get.order.detail', $item->id) }}"
                                        class="btn btn-outline-info"

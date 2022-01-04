@@ -1,5 +1,6 @@
 @extends('Frontend::payment.master_payment')
 @php($auth = auth('web'))
+@php($request = request())
 @section('content')
     <div class="col-md-6 payment-info">
         <div class="header-payment">
@@ -30,7 +31,8 @@
                     </tr>
                     <tr>
                         <td><label>{{ trans('Ship to') }}</label></td>
-                        <td>{{ $data['address'] }}, {{ $data['district'] }}</td>
+                        <td>{{ $data['address'] }}, {{ $data['district'] }}
+                            , {{ $data['region'] }} {{ $data['country'] }}</td>
                         <td><a href="{{ route('get.payment.getPaymentInfo', $data) }}">{{ trans('Change') }}</a></td>
                     </tr>
                     </tbody>
@@ -41,47 +43,46 @@
                     <h4>Shipping method</h4>
                 </div>
                 <table class="table table-responsive">
-                    <tr class="tr">
-                        <td>
-                            <label class="checkmark-group">
-                                <input type="radio" name="shipping" id="1" value="1">
-                                <span class="checkmark checkmark-radio"></span>
-                            </label>
-                        </td>
-                        <td><label for="1">【7-11/OK自取/工商地址】請將服務點號填至Shipping Address, **於訂單確認後7-9個工作天內發貨</label></td>
-                        <td>
-                            <div class="price">HK$35.00</div>
-                        </td>
-                    </tr>
-                    <tr class="tr">
-                        <td>
-                            <label class="checkmark-group">
-                                <input type="radio" name="shipping" id="2" value="2">
-                                <span class="checkmark checkmark-radio"></span>
-                            </label>
-                        </td>
-                        <td><label for="2">【住宅地址】**於訂單確認後7-9個工作天內發貨</label></td>
-                        <td>
-                            <div class="price">HK$35.00</div>
-                        </td>
-                    </tr>
-                    <tr class="tr">
-                        <td>
-                            <label class="checkmark-group">
-                                <input type="radio" name="shipping" id="3" value="3" checked>
-                                <span class="checkmark checkmark-radio"></span>
-                            </label>
-                        </td>
-                        <td><label for="3">【順豐站／智能櫃自取】請將順豐自取點填在Shipping Address, **於訂單確認後7-9個工作天內發貨</label></td>
-                        <td>
-                            <div class="price">HK$35.00</div>
-                        </td>
-                    </tr>
+                    @foreach($shipping_list as $key => $item)
+                        @if (!isset($request->shipping) || empty($request->shipping))
+                            <tr class="tr">
+                                <td>
+                                    <label class="checkmark-group">
+                                        <input type="radio" name="shipping" id="{{ $item->key_slug }}"
+                                               value="{{ $item->key_slug }}"
+                                               @if($key == 0) checked @endif>
+                                        <span class="checkmark checkmark-radio"></span>
+                                    </label>
+                                </td>
+                                <td><label for="{{ $item->key_slug }}">{{ $item->name }}</label></td>
+                                <td>
+                                    <div class="price">{{ moneyFormat($item->value) }}</div>
+                                </td>
+                            </tr>
+                        @else
+                            <tr class="tr">
+                                <td>
+                                    <label class="checkmark-group">
+                                        <input type="radio" name="shipping" id="{{ $item->key_slug }}"
+                                               value="{{ $item->key_slug }}"
+                                               @if($request->shipping == $item->key_slug) checked @endif>
+                                        <span class="checkmark checkmark-radio"></span>
+                                    </label>
+                                </td>
+                                <td><label for="{{ $item->key_slug }}">{{ $item->name }}</label></td>
+                                <td>
+                                    <div class="price">{{ moneyFormat($item->value) }}</div>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
                 </table>
                 <div class="group-btn">
                     <input type="hidden" name="data" value="{{ json_encode($data) }}">
-                    <button type="submit" class="btn btn-dark text-light me-2">{{ trans('Continue to payment') }}</button>
-                    <a href="{{ route('get.payment.getPaymentInfo', $data) }}" class="btn cl-text-primary">{{ trans('Return to information') }}</a>
+                    <button type="submit"
+                            class="btn btn-dark text-light me-2">{{ trans('Continue to payment') }}</button>
+                    <a href="{{ route('get.payment.getPaymentInfo', $data) }}"
+                       class="btn cl-text-primary">{{ trans('Return to information') }}</a>
                 </div>
             </div>
         </form>

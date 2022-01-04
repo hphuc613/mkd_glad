@@ -45,12 +45,10 @@ class OrderController extends Controller {
      */
     public function getDetail(Request $request, $id) {
         $data = Order::query()
-            ->find($id)
-            ->with('creator')
             ->with(['orderDetails' => function($od){
                 $od->with('product');
             }])
-            ->first();
+            ->find($id);
 
         if (!$request->ajax()) {
             return redirect()->route('get.order.list');

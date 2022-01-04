@@ -64,13 +64,13 @@
                     </div>
                     <div class="shipping d-flex justify-content-between">
                         <div class="text mb-0">Shipping <i class="fas fa-question-circle"></i></div>
-                        <div class="price">HK$000.00</div>
+                        <div class="price">{{ moneyFormat($shipping->value ?? 0) }}</div>
                     </div>
                 </div>
                 <hr>
                 <div class="total-price py-4 d-flex justify-content-between">
                     <div class="text">Total</div>
-                    <div class="price">{{ moneyFormat($cart['amount']) }}</div>
+                    <div class="price">{{ moneyFormat($cart['amount'] + (int)($shipping->value ?? 0)) }}</div>
                 </div>
             </div>
         </div>

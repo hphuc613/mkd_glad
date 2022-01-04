@@ -35,8 +35,7 @@ class Order extends Model {
     public static function filter($filter) {
         $query = self::query()
             ->with('orderDetails')
-            ->with('member')
-            ->with('creator');
+            ->with('member');
         if (isset($filter['status'])) {
             $query->where('status', $filter['status']);
         }
@@ -46,14 +45,17 @@ class Order extends Model {
         if (isset($filter['month'])) {
             $query->whereMonth('orders.updated_at', $filter['month']);
         }
+        if (isset($filter['email'])) {
+            $query->where('orders.email', $filter['email']);
+        }
+        if (isset($filter['phone'])) {
+            $query->where('orders.phone', $filter['phone']);
+        }
         if (isset($filter['member_id'])) {
             $query->where('member_id', $filter['member_id']);
         }
         if (isset($filter['order_type'])) {
             $query->where('order_type', $filter['order_type']);
-        }
-        if (isset($filter['creator'])) {
-            $query->where('creator_id', $filter['creator']);
         }
 
         return $query;
@@ -75,13 +77,6 @@ class Order extends Model {
      */
     public function member() {
         return $this->belongsTo(Member::class, 'member_id');
-    }
-
-    /**
-     * @return BelongsTo
-     */
-    public function creator() {
-        return $this->belongsTo(User::class, 'creator_id');
     }
 
     /**

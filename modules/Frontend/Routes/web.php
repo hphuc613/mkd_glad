@@ -43,6 +43,7 @@ Route::prefix('payment')->group(function () {
     Route::get('payment-info', 'PaymentController@getPaymentInfo')->name('get.payment.getPaymentInfo');
     Route::get('payment-shipping', 'PaymentController@getPaymentShipping')->name('get.payment.getPaymentShipping');
     Route::get('payment-now', 'PaymentController@getPaymentNow')->name('get.payment.getPaymentNow');
+    Route::post('payment-now', 'PaymentController@postPayment')->name('post.payment.postPayment');
 });
 
 Route::get('profile', 'MemberController@getProfile')->name('get.home.profile');

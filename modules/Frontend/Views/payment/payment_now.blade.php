@@ -28,12 +28,13 @@
                 </tr>
                 <tr>
                     <td><label>{{ trans('Ship to') }}</label></td>
-                    <td>{{ $data['address'] }}, {{ $data['district'] }}</td>
+                    <td>{{ $data['address'] }}, {{ $data['district'] }}
+                        , {{ $data['region'] }} {{ $data['country'] }}</td>
                     <td><a href="{{ route('get.payment.getPaymentInfo', $data) }}">{{ trans('Change') }}</a></td>
                 </tr>
                 <tr class="tr">
                     <td><label>{{ trans('Method') }}</label></td>
-                    <td>【順豐站／智能櫃自取】請將順豐自取點填在Shipping Address, **於訂單確認後7-9個工作天內發貨. HK$35.00</td>
+                    <td>{{ $shipping->name }}, {{ moneyFormat($shipping->value) }}</td>
                     <td><a href="{{ route('get.payment.getPaymentShipping', $data) }}">{{ trans('Change') }}</a></td>
                 </tr>
             </table>
@@ -41,22 +42,22 @@
         <div class="payment-page">
             <div class="payment-method mb-5">
                 <div class="label">
-                    <h4>Payment</h4>
-                    <div class="text cl-text-silver-5">All transactions are secure and encrypted.</div>
+                    <h4>{{ trans('Payment') }}</h4>
+                    <div class="text cl-text-silver-5">{{ trans('All transactions are secure and encrypted.') }}</div>
                 </div>
                 <div class="method-form">
                     <div class="card credit-cart">
                         <div class="card-header" data-bs-toggle="collapse" data-bs-target="#credit-cart"
                              aria-expanded="false" aria-controls="credit-cart">
                             <div>
-                                <label class="checkmark-group">Credit Card
+                                <label class="checkmark-group">{{ trans('Credit Card') }}
                                     <input type="radio" name="radio">
                                     <span class="checkmark checkmark-radio"></span>
                                 </label>
                             </div>
                             <div>
-                                <img src="../images/icon-visa.svg" width="34" alt="">
-                                <img src="../images/icon-master-card.svg" width="34" alt="">
+                                <img src="{{ asset('storage/upload/Home/icon-visa.svg') }}" width="34" alt="">
+                                <img src="{{ asset('storage/upload/Home/icon-master-card.svg') }}" width="34" alt="">
                             </div>
                         </div>
                         <div class="card-body collapse pb-0" id="credit-cart">
@@ -65,33 +66,33 @@
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <input type="text" name="card_number" id="card-number"
-                                                   placeholder="Card number"
+                                                   placeholder="{{ trans('Card number') }}"
                                                    class="form-control">
-                                            <label for="card-number">Card number</label>
+                                            <label for="card-number">{{ trans('Card number') }}</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <input type="text" name="card_name" id="card-name"
-                                                   placeholder="Name on card"
+                                                   placeholder="{{ trans('Name on card') }}<"
                                                    class="form-control">
-                                            <label for="card-name">Name on card</label>
+                                            <label for="card-name">{{ trans('Name on card') }}<</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-floating">
                                             <input type="text" name="expiration_date" id="expiration-date"
-                                                   placeholder="Expiration date (MM/YY)"
+                                                   placeholder="{{ trans('Expiration date (MM/YY)') }}"
                                                    class="form-control">
-                                            <label for="expiration-date">Expiration date (MM/YY)</label>
+                                            <label for="expiration-date">{{ trans('Expiration date (MM/YY)') }}</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-floating">
                                             <input type="text" name="security_code" id="security-code"
-                                                   placeholder="Security code"
+                                                   placeholder="{{ trans('Security code') }}"
                                                    class="form-control">
-                                            <label for="security-code">Security code</label>
+                                            <label for="security-code">{{ trans('Security code') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +104,7 @@
                              aria-expanded="false" aria-controls="pay-pal">
                             <div>
                                 <label class="checkmark-group">
-                                    <img src="../images/ft_paypal.svg" alt="">
+                                    <img src="{{ asset('storage/upload/Home/ft_paypal.svg') }}" alt="">
                                     <input type="radio" name="radio">
                                     <span class="checkmark checkmark-radio"></span>
                                 </label>
@@ -153,7 +154,7 @@
                              aria-expanded="false" aria-controls="pay-me">
                             <div>
                                 <label class="checkmark-group">
-                                    <img src="../images/ft-payme-logo.svg" alt="">
+                                    <img src="{{ asset('storage/upload/Home/ft-payme-logo.svg') }}" alt="">
                                     <input type="radio" name="radio">
                                     <span class="checkmark checkmark-radio"></span>
                                 </label>
@@ -203,7 +204,7 @@
                              aria-expanded="false" aria-controls="fps">
                             <div>
                                 <label class="checkmark-group">
-                                    <img src="../images/ft_fps.svg" alt="">
+                                    <img src="{{ asset('storage/upload/Home/ft_fps.svg') }}" alt="">
                                     <input type="radio" name="radio">
                                     <span class="checkmark checkmark-radio"></span>
                                 </label>
@@ -348,10 +349,15 @@
                 </table>
             </div>
         </div>
-        <div class="group-btn">
-            <a href="payment.html" class="btn btn-dark text-light me-2">Pay now</a>
-            <a href="payment-shipping.html" class="btn cl-text-primary">Return to shipping</a>
-        </div>
+        <form action="" method="post">
+            @csrf
+            <input type="hidden" value="{{ json_encode($data) }}">
+            <div class="group-btn">
+                <button type="submit" class="btn btn-dark text-light me-2">{{ trans('Pay now') }}</button>
+                <a href="{{ route('get.payment.getPaymentShipping', $data) }}"
+                   class="btn cl-text-primary">{{ trans('Return to shipping') }}</a>
+            </div>
+        </form>
         <hr>
     </div>
 @endsection

@@ -34,7 +34,7 @@
                         {{ trans('To') }}
                     </div>
                     <div class="col-8">
-                        : {{ $data->member->name ?? "N/A"}}
+                        : {{ $data->member_name ?? "N/A"}}
                     </div>
                 </div>
                 <div class="row">
@@ -42,7 +42,7 @@
                         {{ trans('Email') }}
                     </div>
                     <div class="col-8">
-                        : {{ $data->member->email  ?? "N/A"}}
+                        : {{ $data->email  ?? "N/A"}}
                     </div>
                 </div>
                 <div class="row">
@@ -50,7 +50,7 @@
                         {{ trans('Phone') }}
                     </div>
                     <div class="col-8">
-                        : {{ $data->member->phone ?? "N/A" }}
+                        : {{ $data->phone ?? "N/A" }}
                     </div>
                 </div>
             </div>
@@ -70,22 +70,6 @@
                     </div>
                     <div class="col-8">
                         : {{ formatDate(strtotime($data->updated_at), 'd-m-Y H:i') }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        {{ trans('Creator') }}
-                    </div>
-                    <div class="col-8">
-                        : {!! $data->creator->name ?? $data->creator_name." <span class='text-danger'>(".trans('This data has been deleted').")</span>" ?? "N/A" !!}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        {{ trans('Created At') }}
-                    </div>
-                    <div class="col-8">
-                        : {{ formatDate(strtotime($data->created_at), 'd-m-Y H:i') }}
                     </div>
                 </div>
                 <div class="row">
@@ -115,7 +99,8 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>{{ trans('Product') }}</th>
+                        <th style="width: 250px">{{ trans('Product') }}</th>
+                        <th>{{ trans('Capacity') }}</th>
                         <th>{{ trans('Price') }}</th>
                         <th class="text-center">{{ trans('Quantity') }}</th>
                         <th>{{ trans('Total Price') }}</th>
@@ -126,13 +111,14 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $order_detail->product->name ?? $order_detail->product_name }}</td>
+                            <td>{{ $order_detail->capacity }}</td>
                             <td>{{ moneyFormat($order_detail->price) }}</td>
                             <td class="text-center">{{ $order_detail->quantity }}</td>
                             <td>{{ moneyFormat($order_detail->amount) }}</td>
                         </tr>
                     @endforeach
                     <tr>
-                        <td colspan="3"></td>
+                        <td colspan="4"></td>
                         <td><h6>{{ trans('Amount') }}:</h6></td>
                         <td><h6>{{ moneyFormat($data->amount) }}</h6></td>
                     </tr>

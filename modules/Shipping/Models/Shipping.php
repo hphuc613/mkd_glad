@@ -4,6 +4,8 @@ namespace Modules\Shipping\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class Shipping extends Model
 {
@@ -18,6 +20,14 @@ class Shipping extends Model
     protected $guarded = [];
 
     public $timestamps = true;
+
+    protected static function boot() {
+        parent::boot();
+
+        static::saving(function ($model){
+            $model->key_slug   = Str::random(2) . $model->id . Str::random(2) . time();
+        });
+    }
 
     /**
      * @param $filter
